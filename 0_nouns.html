@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbles</title>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+<link rel="stylesheet" href="0_nouns.css">
+
+
+
+<body>
+
+
+<br>
+
+<!-- Create a div where the graph will take place -->
+<div id="wrapper"></div>
+
+<script>
+
+d3.select("#wrapper")
+  .append("h2").text("Project: Exploring the epistemic stance of the World Bank in the World Development Reports 1978-2021")
+  .append("h1").text("Types of words in the World Development Reports");
+
+d3.select("#wrapper")
+  .append("p")
+  .html(
+    `This illustration shows the percentages of seven word types in the World Development Reports 1978-2021. The word types are: nouns, adjectives, verbs, adverbs, pronouns,	conjunctions	and prepositions.`
+  );
+
+  </script>
+
+
+      <script>
+// set the dimensions and margins of the graph
+const margin = {top: 10, right: 30, bottom: 20, left: 30},
+  width = 1200 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+const svg = d3.select("#wrapper")
+.append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+.append("g")
+  .attr("transform", `translate(${margin.left},${margin.top})`);
+
+// Parse the Data
+d3.csv("nouns.csv").then( function(data) {
+
+// List of subgroups = header of the csv files = soil condition here
+const subgroups = data.columns.slice(1)
+
+// List of groups = species here = value of the first column called group -> I show them on the X axis
+const groups = data.map(d => d.group)
+
+// Add X axis
+const x = d3.scaleBand()
+    .domain(groups)
+    .range([0, width])
+    .padding([0.2])
+svg.append("g")
+  .attr("transform", `translate(0, ${height})`)
+  .call(d3.axisBottom(x).tickSizeOuter(0));
+
+// Add Y axis
+const y = d3.scaleLinear()
+  .domain([0, 100])
+  .range([ height, 0 ]);
+svg.append("g")
+  .call(d3.axisLeft(y));
+
+// color palette = one color per subgroup
+const color = d3.scaleOrdinal()
+  .domain(subgroups)
+
+   .range(['#E25098','#42ABC5', '#EBE0D0','#EC9EC0','#FEC84D','#5F093D','#A91B60'])
+
+//stack the data? --> stack per subgroup
+const stackedData = d3.stack()
+  .keys(subgroups)
+  (data)
+
+
+
+
+// ----------------
+// Highlight a specific subgroup when hovered
+// ----------------
+
+// Show the bars
+svg.append("g")
+  .selectAll("g")
+  // Enter in the stack data = loop key per key = group per group
+  .data(stackedData)
+  .join("g")
+    .attr("fill", d => color(d.key))
+    .attr("class", d => "myRect " + d.key ) // Add a class to each subgroup: their name
+    .selectAll("rect")
+    // enter a second time = loop subgroup per subgroup to add all rectangles
+    .data(d => d)
+    .join("rect")
+      .attr("x", d => x(d.data.group))
+      .attr("y", d => y(d[1]))
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("width",x.bandwidth())
+      .attr("stroke", "grey")
+      .on("mouseover", function (event,d) { // What happens when user hover a bar
+
+        // what subgroup are we hovering?
+        const subGroupName = d3.select(this.parentNode).datum().key
+
+        // Reduce opacity of all rect to 0.2
+         d3.selectAll(".myRect").style("opacity", 0.2)
+
+        // Highlight all rects of this subgroup with opacity 1. It is possible to select them since they have a specific class = their name.
+         d3.selectAll("."+subGroupName).style("opacity",1)
+      })
+      .on("mouseleave", function (event,d) { // When user do not hover anymore
+
+        // Back to normal opacity: 1
+        d3.selectAll(".myRect")
+        .style("opacity",1)
+    })
+
+
+
+
+})
+
+</script>
+
+<div id="wrapper3">
+
+
+<script>
+
+
+
+// append the svg object to the body of the page
+ var svg = d3.select("#wrapper3")
+
+
+
+// Handmade legend
+svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#69b3a2")
+svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
+svg.append("text").attr("x", 220).attr("y", 130).text("variable A").style("font-size", "15px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")
+
+</script>
+
+</div>
+
+<div id="wrapper1">
+
+
+
+
+
+
+<h3>List of the World Development Reports 1978-2021</h3>
+<table>
+
+<thead>
+<th class="year">Year</th>
+<th class="president">WB President</th>
+<th class="director">Report Director</th>
+<th class="title">Title of WDR</th>
+</thead>
+<tbody>
+<tr>
+<td>1978</td>
+<td class="mcnamara">Robert S. McNamara</td>
+<td>D. C. Rao</td>
+<td class="report">Prospects for Growth and Alleviation of Poverty</td>
+
+</tr>
+<tr>
+<td>1979</td>
+<td class="mcnamara">Robert S. McNamara</td>
+<td>Shankar Acharya</td>
+<td class="report">Structural Change and Development Policy</td>
+</tr>
+
+<tr>
+<td>1980</td>
+<td class="mcnamara">Robert S. McNamara</td>
+<td>Paul Isenman</td>
+<td class="report">Poverty and Human Development</td>
+</tr>
+
+
+<tr>
+<td>1981</td>
+<td class="mcnamara">Robert S. McNamara</td>
+<td>Robert Cassen</td>
+<td class="report">National and International Adjustment</td>
+</tr>
+
+<tr>
+<td>1982</td>
+<td class="clausen">Alden W. Clausen</td>
+<td>David Turnham</td>
+<td class="report">Agriculture and Economic Development</td>
+</tr>
+
+
+<tr>
+<td>1983</td>
+<td class="clausen">Alden W. Clausen</td>
+<td>Pierre Landell-Mills</td>
+<td class="report">Management in Development</td>
+</tr>
+
+
+
+<tr>
+<td>1984</td>
+<td class="clausen">Alden W. Clausen</td>
+<td>Nancy Birdsall</td>
+<td class="report">Population Change and Development</td>
+</tr>
+
+
+
+<tr>
+<td>1985</td>
+<td class="clausen">Alden W. Clausen</td>
+<td>Francis X. Colaço</td>
+<td class="report">International Capital and Economic Development</td>
+</tr>
+
+
+
+<tr>
+<td>1986</td>
+<td class="clausen">Alden W. Clausen</td>
+<td>Anandarup Ray</td>
+<td class="report">Trade and Pricing Policies in World Agriculture</td>
+</tr>
+
+<tr>
+<td>1987</td>
+<td class="conable">Barber B. Conable</td>
+<td>Sarath Rajapatirana</td>
+<td class="report">Industrialization and Foreign Trade</td>
+</tr>
+
+
+<tr>
+<td>1988</td>
+<td class="conable">Barber B. Conable</td>
+<td>Johannes F. Linn</td>
+<td class="report">Public Finance and Development</td>
+</tr>
+
+
+
+<tr>
+<td>1989</td>
+<td class="conable">Barber B. Conable</td>
+<td>Millard F. Long</td>
+<td class="report">Financial Systems and Development</td>
+</tr>
+
+<tr>
+<td>1990</td>
+<td class="conable">Barber B. Conable</td>
+<td>Lyn Squire</td>
+<td class="report">Poverty</td>
+</tr>
+
+<tr>
+<td>1991</td>
+<td class="conable">Barber B. Conable</td>
+<td>Vinod Thoma</td>
+<td class="report">The Challenge of Development</td>
+</tr>
+
+
+<tr>
+<td>1992</td>
+<td class="preston">Lewis Preston</td>
+<td>Andrew Steer</td>
+<td class="report">Development and the Environment</td>
+</tr>
+
+<tr>
+<td>1993</td>
+<td class="preston">Lewis Preston</td>
+<td>Dean T. Jamison</td>
+<td class="report">Investing in Health</td>
+</tr>
+
+<tr>
+<td>1994</td>
+<td class="preston">Lewis Preston</td>
+<td>Gregory Ingram</td>
+<td class="report">Infrastructure for Development</td>
+</tr>
+
+<tr>
+<td>1995</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Michael Walton</td>
+<td class="report">Workers in an Integrating World</td>
+</tr>
+
+<tr>
+<td>1996</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Alan H. Gelb</td>
+<td class="report">From Plan to Market</td>
+</tr>
+
+
+<tr>
+<td>1997</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Ajay Chhibber</td>
+<td class="report">The State in a Changing World</td>
+</tr>
+
+
+<tr>
+<td>1998</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Carl Dahlman</td>
+<td class="report">Knowledge for Development (1998/9)</td>
+</tr>
+
+
+<tr>
+<td>1999</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Shahid Yusuf</td>
+<td class="report">Entering the 21st Century: The Changing Development Landscape (1999/2000)</td>
+</tr>
+
+
+
+<tr>
+<td>2000</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Ravi Kanbur and Nora Lustig</td>
+<td class="report">Attacking Poverty (2000/1)</td>
+</tr>
+
+
+<tr>
+<td>2002</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Roumenn Islam</td>
+<td class="report">Building Institutions for Markets</td>
+</tr>
+
+
+<tr>
+<td>2003</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Zmarak Shalizi</td>
+<td class="report">Sustainable Development in a Dynamic World: Transforming Institutions, Growth, and Quality of Life</td>
+</tr>
+
+
+<tr>
+<td>2004</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Shantayanan Devarajan and Ritva Reinikka</td>
+<td class="report">Making Services work for Poor People</td>
+</tr>
+
+
+
+<tr>
+<td>2005</td>
+<td class="wolfensohn">James D. Wolfensohn</td>
+<td>Warrick Smith</td>
+<td class="report">A Better Investment Climate for Everyone</td>
+</tr>
+
+
+
+
+<tr>
+<td>2006</td>
+<td class="wolfowitz">Paul Wolfowitz</td>
+<td>Francisco Ferreira and Michael Walton</td>
+<td class="report">Equity and Development</td>
+</tr>
+
+
+
+
+<tr>
+<td>2007</td>
+<td class="wolfowitz">Paul Wolfowitz</td>
+<td>Emmanuel Y. Jimenez</td>
+<td class="report">Development and the Next Generation</td>
+</tr>
+
+
+
+
+<tr>
+<td>2008</td>
+<td class="zoellick">Robert B. Zoellick</td>
+<td>Derek Byerlee and Alain de Janvry</td>
+<td class="report">Agriculture for Development</td>
+</tr>
+
+
+
+<tr>
+<td>2009</td>
+<td class="zoellick">Robert B. Zoellick</td>
+<td>***</td>
+<td class="report">Reshaping Economic Geography</td>
+</tr>
+
+
+<tr>
+<td>2010</td>
+<td class="zoellick">Robert B. Zoellick</td>
+<td>Rosina Bierbaum and Marianne Fay</td>
+<td class="report">Development and Climate Change</td>
+</tr>
+
+<tr>
+<td>2011</td>
+<td class="zoellick">Robert B. Zoellick</td>
+<td>***</td>
+<td class="report">Conflict, Security, and Development</td>
+</tr>
+
+<tr>
+<td>2012</td>
+<td class="zoellick">Robert B. Zoellick</td>
+<td>***</td>
+<td class="report">Gender Equality and Development</td>
+</tr>
+
+
+<tr>
+<td>2013</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Jobs</td>
+</tr>
+
+
+<tr>
+<td>2014</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Risk and Opportunity</td>
+</tr>
+
+
+<tr>
+<td>2015</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Mind, Society, and Behavior</td>
+</tr>
+
+<tr>
+<td>2016</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Digital Dividends</td>
+</tr>
+
+
+<tr>
+<td>2017</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Governance and the Law</td>
+</tr>
+
+
+<tr>
+<td>2018</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">Learning to Realize Education’s Promise</td>
+</tr>
+
+
+<tr>
+<td>2019</td>
+<td class="kim">Jim Yong Kim</td>
+<td>***</td>
+<td class="report">The Changing Nature of Work</td>
+</tr>
+
+
+<tr>
+<td>2020</td>
+<td class="malpass">David R. Malpass</td>
+<td>***</td>
+<td class="report">Trading for Development in the Age of Global Value Chains</td>
+</tr>
+
+
+<tr>
+<td>2021</td>
+<td class="malpass">David R. Malpass</td>
+<td>Robert Cull, Vivien Foster and Dean Jolliffe</td>
+<td class="report">Data for Better Lives</td>
+</tr>
+
+
+</tbody>
+</table>
+
+</div>
+
+
+</body>

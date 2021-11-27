@@ -1,0 +1,247 @@
+
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	color: hsl(0, 0%, 11%);
+	font-family: Helvetica, Arial;
+
+}
+
+#wrapper {
+	max-width: 1200px;
+	max-height: 1200px;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	margin: 1rem auto;
+	background: hsl(33, 82%, 98%);
+	box-shadow: 0 1px 10px -8px hsl(0, 0%, 5%);
+}
+
+#wrapper > * + * {
+	margin-top: 0.5rem;
+}
+
+#wrapper h1 {
+	font-family: Helvetica, Arial;
+	font-weight: 900;
+	font-size: 1.8rem;
+	margin-top: 0.8rem;
+}
+
+#wrapper h2 {
+	font-family: Helvetica, Arial;
+	font-weight: 500;
+	font-size: 0.8rem;
+}
+
+#wrapper1 h3 {
+	font-family: Helvetica, Arial;
+	font-weight: 800;
+	font-size: 1.3rem;
+	margin-bottom: 0.8rem;
+}
+
+#wrapper p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+
+#wrapper svg {
+	width: 1200px;
+	height: auto;
+	display: block;
+}
+
+#wrapper svg text {
+	font-family: Verdana, Helvetica, Arial;
+	fill: currentColor;
+	font-size: 9px;
+}
+
+
+
+
+
+
+
+#wrapper3 {
+	max-width: 1200px;
+	max-height: 1200px;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	margin: 1rem auto;
+	background: hsl(33, 82%, 98%);
+	box-shadow: 0 1px 10px -8px hsl(0, 0%, 5%);
+}
+
+#wrapper3 > * + * {
+	margin-top: 0.5rem;
+}
+
+#wrapper3 h1 {
+	font-family: Helvetica, Arial;
+	font-weight: 900;
+	font-size: 1.8rem;
+	margin-top: 0.8rem;
+}
+
+#wrapper3 h2 {
+	font-family: Helvetica, Arial;
+	font-weight: 500;
+	font-size: 0.8rem;
+}
+
+#wrapper3 h3 {
+	font-family: Helvetica, Arial;
+	font-weight: 800;
+	font-size: 1.3rem;
+	margin-bottom: 0.8rem;
+}
+
+#wrapper3 p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+
+#wrapper3 svg {
+	width: 1200px;
+	height: auto;
+	display: block;
+}
+
+#wrapper3 svg text {
+	font-family: Verdana, Helvetica, Arial;
+	fill: currentColor;
+	font-size: 9px;
+}
+
+
+
+
+
+
+
+#wrapper1 {
+	max-width: 1200px;
+	max-height: 2000px;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	margin: 1rem auto;
+	background: hsl(33, 82%, 98%);
+	box-shadow: 0 1px 10px -8px hsl(0, 0%, 5%);
+}
+
+#wrapper1 > * + * {
+	margin-top: 0.5rem;
+}
+
+
+table {
+  width: 900px;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 0 1em 0;
+  caption-side: top;
+	border-collapse:collapse;
+  font-family: 'Nunito', Helvetica, Arial;
+}
+
+table, th, td {
+  border: 1px solid #d3d3d3;
+}
+
+
+caption, td, th {
+	padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+tbody {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+tbody th, tfoot th {
+  border: 20;
+}
+
+th.year {
+  width: 5%;
+}
+
+th.president {
+  width: 20%;
+}
+
+th.director {
+  width: 20%;
+}
+
+th.title {
+  width: 55%;
+}
+
+tfoot {
+  text-align: center;
+  color: #555;
+  font-size: 0.8em;
+}
+
+td {
+  font-size: 0.9rem;
+	line-height: 2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+td.report {
+  font-weight: bold;
+}
+
+
+td.mcnamara {
+  color: grey;
+}
+
+td.clausen {
+  color: #00308F;
+}
+
+td.conable {
+  color: #FF5E0E;
+}
+
+td.preston {
+  color: #00308F;
+}
+
+td.wolfensohn {
+  color: #FF5E0E;
+}
+
+td.wolfowitz {
+  color: #00308F;
+}
+
+td.zoellick {
+  color: #FF5E0E;
+}
+
+td.kim {
+  color: #00308F;
+}
+
+td.malpass {
+  color: #FF5E0E;
+}
