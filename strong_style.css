@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 
-/* CSS fuer die Strong-viz */
 /* GLOBAL RESET */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -12,7 +11,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     color: #000;
     background-color: #93cdcc;
-        /* PUNKTE fuer den Hintergrund */
+        /* PUNKTE fuer den Hintergrund wie auf der index.html-seite */
         /* background-image: radial-gradient(#736969 1px, transparent 1px); */
         /* background-size: 25px 25px; */ 
     min-height: 100vh;
