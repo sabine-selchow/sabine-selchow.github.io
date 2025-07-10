@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>From Fidel Castro to Shriley Maclaine: Maurice Strong's Network</title>
+  <link rel="stylesheet" href="strong_style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">Home</a></li>
+          <!-- <li><a href="about.html">About</a></li> -->
+          <!-- <li><a href="#">Contact</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADLINE + FIXED DESCRIPTION -->
+<!-- HEADLINE + FIXED DESCRIPTION WITH IMAGE -->
+<div class="content-container intro-flex">
+  <img src="book.jpeg" alt="Cover of Maurice Strong’s book" class="intro-image" />
+
+  <div class="intro-text-block">
+    <h1 class="left-aligned">From Fidel Castro to Shriley Maclaine: <br>Maurice Strong's Network</h1>
+
+    <div id="description">
+      <p>
+        <b>Date:</b>   1 July 2025<br><br>
+        <b>Data source:</b>   Strong, Maurice (2001) <i>Where on Earth are We Going?</i> Vintage Canada, ISBN: 0-676-97364-7 <br>
+        <b>Dataset:</b>   Selchow, Sabine. Maurice Strong’s network: a structured database of individuals referenced in his autobiography, EUI, HEC, Research Data, 2025 - https://hdl.handle.net/1814/92985 <br>
+        <b>Funded:</b>   Part of a European Research Council (ERC)-grant, ECOINT, Grant No 885285<br>
+      </p>
+      <p>
+        Maurice Strong (1929–2015) was a Canadian businessman in the extractive industries who also held key roles within the United Nations and global environmental governance, such as Secretary-General of the 1972 United Nations Conference on the Human Environment in Stockholm and Executive Director of the United Nations Environment Programme (UNEP). He was known for his networking skills.
+      </p>
+      <p>
+        This visualization captures the individuals mentioned in his book <i>Where on Earth are We Going?</i>, published in 2001. Each rectangle in the below grid represents a page of the book. The grey number is the page number. Each square in the grid represents a person mentioned on that page. Colors indicate gender (blue=male; red=female). Chapter openings are marked with labels (e.g., “Ch.1”). The numbers behind the names in the result box are the page numbers the person is mentioned on.<br><br>
+
+        You can:<br>
+      <ul>
+        <li><b>Filter</b> by gender, nationality, number of mentions, and role (e.g., “UN official”, “Business actor”) using the sidebar.</li>
+        <li><b>Search</b> by name using the search field.</li>
+        <li><b>Hover</b> over the colored squares to see who is mentioned on each page.</li>
+      </ul>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- MAIN CONTAINER -->
+  <div id="main-container">
+    <!-- FILTER (links) -->
+    <div id="filters">
+      <label>Gender:</label>
+      <select id="genderFilter">
+        <option value="All">All</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label>Nationality:</label>
+      <select id="nationalityFilter">
+        <option value="All">All</option>
+      </select>
+
+      <label>Mentions:</label>
+      <select id="mentionFilter">
+        <option value="All">All</option>
+        <option value=">5">More than 5 pages</option>
+        <option value=">10">More than 10 pages</option>
+      </select>
+
+      <label>Name:</label>
+      <select id="nameFilter">
+        <option value="All">All</option>
+      </select>
+
+      <label>Search name:</label>
+      <input type="text" id="searchBox" placeholder="Type a name..." />
+
+      <div id="totalCount">
+        <span class="label">Total number:</span> <span id="totalNumber">0</span>
+      </div>
+
+      <label>Role:</label>
+      <div id="roleFilterButtons"></div>
+
+      <button id="resetButton">Reset filters</button>
+    </div>
+
+    <!-- GRID + RESULTS -->
+    <div id="grid-container">
+      <div id="grid"></div>
+      <div id="resultsBox">
+        <div id="resultsTitle">Results:</div>
+        <div id="resultsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="d3.min.js"></script>
+  <script src="strong_script.js"></script>
+
+</body>
+</html>

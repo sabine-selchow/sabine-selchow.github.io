@@ -1,0 +1,633 @@
+﻿page,family_name,given_name,gender,nationality,role
+2,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+2,Bush,George,male,USA,State leader
+2,Castro,Fidel,male,Cuba,State leader
+2,Gore,Al,male,USA,National public servant
+2,Mulroney,Brian,male,Canada,National public servant
+3,Castro,Fidel,male,Cuba,State leader
+4,Levine,Michael,male,,other
+28,Gates,Bill,male,USA,Business actor
+28,Soros,George,male,USA,Business actor
+28,Turner,Ted,male,USA,Business actor
+50,Strong,Mary,female,Canada,Family
+51,Strong,Frederick Milton,male,Canada,Family
+51,Strong,Frederick,male,Canada,Family
+51,Strong,Ida,female,Canada,Family
+51,Strong,Mary,female,Canada,Family
+51,Strong,Mary,female,Canada,Family
+51,Wallace,Mr,male,Canada,other
+52,Strong,Frederick Milton,male,Canada,Family
+53,Heapy,Clarence ,male,Canada,other
+54,Heapy,Clarence ,male,Canada,other
+54,Wallace,Mr,male,Canada,other
+54,Woodsworth,J.S.,male,Canada,National public servant
+55,Heapy,Clarence ,male,Canada,other
+55,Strong,Frederick Milton,male,Canada,Family
+60,Strong,Frederick Milton,male,Canada,Family
+62,Scott,Alan,male,Scotland,Business actor
+63,Anikiloo,,male,Canadian arctic,Inuit
+63,Apik,,male,Canadian arctic,Inuit
+63,Freuchen,Peter,male,Denmark,Explorer
+63,Jacqueline,,female,Canadian arctic,Inuit
+63,Scott,Alan,male,Scotland,Business actor
+64,Ghandi,Indira,female,India,State leader
+65,Apik,,male,Canadian arctic,Inuit
+65,Daisy,,female,Canadian arctic,"""Wife of"""
+66,Lacroix,Marc,male,Canada,Religious leader
+66,Michea,Jean Philippe,male,France,Social scientist
+67,Apik,,male,Canadian arctic,Inuit
+67,Freuchen,Peter,male,Denmark,Explorer
+69,Richardson,W.A. (Bill),male,USA,Business actor
+70,Richardson,W.A. (Bill),male,USA,Business actor
+71,McColl,Mary,female,Canada,"""Wife of"""
+71,McColl,John,male,Canada,Business actor
+72,Martin Sr,Paul,male,Canada,National public servant
+72,McColl,Mary,female,Canada,"""Wife of"""
+72,Monod,Noel,male,France,UN official
+73,Bernadotte,Count Folke,male,Sweden,Diplomat
+73,Gromyko,Andrei,male,Soviet Union,Diplomat
+73,Molotov,Vyacheslav,male,Soviet Union,National public servant
+73,Rockefeller,David,male,USA,Banker
+74,Austin,Warren,male,Canada,Diplomat
+74,Green,John,male,Canada,Journalist
+74,Gromyko,Andrei,male,Soviet Union,Diplomat
+74,Pearson,Lester B.,male,Canada,State leader
+74,Vyshinsky,Andrei,male,Soviet Union,Diplomat
+76,Baker,R.D.,male,Canada,Business actor
+76,Fowler,Noel,male,UK,Business actor
+77,Cairns,Ethel,female,Canada,Secretary
+77,Dunkley,Charlie,male,Canada,Business actor
+77,Gallagher,Jack,male,Canada,Business actor
+77,Hodgson,Swift,male,Canada,Business actor
+77,Strong,Pauline,female,Canada,Strong's wife
+78,Gallagher,Jack,male,Canada,Business actor
+78,Strong,Pauline,female,Canada,Strong's wife
+78,Wielengen,Betsy van,female,Netherlands,"""Wife of"""
+78,Wielengen,Gus van,male,Netherlands,Business actor
+79,Gallagher,Jack,male,Canada,Business actor
+79,Heapy,Clarence ,male,Canada,other
+79,Kenyatta,Jomo,male,Kenya,State leader
+79,McCarthy,Joseph,male,USA,National public servant
+79,Strong,Mary,female,Canada,Family
+79,Strong,Pauline,female,Canada,Strong's wife
+79,Strong,Pauline,female,Canada,Strong's wife
+80,Kenyatta,Jomo,male,Kenya,State leader
+82,Kenyatta,Jomo,male,Kenya,State leader
+87,Brundage,Donald,male,Canada,YMCA
+87,Kingersley,Bill,male,Canada,YMCA
+87,Magwood,John,male,Canada,YMCA
+87,Torrance,Bob,male,Canada,YMCA
+87,Vipond,Les ,male,Canada,YMCA
+88,Hentsch,Leonard,male,Switzerland,Banker
+88,Kidd,J. Roby,male,Canada,other
+89,Brunie,Henri,male,USA,Business actor
+89,Gallagher,Jack,male,Canada,Business actor
+89,Heim,Robert,male,,Business actor
+89,Nickle,Carl,male,Canada,National public servant
+89,Smith,Arthur,male,Canada,National public servant
+89,Wolfensohn,James,male,USA,World Bank
+90,Chretien,Jean,male,Canada,National public servant
+90,Galvin,Ed,male,Canada,Business actor
+90,Lowery,Jack,male,Canada,Religious leader
+90,Martin Jr,Paul,male,Canada,National public servant
+90,Strong,Fred,male,Canada,Family
+90,Strong,Maureen,female,Canada,Family
+90,Strong,Mary Anne,female,Canada,Family
+90,Strong,Ken,female,Canada,Family
+90,Strong,Alice,female,Canada,Family
+90,Strong,Pauline,female,Canada,Strong's wife
+91,Rae,W. Harold,male,Canada,Business actor
+91,Thompson,Peter,male,Canada,Business actor
+91,Thompson,Nesbitt,male,Canada,Business actor
+92,Rae,W. Harold,male,Canada,Business actor
+92,Strong,Pauline,female,Canada,Strong's wife
+92,Thompson,Peter,male,Canada,Business actor
+93,Rae,W. Harold,male,Canada,Business actor
+93,Thompson,Peter,male,Canada,Business actor
+94,Strong,Pauline,female,Canada,Strong's wife
+94,Thompson,Peter,male,Canada,Business actor
+95,Lesage,Jean,male,Canada,National public servant
+95,Levesque,Rene,male,Canada,National public servant
+95,Woodyatt,J. B.,male,Canada,Business actor
+96,Bennett,W.A.C.,male,Canada,National public servant
+96,Keenleyside,Hugh,male,Canada,Business actor
+97,Rae,W. Harold,male,Canada,Business actor
+97,Turner,William,male,Canada,Business actor
+97,Volcker,Paul,male,USA,Business actor
+97,Wolfensohn,James,male,USA,World Bank
+98,Martin Jr,Paul,male,Canada,National public servant
+98,Turner,William,male,Canada,Business actor
+99,Blakeney,Allan,male,Canada,National public servant
+99,Coutts,Jim,male,Canada,National public servant
+99,Crowe,Marshall,male,Canada,Business actor
+99,Davis,Bill,male,Canada,National public servant
+99,Desmarais,Paul,male,Canada,Business actor
+99,Gordon,Walter,male,Canada,National public servant
+99,Hampson,Tony,male,Canada,Business actor
+99,Lougheed,Peter,male,Canada,National public servant
+99,Ryan,Claude,male,Canada,National public servant
+99,Trudeau,Pierre,male,Canada,State leader
+100,Hampson,Tony,male,Canada,Business actor
+100,Martin Sr,Paul,male,Canada,National public servant
+100,Moran,Herb,male,Canada,National public servant
+100,Pearson,Lester B.,male,Canada,State leader
+100,Ritchie,Ed,male,Canada,National public servant
+102,Moran,Herb,male,Canada,National public servant
+102,Strong,Pauline,female,Canada,Strong's wife
+102,Towe,Peter,male,Canada,National public servant
+104,Cadieux,Marcel,male,Canada,National public servant
+104,Pearson,Lester B.,male,Canada,State leader
+105,Bryce,Bob,male,Canada,National public servant
+105,Hudon,Denis,male,Canada,World Bank
+105,Sharp,Mitchell,male,Canada,National public servant
+106,Hoffman,Paul,male,USA,UN official
+106,McNamara,Robert,male,USA,World Bank
+106,Woods,George,male,USA,World Bank
+107,Gerin,Jacques,male,Canada,National public servant
+107,Pearson,Lester B.,male,Canada,State leader
+107,Trudeau,Pierre,male,Canada,State leader
+108,Cohen,Andrew,male,UK,National public servant
+108,Gaud,Bill,male,USA,National public servant
+108,Martin,Ed,male,USA,Diplomat
+109,Perinbam,Lewis,male,Canada,World Bank
+110,Cadieux,Marcel,male,Canada,National public servant
+110,Coutts,Jim,male,Canada,National public servant
+110,Pearson,Lester B.,male,Canada,State leader
+111,Cadieux,Marcel,male,Canada,National public servant
+111,Hopper,David ,male,Canada,Business actor
+111,Martin Sr,Paul,male,Canada,National public servant
+111,Pearson,Lester B.,male,Canada,State leader
+111,Plumptre,Wynne,male,Canada,National public servant
+111,Sharp,Mitchell,male,Canada,National public servant
+112,Martin Sr,Paul,male,Canada,National public servant
+112,Sharp,Mitchell,male,Canada,National public servant
+112,Ward,Barbara,female,UK,Social scientist
+113,Diefenbaker,John,male,Canada,National public servant
+113,Dugal,Jeanette,female,Canada,Secretary
+113,Sharp,Mitchell,male,Canada,National public servant
+113,Trudeau,Pierre,male,Canada,State leader
+116,Carson,Rachel,female,USA,Activist
+116,Peccei,Aurelio,male,Italy,Business actor
+117,Forrester,Jay,male,USA,Scientist
+117,Meadows,Dennis,male,USA,Scientist
+117,Peccei,Aurelio,male,Italy,Business actor
+118,Astrom,Sverker,male,Sweden,Diplomat
+118,de Seynes,Philippe,male,France,UN official
+118,Herter Jr,Christian,male,USA,Diplomat
+118,Kines,Wayne,male,Canada,UN official
+118,U Thant,,male,Burma,UN official
+120,Kunin,Vladimir,male,Soviet Union,Scientist
+121,Almeida Ozori,Miguel,male,Brazil,Diplomat
+121,Johnson,Keith,male,Jamaica,Diplomat
+122,Ward,Barbara,female,UK,Social scientist
+123,Corea,Gamani,male,Sri lanka,Social scientist
+123,Iglesias,Enrique,male,Uruguay,Social scientist
+123,Prebisch,Raul,male,Argentina,Social scientist
+123,ul Haq,Mahbub,male,Pakistan,Social scientist
+124,Corea,Gamani,male,Sri lanka,Social scientist
+124,MacNeill,Jim,male,Canada,National public servant
+124,Runnals,David,male,Canada,INGO leader
+124,ul Haq,Mahbub,male,Pakistan,Social scientist
+125,Corea,Gamani,male,Sri lanka,Social scientist
+125,Dubos,Rene,male,USA,Scientist
+125,ul Haq,Mahbub,male,Pakistan,Social scientist
+125,Ward,Barbara,female,UK,Social scientist
+126,Dubos,Rene,male,USA,Scientist
+126,Ghandi,Indira,female,India,State leader
+126,Ward,Barbara,female,UK,Social scientist
+127,Ghandi,Indira,female,India,State leader
+127,Parthasarthy,G.P.,male,India,Diplomat
+128,Ghandi,Indira,female,India,State leader
+129,Mead,Margaret,female,USA,Social scientist
+129,Medawar,Jean,female,UK,"""Wife of"""
+129,Medawar,Peter,male,UK,Scientist
+129,Roning,Chester,male,Canada,Diplomat
+129,Ward,Barbara,female,UK,Social scientist
+130,Wolfensohn,James,male,USA,World Bank
+131,Cordovez,Diego,male,Eduador,Diplomat
+131,Kunin,Mu,male,China,Diplomat
+131,Tolba,Mostafa,male,Egypt,UN official
+135,Jowi,Odero,male,Kenya,Diplomat
+135,Mungai,Njoroge,male,Kenya,National public servant
+136,Trudeau,Pierre,male,Canada,State leader
+137,Kenyatta,Jomo,male,Kenya,State leader
+137,U Thant,,male,Burma,UN official
+137,Waldheim,Kurt,male,Austria,UN official
+138,Kenyatta,Jomo,male,Kenya,State leader
+138,Tolba,Mostafa,male,Egypt,UN official
+139,Tolba,Mostafa,male,Egypt,UN official
+140,Austin,Jack,male,Canada,National public servant
+140,Marstrand,Hanne,female,Denmark,Strong's wife
+140,Strong,Pauline,female,Canada,Strong's wife
+140,Trudeau,Pierre,male,Canada,State leader
+141,Macdonald,Donald,male,Canada,National public servant
+141,Pitfield,Michael,male,Canada,National public servant
+141,Trudeau,Pierre,male,Canada,State leader
+142,Mitchell,David,male,USA,Business actor
+142,Saul,John Ralston,male,Canada,Activist
+142,Trudeau,Pierre,male,Canada,State leader
+142,Warburg,Siegmund,male,USA,Banker
+143,Austin,Jack,male,Canada,National public servant
+143,Clarkson,Adrienne,female,Canada,Journalist
+143,Hopper,Wilbert,male,Canada,National public servant
+143,Mitchell,David,male,USA,Business actor
+143,Pitfield,Michael,male,Canada,National public servant
+143,Saul,John Ralston,male,Canada,Activist
+144,Axford,Don,male,Canada,Business actor
+144,Bell,Joel,male,Canada,Business actor
+144,Bowie,Douglas,male,Canada,Business actor
+144,Godfrey,John,male,Canada,Business actor
+144,Hopper,Wilbert,male,Canada,National public servant
+144,Wolcott,Don,male,Canada,Business actor
+145,Bowie,Douglas,male,Canada,Business actor
+146,Chief Smallboy,n/a,male,Canada,Indigenous leader
+146,Maathai,Wangari,female,Kenya,Activist
+146,Marstrand,Hanne,female,Denmark,Strong's wife
+147,Anderson,Robert O.,male,USA,Business actor
+147,Hopper,Wilbert,male,Canada,National public servant
+147,Hopper,David,male,Canada,National public servant
+147,Marstrand,Hanne,female,Denmark,Strong's wife
+147,Sharp,Mitchell,male,Canada,National public servant
+147,Trudeau,Pierre,male,Canada,State leader
+148,Mountbatten,Philip,male,UK,Royal
+148,Ward,Barbara,female,UK,Social scientist
+150,Trudeau,Pierre,male,Canada,State leader
+150,Winter,Robert,male,Canada,National public servant
+151,Coutts,Jim,male,Canada,National public servant
+151,Davey,Keith,male,Canada,National public servant
+151,Evans,John,male,Canada,National public servant
+151,Peterson,Heather,female,Canada,National public servant
+151,Trudeau,Pierre,male,Canada,State leader
+152,Anderson,Doris,female,Canada,Journalist
+152,O'Neill,Tip,male,USA,National public servant
+152,Tsopolis,John,male,Canada,other
+153,Strong,Pauline,female,Canada,Strong's wife
+153,Trudeau,Pierre,male,Canada,State leader
+153,Tsopolis,John,male,Canada,other
+154,Martin Jr,Paul,male,Canada,National public servant
+154,Nathanson,Paul,male,Canada,Business actor
+154,Oduber,Daniel,male,Costa Rica,National public servant
+154,Sarlos,Andy,male,Canada,Business actor
+155,Marstrand,Hanne,female,Denmark,Strong's wife
+155,Rotenberg,Kenneth,male,Canada,Business actor
+156,Marstrand,Hanne,female,Denmark,Strong's wife
+157,Ait-Laoussine,Nordine,male,Algeria,Business actor
+157,Huff,Keith,male,,Business actor
+157,Morton,Alistair,male,UK,Business actor
+157,Parra,Frank,male,USA,Business actor
+158,Holt,Bill,male,Canada,Business actor
+158,Winston,Morton,male,Canada,Business actor
+159,Hampson,Tony,male,Canada,National public servant
+159,MacEachen,Allan,male,Canada,National public servant
+159,Pitfield,Michael,male,Canada,National public servant
+160,Austin,Jack,male,Canada,National public servant
+160,Bell,Joel,male,Canada,Business actor
+160,Bell,Joel,male,Canada,Business actor
+160,Lamarre,Bernard,male,Canada,Business actor
+160,Mulroney,Brian,male,Canada,National public servant
+160,Stevens,Sinclair,male,Canada,National public servant
+160,Trudeau,Pierre,male,Canada,State leader
+161,Belzberg,Sam,male,Canada,Business actor
+161,Crutchfield,Alex,male,USA,Business actor
+161,Marstrand,Hanne,female,Denmark,Strong's wife
+161,Williams,David ,male,Canada,Business actor
+161,Wolfensohn,James,male,USA,World Bank
+163,Rohmer,Roy,male,USA,National public servant
+163,Williams,David ,male,Canada,Business actor
+164,Fetzer,John,male,USA,Business actor
+164,Marstrand,Hanne,female,Denmark,Strong's wife
+164,Williams,David ,male,Canada,Business actor
+168,Morse,Bradford,male,USA,UN official
+169,La Muniere,Charles,male,France,UN official
+169,Morse,Bradford,male,USA,UN official
+170,Morse,Bradford,male,USA,UN official
+171,Jansson,Kurt,male,Finland,UN official
+171,Mengistu,Haile Maryam,male,Ethiopia,State leader
+172,Mengistu,Haile Maryam,male,Ethiopia,State leader
+173,al-Nemery,Gaafar Mohammed,male,Sudan,State leader
+173,Deng,Francis,male,Sudan,UN official
+174,al-Nemery,Gaafar Mohammed,male,Sudan,State leader
+176,Belafonte,Harry,male,USA,Artist
+176,Geldof,Bob,male,USA,Artist
+176,Jackson,Michael,male,USA,Artist
+177,Kragen,Kenneth,male,USA,Business actor
+177,Moyers,Bill,male,USA,Business actor
+177,Rogol,Marty,male,USA,Activist
+178,Moyers,Bill,male,USA,Business actor
+179,Morse,Bradford,male,USA,UN official
+181,Marstrand,Hanne,female,Denmark,Strong's wife
+183,Corridini,DeeDee,female,USA,National public servant
+183,Poirot,Jim,male,USA,Business actor
+184,Albright,Madeleine,female,USA,National public servant
+184,Bush,George,male,USA,State leader
+184,Dukakis,George,male,USA,National public servant
+184,Lamm,Richard,male,USA,National public servant
+184,Rohmer,Roy,male,USA,National public servant
+185,Turner,Ted,male,USA,Business actor
+186,Abzug,Bella,female,USA,National public servant
+186,Brundtland,Gro Harlam,female,Norway,State leader
+186,Carter,Jimmy,male,USA,State leader
+186,Maclaine,Shirley,female,USA,Artist
+186,Minger,Terry,male,USA,Activist
+186,Redford,Robert,male,USA,Artist
+186,Rockefeller,Mary,female,USA,"""Wife of"""
+186,Rockefeller,Laurance,male,USA,Business actor
+186,Turner,Ted,male,USA,Business actor
+187,Redford,Robert,male,USA,Artist
+187,Udall,Stewart,male,USA,National public servant
+188,Bouchard,Lucien,male,Canada,National public servant
+188,Brundtland,Gro Harlam,female,Norway,State leader
+189,Bouchard,Lucien,male,Canada,National public servant
+189,de Cuellar,Javier Perez,male,Peru,UN official
+189,Fortier,Yves,male,Canada,Diplomat
+190,Kjellen,Bob,male,Sweden,Diplomat
+190,Koh,Tommy,male,Singapore,UN official
+190,Koh,Tommy,male,Singapore,UN official
+190,Moldan,Bedrich,male,Czechoslovakia,National public servant
+190,Shaib,Bukar,male,Nigeria,Scientist
+191,Djoglaf,Ahmed,male,Algeria,UN official
+191,Koh,Tommy,male,Singapore,UN official
+192,Barcena,Alicia,female,Mexico,National public servant
+196,de la Madrid,Miguel,male,Mexico,State leader
+196,Kakabadze,Yolande,female,Ecuador,Civil society
+196,Kirkland,Lane,male,USA,Civil society
+196,Lee,Kuan Yew,male,Singapore,State leader
+196,Lindner,Warren,male,USA,Activist
+196,Marton-Lefevre,Julia,female,France,INGO leader
+196,Ramphal,Sridath,male,Guyana,National public servant
+196,Rocard,Michel,male,France,State leader
+196,Takeshita,Noboru,male,Japan,State leader
+196,Thatcher,Margaret,female,UK,State leader
+197,Lindner,Warren,male,USA,Activist
+198,Marstrand,Hanne,female,Denmark,Strong's wife
+198,Read,Benjamin,male,USA,National public servant
+198,Saeve-Soederbergh,Bengt,male,Sweden,Diplomat
+198,Schulthess,Beatriz,female,Argentine,Indigenous leader
+199,Read,Benjamin,male,USA,National public servant
+199,Schmidheiny,Stephan,male,Switzerland,Business actor
+199,Sitek,Dorothy,female,Canada,Secretary
+200,Hayek,Marianne,female,Switzerland,"""Wife of"""
+200,Hayek,Nicolas,male,Switzerland,Business actor
+200,Marstrand,Hanne,female,Denmark,Strong's wife
+201,Bolin,Bert,male,Sweden,Scientist
+202,Hussein,Sadam,female,Iraq,State leader
+205,Diallo,Arba,male,Burkina Faso,National public servant
+205,Kjellen,Bob,male,Sweden,Diplomat
+205,Tolba,Mostafa,male,Egypt,UN official
+206,Bohlen,Buff,male,USA,Diplomat
+206,Bush,George,male,USA,State leader
+206,Sununu,John,male,USA,National public servant
+207,Cousteau,Jacques,male,France,Explorer
+207,Turner,Ted,male,USA,Business actor
+208,Takeshita,Noboru,male,Japan,State leader
+209,Kaifu,Toshiki,male,Japan,State leader
+209,Takeshita,Noboru,male,Japan,State leader
+210,Bush,George,male,USA,State leader
+210,Gupte,Pranay,male,India,Journalist
+210,Hiraiwa,Gaishi,male,Japan,Business actor
+210,Kaifu,Toshiki,male,Japan,State leader
+210,Kheel,Theodore,male,USA,Business actor
+210,MacNeill,Jim,male,Canada,National public servant
+210,Rauschenberg,Robert,male,USA,Artist
+210,Takeshita,Noboru,male,Japan,State leader
+211,Keough,Don,male,USA,Business actor
+211,Malaspina,Alex,male,USA,Business actor
+211,Wolfensohn,James,male,USA,World Bank
+212,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+212,Bush,George,male,USA,State leader
+213,Bohlen,Buff,male,USA,Diplomat
+213,Bush,George,male,USA,State leader
+213,Koh,Thommy,male,Singapore,UN official
+213,Marker,Jamsheed,male,Pakistan,Diplomat
+215,Alencar,Marcelo,male,Brazil,National public servant
+217,Marstrand,Hanne,female,Denmark,Strong's wife
+218,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+218,Collor,Fernando,male,Brazil,State leader
+218,Gordon,Anita,female,Canada,Journalist
+219,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+219,Gordon,Anita,female,Canada,Journalist
+219,Miyazawa,Kiichi,male,Japan,State leader
+220,Collor,Fernando,male,Brazil,State leader
+220,Koh,Thommy,male,Singapore,State leader
+220,Miyazawa,Kiichi,male,Japan,State leader
+220,Ricupero,Rubens,male,Brazil,National public servant
+221,Bush,George,male,USA,State leader
+221,Cousteau,Jacques,male,France,Explorer
+221,Martin Jr,Paul,male,Canada,National public servant
+221,Mulroney,Brian,male,Canada,State leader
+221,Turner,Ted,male,USA,Business actor
+222,Yamani,Zaki,male,Saudi Arabia,State leader
+223,Abzug,Bella,female,USA,National public servant
+224,Koh,Thommy,male,Singapore,State leader
+224,Ricupero,Rubens,male,Brazil,National public servant
+225,El-Ashry,Mohamed,male,Egypt,National public servant
+225,Preston,Lewis,male,USA,World Bank
+226,Bush,George,male,USA,State leader
+226,Castro,Fidel,male,Cuba,State leader
+227,Brundtland,Gro Harlam,female,Norway,State leader
+227,Bush,George,male,USA,State leader
+227,Gore,Al,male,USA,National public servant
+227,Mahatir,Mohamad,male,Malaysia,State leader
+227,Mulroney,Brian,male,Canada,State leader
+227,Wirth,Tim,male,USA,National public servant
+228,Cullis-Suzuki,Severn,female,Canada,"""Daughter of"""
+228,Suzuki,David ,male,Canada,Scientist
+229,Collor,Fernando,male,Brazil,State leader
+229,Gordon,Anita,female,Canada,Journalist
+229,Lindner,Warren,male,USA,Activist
+233,Marstrand,Hanne,female,Denmark,Strong's wife
+234,Goodman,Gordon,male,UK,Scientist
+234,Holdgate,Martin,male,UK,INGO leader
+234,Khosla,Ashok,male,India,INGO leader
+234,Marton-Lefevre,Julia,female,France,INGO leader
+234,Speth,Gus,male,USA,INGO leader
+234,Williams,Maurice,male,,INGO leader
+235,Calderon,Rafael,male,Costa Rica,State leader
+235,Schmidheiny,Stephan,male,Switzerland,Business actor
+236,Kalaw,Maximo,male,Philippines,INGO leader
+236,Ogunleye,Bisi,male,Nigeria,Indigenous leader
+236,Tangiora,Pauline,female,New Zealand,Indigenous leader
+236,van Lennep,Emile,male,Netherlands,INGO leader
+237,Figueres Ferrer,Jose,male,Costa Rica,State leader
+237,Figueres Olsen,Jose Maria,male,Costa Rica,State leader
+237,van Lennep,Emile,male,Netherlands,INGO leader
+238,Aguiluz de Gonzalez,Evangelina,female,Costa Rica,other
+238,Figueres Olsen,Jose Maria,male,Costa Rica,State leader
+239,Figueres Olsen,Jose Maria,male,Costa Rica,State leader
+239,Sandor,Richard,male,USA,Business actor
+240,Figueres Olsen,Jose Maria,male,Costa Rica,State leader
+242,Brown,Harrison,male,USA,Scientist
+242,Carson,Rachel,female,USA,Activist
+242,Shabecoff,Philip,male,USA,Journalist
+243,Salamon,Lester,male,USA,Scientist
+245,Frank,Louis,male,Switzerland,Banker
+245,Hoffman,Lucien,male,Switzerland,Business actor
+245,MacTaggert,David ,male,Canada,INGO leader
+245,of the Netherlands,Bernard,male,Netherlands,Royal
+245,Ogilvy,David ,male,UK,Business actor
+245,Rupert,Anton,male,South Africa,Business actor
+245,Scott,Peter,male,UK,Scientist
+246,Maathai,Wangari,female,Kenya,Activist
+246,Seligman,Peter,male,USA,INGO leader
+248,Brown,Lester,male,USA,Journalist
+248,Haq,Khadija,female,Pakistan,"""Wife of"""
+248,ul Haq,Mahbub,male,Pakistan,Social scientist
+249,Brugman,Jeb,male,Canada,INGO leader
+249,Kirkland,Lane,male,USA,Civil society
+250,Browne,John,male,UK,Business actor
+250,MacGregor,Ian,male,UK,Business actor
+250,Peterson,R. B. ,male,Canada,Business actor
+250,Schmidheiny,Stephan,male,Switzerland,Business actor
+252,Easterbrook,Gregg,male,USA,Journalist
+253,Lewis,Stephen,male,Canada,Diplomat
+253,Rae,Saul,male,Canada,Diplomat
+253,Rae,Bob,male,Canada,National public servant
+254,Lewis,Stephen,male,Canada,Diplomat
+254,Rae,Bob,male,Canada,National public servant
+255,Eliesen,Mark,male,Canada,Business actor
+255,Rae,Bob,male,Canada,National public servant
+256,Munk,Peter,male,Canada,Business actor
+256,Rae,Bob,male,Canada,National public servant
+256,Rotman,Joe,male,Canada,Business actor
+256,Sarlos,Andy,male,Canada,Business actor
+257,Davies,George,male,Canada,National public servant
+257,Rae,Bob,male,Canada,National public servant
+257,Strong,Fred,male,Canada,Family
+260,Kupcis,Al,male,Canada,Business actor
+260,Rae,Bob,male,Canada,National public servant
+261,Wilson,John,male,Canada,Business actor
+262,Pandovski,Phyllis,female,Canada,Secretary
+264,Kelly,Peter,male,Canada,Civil society
+264,Murphy,John,male,Canada,Civil society
+264,Rae,Bob,male,Canada,National public servant
+266,Rae,Bob,male,Canada,National public servant
+267,Fox,John,male,USA,Business actor
+267,MacNeill,Jim,male,Canada,National public servant
+267,Runnals,David,male,Canada,INGO leader
+269,Kupcis,Al,male,Canada,Business actor
+270,Andognini,Carl,male,USA,Business actor
+270,Kupcis,Al,male,Canada,Business actor
+271,Rae,Bob,male,Canada,National public servant
+273,Rae,Bob,male,Canada,National public servant
+273,Taylor,Robert,male,Canada,Business actor
+275,McNamara,Robert,male,USA,World Bank
+276,Clinton,Bill,male,USA,State leader
+276,Wolfensohn,James,male,USA,World Bank
+277,Kaji,Gautam,male,India,World Bank
+277,Koch-Weser,Caio,male,Germany,World Bank
+277,Sandstrom,Sven,male,Sweden,World Bank
+277,Wolfensohn,James,male,USA,World Bank
+278,Wolfensohn,James,male,USA,World Bank
+279,Harris,Mike,male,Canada,National public servant
+279,Kupcis,Al,male,Canada,Business actor
+279,Rae,Bob,male,Canada,National public servant
+280,Harris,Mike,male,Canada,National public servant
+281,Annan,Kofi,male,Ghana,UN Secretary General
+282,Cardoso,Fernando,male,Brazil,State leader
+282,Drager Maia,Katia,female,Brazil,Scientist
+282,Kalaw,Maximo,male,Philippines,INGO leader
+282,Klabin,Israel,male,Brazil,National public servant
+287,Boutros-Ghali,Leah,female,Egypt,"""Wife of"""
+287,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+288,Annan,Kofi,male,Ghana,UN Secretary General
+288,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+288,Wolfensohn,James,male,USA,World Bank
+289,Annan,Kofi,male,Ghana,UN Secretary General
+289,Helms,Jesse,male,USA,National public servant
+290,Annan,Kofi,male,Ghana,UN Secretary General
+290,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+291,Boutros-Ghali,Boutros,male,Egypt,UN Secretary General
+292,Albright,Madeleine,female,USA,National public servant
+292,Annan,Kofi,male,Ghana,UN Secretary General
+292,Cannon,Joseph,male,USA,UN official
+292,Grierson,Ronald,male,UK,Business actor
+293,Annan,Kofi,male,Ghana,UN Secretary General
+293,Hussein,Saddam,male,Iraq,State leader
+294,Annan,Kofi,male,Ghana,UN Secretary General
+294,Clinton,Bill,male,USA,State leader
+294,Gingrich,Newt,male,USA,National public servant
+294,Helms,Jesse,male,USA,National public servant
+294,Hussein,Saddam,male,Iraq,State leader
+294,Lott,Trent,male,USA,National public servant
+294,Wolfensohn,James,male,USA,World Bank
+295,Annan,Kofi,male,Ghana,UN Secretary General
+295,Helms,Jesse,male,USA,National public servant
+296,Annan,Kofi,male,Ghana,UN Secretary General
+296,Dowdeswell,Elizabeth,female,USA,UN official
+296,N'Dow,Wally,female,Gambia,UN official
+298,Annan,Kofi,male,Ghana,UN Secretary General
+298,Dowdeswell,Elizabeth,female,USA,UN official
+298,Toepfer,Klaus,male,Germany,UN official
+299,Annan,Kofi,male,Ghana,UN Secretary General
+300,Annan,Kofi,male,Ghana,UN Secretary General
+300,Brundtland,Gro Harlam,female,Norway,State leader
+300,Fowler,Bob,male,Canada,Diplomat
+300,Frechette,Louise,female,Canada,UN official
+300,Ogata,Sadako,female,Japan,UN official
+301,Frechette,Louise,female,Canada,UN official
+301,Turner,Ted,male,USA,Business actor
+302,Annan,Kofi,male,Ghana,UN Secretary General
+302,Fonda,Jane,female,USA,"""Wife of"""
+302,Pyle,Barbara,female,USA,Business actor
+302,Turner,Ted,male,USA,Business actor
+303,Annan,Kofi,male,Ghana,UN Secretary General
+303,Turner,Ted,male,USA,Business actor
+304,Annan,Kofi,male,Ghana,UN Secretary General
+304,Gore,Al,male,USA,National public servant
+304,Turner,Ted,male,USA,Business actor
+304,Wirth,Tim,male,USA,National public servant
+305,Cardoso,Ruth,female,Brazil,"""Wife of"""
+305,Cardoso,Fernando,male,Brazil,State leader
+305,Machel,Graca,female,Mozambique,National public servant
+305,Mandela,Nelson,male,South Africa,State leader
+305,Rothschild,Emma,female,UK,Social scientist
+305,Stoby,Miles,male,Guyana,UN official
+305,Turner,Ted,male,USA,Business actor
+305,Udovenko,Hannadiy,male,Ukraine,National public servant
+305,Yunus,Muhammad,male,Bangladesh,Activist
+306,Annan,Kofi,male,Ghana,UN Secretary General
+306,Kamal,Ahmad,male,Pakistan,Diplomat
+306,Udovenko,Hannadiy,male,Ukraine,National public servant
+307,Annan,Kofi,male,Ghana,UN Secretary General
+307,Mwakawago,Daudi,male,Tanzania,Diplomat
+308,Annan,Kofi,male,Ghana,UN Secretary General
+311,Annan,Kofi,male,Ghana,UN Secretary General
+312,Annan,Kofi,male,Ghana,UN Secretary General
+314,Annan,Kofi,male,Ghana,UN Secretary General
+316,Christopher,Warren,male,USA,National public servant
+318,Annan,Kofi,male,Ghana,UN Secretary General
+325,Annan,Kofi,male,Ghana,UN Secretary General
+326,Annan,Kofi,male,Ghana,UN Secretary General
+327,Annan,Kofi,male,Ghana,UN Secretary General
+328,Malloch-Brown,Mark,male,UK,UN official
+328,Steinberg,Eleanor,female,USA,Social scientist
+339,Salamon,Lester,male,USA,Scientist
+340,Annan,Kofi,male,Ghana,UN Secretary General
+342,Annan,Kofi,male,Ghana,UN Secretary General
+347,Lovins,Amory,male,USA,Scientist
+348,Schmidheiny,Stephan,male,Switzerland,Business actor
+351,Criswell,David,male,USA,Scientist
+351,Herkstroeter,Cor,male,Netherlands,Business actor
+361,Schmidheiny,Stephan,male,Switzerland,Business actor
+366,Clinton,Bill,male,USA,State leader
+379,Annan,Kofi,male,Ghana,UN Secretary General
+379,Carazo,Rodrigo,male,Costa Rica,State leader
+380,Desai,Nitin,male,India,UN official
+380,Mayor,Federico,male,Spain,UN official
+382,Alberts,Bruce,male,USA,National public servant
+382,Assuncao,Lucas,male,Brazil,UN official
+382,Budowski,Gerardo,male,Venezuela,UN official
+382,Lees,Martin,male,UK,UN official
+382,Rockefeller,Steven,male,USA,other
+382,Sahnoun,Mohammed,male,Algeria,Diplomat
+382,van Haren,Frans,male,Netherlands,UN official
+383,Black,Conrad,male,Canada,Business actor
+383,Kim,Dae Jung,male,Korea,State leader
+383,Menzel,David,male,Canada,other
+384,Kissinger,Henry,male,USA,National public servant
+384,Lee,Kuan Yew,male,Singapore,State leader
+385,le Riche,Roy,male,Canada,"""Husband of"" "
+385,Maciejkow,Shirley,female,Canada,Family
+385,Strong,Lois,female,Canada,"""Wife of"""
+385,Strong,Frank,male,Canada,Family
+385,Strong,Joyce,female,Canada,Family
