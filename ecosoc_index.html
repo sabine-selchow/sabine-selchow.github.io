@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECOSOC Evolution</title>
+  <link rel="stylesheet" href="ecosoc_style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Font Awesome for Share Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Social Media Preview -->
+  <meta property="og:title" content="ECOSOC in Motion: A Visual Timeline of UN Governance Bodies">
+  <meta property="og:description" content="Explore the institutional evolution of the UN ECOSOC from 1946 to today through this animated, interactive timeline.">
+  <meta property="og:image" content="https://yourdomain.com/ecosoc-preview.jpg">
+  <meta property="og:url" content="https://yourdomain.com/strong-viz.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Created by Dr Sabine Selchow, as part of a project funded by the European Research Council (ERC) under the EU’s Horizon 2020 research and innovation programme (grant agreement No 885285) -->
+  <meta name="author" content="Sabine Selchow">
+  <meta name="funding" content="European Research Council, Grant Agreement No. 885285">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADLINE + DESCRIPTION -->
+  <div class="content-container intro-flex">
+    <img src="Ecosoc.svg" alt="UN ECOSOC Visual" class="intro-image" />
+
+    <div class="intro-text-block">
+      <h1 class="left-aligned">ECOSOC in Motion: A Visual Timeline of Its Institutional Bodies (1946–2025)</h1>
+      <div id="description">
+        <p>
+          This interactive data visualization traces the institutional development of the United Nations Economic and Social Council (ECOSOC) from its founding in 1946 to the present.
+          Each circle represents a functional commission, regional commission, standing committee, or expert body established under ECOSOC. Animated lines illustrate when and how these entities emerged over time. A red “NEW” label highlights the bodies established in the selected year, allowing users to instantly spot institutional additions.
+        </p>
+        <p>
+          Users can either explore the timeline manually by selecting individual years or watch ECOSOC’s institutional landscape unfold automatically. Color-coded categories and short labels help make the structure of ECOSOC’s global governance system easy to follow.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3 VISUALIZATION -->
+  <main>
+    <svg id="ecosocViz"></svg>
+    <section id="controls">
+      <div id="mainButtons">
+        <button id="play" class="primary">▶ Play</button>
+        <button id="pause" class="secondary">⏸ Pause</button>
+        <button id="reset" class="reset-style">Reset all</button>
+      </div>
+      <div id="yearButtons"></div>
+    </section>
+  </main>
+
+  <!-- Tooltip -->
+  <div id="tooltip" class="hidden"></div>
+
+  <!-- SOCIAL SHARE ICONS -->
+  <div class="social-share">
+    <span>Share this:</span>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://yourdomain.com/strong-viz.html" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=https://yourdomain.com/strong-viz.html&text=Explore%20the%20evolution%20of%20UN%20ECOSOC%20bodies!" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://bsky.app" target="_blank" aria-label="Bluesky">
+      <i class="fas fa-cloud"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourdomain.com/strong-viz.html" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="ecosoc_script.js"></script>
+</body>
+</html>
