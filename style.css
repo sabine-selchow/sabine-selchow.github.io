@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   color: #000;
-  background-color: #292929;
+  background-color: #fff;
   background-image: radial-gradient(#736969 1px, transparent 0.2px);
   background-size: 25px 25px;
   min-height: 100vh;
