@@ -4,8 +4,8 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: #000;
   background-color: #fff;
-  background-image: radial-gradient(#736969 1px, transparent 0.2px);
-  background-size: 25px 25px;
+  /* ===  background-image: radial-gradient(#736969 1px, transparent 0.2px);
+  background-size: 25px 25px; === */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ main {
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #fff;
+  color: #000;
 }
 
 .intro {
@@ -128,7 +128,7 @@ h1 {
 
 /* === UNTERE TILE mit Text === */
 .tile-image1 {
-  background-color: #eea112;
+  background-color: #84ee12;
   padding: 16px;
   text-align: left;
   text-decoration: none;
