@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECOSOC Evolution</title>
+  <link rel="stylesheet" href="wdr_adjectives_style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Font Awesome for Share Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Social Media Preview -->
+  <meta property="og:title" content="ECOSOC in Motion: A Visual Timeline of UN Governance Bodies">
+  <meta property="og:description" content="Explore the institutional evolution of the UN ECOSOC from 1946 to today through this animated, interactive timeline.">
+  <meta property="og:image" content="https://yourdomain.com/ecosoc-preview.jpg">
+  <meta property="og:url" content="https://yourdomain.com/strong-viz.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Created by Dr Sabine Selchow, as part of a project funded by the European Research Council (ERC) under the EU’s Horizon 2020 research and innovation programme (grant agreement No 885285) -->
+  <meta name="author" content="Sabine Selchow">
+  <meta name="funding" content="European Research Council, Grant Agreement No. 885285">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<body>
+  <main class="container">
+    <h1><br>Frequency of spatial adjectives in the World Development Reports (1978-2021)</h1>
+ <br>   
+    <div class="intro-text">
+      <b>Date:</b> 18 July 2025<br>
+      
+      <b>Data source:</b> World Development Reports<br>
+      <b>Funding:</b> Part of a European Research Council (ERC)-grant, ECOINT, Grant No 885285<br><br>
+        Spatial adjectives such as <em>global</em>, <em>international</em>, <em>regional</em>, or <em>local</em> shape how we perceive the scope, scale, and legitimacy of economic and political issues. 
+        This chart displays the normalised frequency of nine spatial adjectives in the World Development Reports (1978-2021), offering insights into shifting framings of development over time. 
+        The adjective frequencies were extracted using a Python script applied to the main text of each World Development Report; for instance, the TOC, description of graphs and tables, footnotes, appendices, text boxes and bibliographies were not considered. To avoid counting adjectives that appear as part of institutional or proper names (e.g. <em>international</em> in International Criminal Court), capitalized words at sentence-initial position were excluded. 
+        The final dataset includes only adjectives that appear in lowercase form within sentence bodies. 
+        Word frequencies were normalized per million words to enable comparability across reports of different lengths.<br>
+  
+    <ul>
+      <li>Each bar represents a single year.</li>
+      <li>Details, such as raw frequency, are available via tooltips.</li>
+      <li>The bars can be ordered chronologically or by frequency.</li>
+
+    </ul>
+  
+</div>
+
+    <div class="chart-wrapper">
+      <svg
+        id="chart"
+        viewBox="0 0 1000 750"
+        preserveAspectRatio="xMidYMid meet"
+        style="width: 100%; height: auto; display: block;"
+      ></svg>
+    </div>
+    <div id="sort-mode-switch">
+      <button class="sort-year-button" id="sort-chronological">Display Bars Chronologically</button>
+      <button class="sort-year-button" id="sort-frequency">Display Bars by Frequency</button>
+    </div>
+
+<br>
+    <div class="sort-controls">
+      <div class="sort-left">
+        <button class="sort-button" data-sort="alpha">Sort the Search Terms A–Z</button>
+        <button class="sort-button" data-sort="freq">Sort the Search Terms by Total Frequency</button>
+      </div>
+    </div>
+
+    <div id="keyword-buttons" class="keyword-container"></div>
+
+<br><br><br>
+<!--
+    <h2>Top Global Collocations</h2>
+    <div id="heatmap"></div>
+    -->
+  
+  </main>
+
+   <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="wdr_adjectives_script.js"></script>
+  <!-- <script src="heatmap.js"></script> -->
+</body>
+</html>
