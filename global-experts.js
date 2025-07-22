@@ -269,3 +269,4 @@ Promise.all([
     d3.select("#results-number").text(visibleCount);
   }
 });
+
