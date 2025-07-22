@@ -2,7 +2,6 @@ const svg = d3.select("#viz");
 const width = 1200;
 const height = 900;
 
-// Tooltip (mobile-safe)
 const tooltip = d3.select("body")
   .append("div")
   .attr("class", "tooltip")
@@ -86,15 +85,15 @@ Promise.all([
         showTooltipPerson(event, d, personId);
         d3.select(this).select("rect")
           .attr("fill", showOnly === "eminent persons" ? "#f9d08e"
-                : showOnly === "experts" ? "#c3ee94"
-                : "white");
+                      : showOnly === "experts" ? "#c3ee94"
+                      : "white");
       })
       .on("mouseout", function() {
         hideTooltipPerson(personId);
         d3.select(this).select("rect")
           .attr("fill", showOnly === "eminent persons" ? "#fff8f0"
-                : showOnly === "experts" ? "#f6fff0"
-                : "white");
+                      : showOnly === "experts" ? "#f6fff0"
+                      : "white");
       });
     g.node().__data__ = d;
 
@@ -105,11 +104,11 @@ Promise.all([
       .attr("height", boxHeight)
       .attr("rx", 3)
       .attr("fill", showOnly === "eminent persons" ? "#fff8f0"
-            : showOnly === "experts" ? "#f6fff0"
-            : "white")
+                : showOnly === "experts" ? "#f6fff0"
+                : "white")
       .attr("stroke", showOnly === "eminent persons" ? "#F5A623"
-              : showOnly === "experts" ? "#7ED321"
-              : "#ccc")
+                  : showOnly === "experts" ? "#7ED321"
+                  : "#ccc")
       .attr("stroke-width", 1);
 
     g.append("text")
@@ -160,11 +159,13 @@ Promise.all([
 
   function showTooltipPerson(event, d, personId) {
     tooltip.transition().duration(100).style("opacity", 1);
-    tooltip.html(`<strong>${d.first_name} ${d.name}</strong>
-      <span style="color:red; font-weight:500">${d.type}</span> | ${d.location}<br/><br>
-      ${d.description}`)
-      .style("left", (event.pageX + 10) + "px")
-      .style("top", (event.pageY - 28) + "px");
+      tooltip.html(`<strong>${d.first_name} ${d.name}</strong>
+        <span style="color:red; font-weight:500">${d.type}</span> | ${d.location}<br/><br>
+        ${d.description}`
+)
+
+    .style("left", (event.pageX + 10) + "px")
+    .style("top", (event.pageY - 28) + "px");
 
     d3.selectAll("." + personId)
       .raise()
@@ -204,11 +205,13 @@ Promise.all([
       applyFilters();
     });
 
+  // === RESULTS COUNTER ===
   const resultsCount = resetRow.append("span")
     .attr("class", "results-count")
     .style("margin-left", "16px")
     .style("font-size", "13px")
     .html('Results: <span style="color:red" id="results-number">' + people.length + '</span>');
+
 
   filterFields.forEach(field => {
     uniqueValues[field] = Array.from(new Set(people.map(d => d[field]))).filter(Boolean);
@@ -265,11 +268,4 @@ Promise.all([
     const visibleCount = people.filter(isMatch).length;
     d3.select("#results-number").text(visibleCount);
   }
-}).catch(error => {
-  console.error("Error loading data or rendering visualization:", error);
-  svg.append("text")
-    .attr("x", 20)
-    .attr("y", 40)
-    .attr("fill", "red")
-    .text("Error loading visualization.");
 });
