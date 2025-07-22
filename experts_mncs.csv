@@ -9,7 +9,7 @@ box-pos,name,first_name,show only,gender,location,city,type,latitude,longitude,d
 61,Burki,Javed,experts,male,Pakistan,Islamabad,government,33.6844,73.0479,"Chief, Industry and Commerce Section Planning Division of Pakistan "
 47,Campillo-Sainz,Jose,experts,male,Mexico,Mexico City,government,19.4326,-99.1332,Under-Secretary for Industry and Commerce of Mexico
 9,Collado,Emilio,experts,male,USA,Washington,business,38.8951,-77.0364,Executive Vice President EXXON Corporation 
-18,Deutsch,John J.,eminent persons,male,Canada,Ottawa,business,45.4215,-75.6972,Principal and Vice-Chancellor of Queen's University; Former Chairman of the Economic Council of Canada
+18,Deutsch,John J.,eminent persons,male,Canada,Ottawa,academia,45.4215,-75.6972,Principal and Vice-Chancellor of Queen's University; Former Chairman of the Economic Council of Canada
 56,Diawara,Mohamed,eminent persons,male,Ivory Coast,Abidjan,public sector,5.3489,-4.0037,Minister of Planning
 20,Duncan,Sir Val,experts,male,UK,London,business,51.5074,-0.1278,Chairman and Chief Executive Officer Rio Tinto Zinc Corporation 
 22,Dunning,John,eminent persons,male,UK,London,academia,51.5074,-0.1278,Professor of Economics University of Reading
