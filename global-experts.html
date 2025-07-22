@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UN ECOSOC Group of Eminent Persons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="global-experts.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADLINE + DESCRIPTION -->
+  <div class="content-container intro-flex">
+    <div class="intro-text-block">
+      <br><br><h1 class="left-aligned">UN ECOSOC Group of Eminent Persons (1973)</h1>
+      <div id="description">
+        <b>Date:</b> 20 July 2025<br>
+      
+      <b>Data source:</b> various UN sources <br>
+      <b>Funding:</b> Part of a European Research Council (ERC)-grant, ECOINT, Grant No 885285<br><br>
+      On 2 July 1972, ECOSOC adopted Resolution 1721 (LIII), which requested the Secretary-General to appoint a “group of eminent persons […] to study the role of multinational corporations and their impact on the process of development” and their “implications for international relations.” This Group of Eminent Persons (GEP) was tasked with submitting “recommendations for appropriate international action.” 
+      The result was the 1974-Report "The Impact of Multinational Corporations on Development and on International Relations" (E/5500/Rev.1 ST/ESA/6).
+      <br><br>
+      This visualization presents the individuals involved in that process:
+  <ul>
+      <li>the 20 members of the GEP</li>
+      <li>the experts who provided testimony in hearings held in New York and Geneva in late 1973.</li>
+  </ul>
+      Each individual is shown in connection with a city, which represents the capital of the country where their institution or affiliation was based at the time. This allows the map to convey the geopolitical geography of expertise and influence in ECOSOC's initiative.
+<br>  
+  <ul>
+      <li>Hover over a name to display information provided in the relevant UN record.</li>
+      <li>Filter options let you explore the dataset by role, type, and gender.</li>
+      <li>You can combine multiple filters or use “Reset all” to return to the full view.</li>
+      <li><span style="color: orange;">orange</span> = member of GEP; <span style="color: green;">green</span> = expert witness</li>
+  </ul>
+
+      <br>
+     <hr class="description-divider" />
+    </div>
+      <br>
+        <strong>Filters:</strong>
+      <br>
+          <div class="content-container" id="filter-container"></div>
+        </div>
+  </div>
+
+  <!-- VISUALIZATION + FILTER -->
+  <div id="viz-wrapper">
+    <div class="svg-container">
+      <svg id="viz" viewBox="0 0 1200 950" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+  </div>
+
+  <!-- TOOLTIP -->
+  <div class="tooltip" id="tooltip"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="global-experts.js"></script>
+</body>
+</html>
