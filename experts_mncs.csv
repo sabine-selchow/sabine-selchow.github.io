@@ -1,0 +1,66 @@
+box-pos,name,first_name,show only,gender,location,city,type,latitude,longitude,description
+59,Ahimie,P.O.,experts,male,Nigeria,Lagos,government,6.5244,3.3792,"Secretary for Finance, Federal Ministry of Finance of Nigeria"
+37,Adam,Gyoergy,experts,male,Hungary,Budapest,academia,47.4979,19.0402,"Head, Economic Research Section, Computer and Automation Institute, Hungarian Academy of Sciences"
+39,Agnelli,Giovanni,experts,male,Italy,Rome,business,41.9028,12.4964,"Chairman, FIAT, S.P.A."
+3,Behrman,Jack,experts,male,USA,Washington,academia,38.8951,-77.0364,"Graduate School of Business Administration, University of North Carolina"
+8,Berstein,Edward M.,experts,male,USA,Washington,business,38.8951,-77.0364,"President, EMB (Ltd.) Research Economists"
+44,Blum,Emerik,eminent persons,male,Yugoslavia,Belgrade,business,44.7866,20.4489,"General Manager of Energoinvest; export-oriented engeneerinfg & energy company, based in Sarajevo"
+43,Browaldh,Tore,eminent persons,male,Sweden,Stockholm,banking,59.3293,18.0686,"Chairman, Svenska Handelsbanken"
+61,Burki,Javed,experts,male,Pakistan,Islamabad,government,33.6844,73.0479,"Chief, Industry and Commerce Section Planning Division of Pakistan "
+47,Campillo-Sainz,Jose,experts,male,Mexico,Mexico City,government,19.4326,-99.1332,Under-Secretary for Industry and Commerce of Mexico
+9,Collado,Emilio,experts,male,USA,Washington,business,38.8951,-77.0364,Executive Vice President EXXON Corporation 
+18,Deutsch,John J.,eminent persons,male,Canada,Ottawa,business,45.4215,-75.6972,Principal and Vice-Chancellor of Queen's University; Former Chairman of the Economic Council of Canada
+56,Diawara,Mohamed,eminent persons,male,Ivory Coast,Abidjan,public sector,5.3489,-4.0037,Minister of Planning
+20,Duncan,Sir Val,experts,male,UK,London,business,51.5074,-0.1278,Chairman and Chief Executive Officer Rio Tinto Zinc Corporation 
+22,Dunning,John,eminent persons,male,UK,London,academia,51.5074,-0.1278,Professor of Economics University of Reading
+55,Estrany y Gendre,Antonio,eminent persons,male,Argentina,Buenos Aires,academia,-34.6037,-58.3816,"Professor of International Economic Relations, University of El Salvador"
+10,Fahey,Thomas,experts,male,USA,Washington,business,38.8951,-77.0364,"Vice President, Sales General Tire International Company"
+57,Ghozali,Ahmed,eminent persons,male,Algeria,Algiers,public sector,36.7538,3.0588,President Director-General of SONATRACH (national state-owned oil company of Algeria)
+16,Goldfinger,Nathaniel,experts,male,USA,Washington,union,38.8951,-77.0364,"Director, Department of Research, American Federation of Labor and Congress of Industrial Organizations"
+17,Goldman,Peter,experts,male,USA,Washington,INGO,38.8951,-77.0364,President of the International Organization of Consumers' Unions
+33,Heininger,Horst,experts,male,German Democratic Republic,Berlin,academia,52.52,13.405,"Head of Department, Institute for International Politics and Economy Berlin, German Democratic Republic "
+40,Hugill,J.A.C.,experts,male,Italy,Rome,business,41.9028,12.4964,"FAO, Chairman, Industry Co-operative Programme (OECD)"
+4,Hymer,Stephen,experts,male,USA,Washington,academia,38.8951,-77.0364,"Graduate Faculty, Department of Economics New School for Social Research "
+45,Ivanov,I.D.,eminent persons,male,USSR,Moscow,academia,55.7558,37.6173,Chief of Economic Division Institute for US Studies USSR Academy of Sciences
+1,Javits,Jacob,eminent persons,male,US,Washington,public sector,38.8951,-77.0364,United States Senator
+63,Jha,L.K.,eminent persons,male,India,New Delhi,public sector,28.6139,77.209,"Governor of Jammu and Kashmir Former Ambassador of India to the United States, Former Governor, Reserve Bank of India"
+11,Jones / Maisonrouge,,experts,male,USA,Washington,business,38.8951,-77.0364,IBM World Trade Corporation
+60,Kahama,C. George,eminent persons,male,United Republic of Tanzania,Dar es Salaam,public sector,-6.7924,39.2083,Director-General Capital Development Authority
+30,Keller,Ernst,experts,male,Luxemburg,Louxembourg,business,49.6117,6.1319,"President, ADELA Investment Company S.A. "
+35,Khene,Abderrahman,experts,male,Switzerland,Bern,IO,46.9481,7.4474,"Secretary-General, Organization of the Petroleum Exporting Countries"
+46,Komiya,Ryutaro,eminent persons,male,Japan,Tokyo,academia,35.6895,139.6917,Professor of Economics Tokyo University 
+41,Kudlinski,Romuald,experts,male,Poland,Warsaw,academia,52.2297,21.0122,"Director, Institute for Economic Science, University of Warsaw"
+34,Liotard-Vogt,Pierre,experts,male,Switzerland,Bern,business,46.9481,7.4474,Managing Director Nestle Alimentana S.A.
+24,Lombardi,Renato,experts,male,France,Paris,business,48.8566,2.3522,"President, International Chamber of Commerce "
+29,Mansholt,Sicco,eminent persons,male,Netherlands,The Hague,public sector,52.0705,4.3007,"Former President, Commission of the European Economic Community"
+23,Marchandise,Jacques,experts,male,France,Paris,business,48.8566,2.3522,Directeur Delegue Pechiney-Ugine-Kuhlmann
+38,Masetti,Albertino,experts,male,Czechoslovakia,Prague,union,50.0755,14.4378,Secretary World Federation of Trade Unions 
+31,Matthoefer,Hans,eminent persons,male,F.R. Germany,Bonn,public sector,50.7374,7.0982,"Federal Minister for Research and Technology, Former Head of the Economic Department of the Industrial Metalworkers' Trade Union"
+2,Miller,J. Irwin,eminent persons,male,US,Washington,business,38.8951,-77.0364,"Chairman, Cummins Engine Co., Inc."
+28,Morgan,John,experts,male,Netherlands,The Hague,INGO,52.0705,4.3007,"Adviser on Multinational Corporations, International Council for Social Welfare"
+12,Murphy,Thomas A.,experts,male,USA,Washington,business,38.8951,-77.0364,"Vice Chairman of the Board, General Motors Corporation"
+7,Nader,Ralph,experts,male,USA,Washington,activist,38.8951,-77.0364,"Consumer advocate, public interest lawyer and activist"
+5,Nye,Joseph S.,experts,male,USA,Washington,academia,38.8951,-77.0364,"Center for International Affairs, Harvard University"
+58,Onitiri,H.M.A.,experts,male,Nigeria,Lagos,academia,6.5244,3.3792,"Director, Institute of Social and Economic Research, University of Ibadan, Nigeria "
+19,Penrose,Edith,experts,female,UK,London,academia,51.5074,-0.1278,"School of Oriental and African Studies, University of London "
+13,Powers,John,experts,male,USA,Washington,business,38.8951,-77.0364,"Chairman of the Board (retired), Pfizer, Inc"
+48,Puente,Jose de la,experts,male,Peru,Lima,government,-12.0464,-77.0428,"Under-Secretary for Economic Affairs, Ministry of Foreign Affairs, Peru"
+62,Ram,Bharat,experts,male,India,New Delhi,business,28.6139,77.209,"President, Delhi Cloth Mills"
+64,Sadi,Mohammad,eminent persons,male,Indonesia,Jakarta,public sector,-6.2088,106.8456,"Minister of Mining, Indonesia"
+36,Schaffner,Hans,eminent persons,male,Switzerland,Bern,business,46.9481,7.4474,"Former President of the Swiss Confederation Vice-Chairman of the Board of SANDOZ, S.A. (pharma company)"
+14,Shapiro,Irving S.,experts,male,USA,Washington,business,38.8951,-77.0364,"Vice Chairman, E.I. Du Pont de Nemours "
+52,Somavia,Juan,eminent persons,male,Chile,Santiago de Chile,public sector,-33.4489,-70.6693,"Former Permanent Representative to the Andean Group, Former President of the Commission of the Cartagena Agreement Former Chairman of the Board of the Andean Development Corporation"
+26,Spinelli,Altiero,experts,male,EU,Brussels,IO,50.8503,4.3517,Member of the Commission of European Communities
+51,Sunkel,Osvaldo,experts,male,Chile,Santiago de Chile,academia,-33.4489,-70.6693,"Latin-American Faculty of Social Sciences, Santiago, Chile"
+32,Tacke,Gerd,experts,male,FDR,Bonn,business,50.7374,7.0982,"Former President, Siemens A.G."
+15,Thornbrough,Albert A.,experts,male,USA,Washington,business,38.8951,-77.0364,"President, Massey-Ferguson Ltd."
+54,Trindade,Mario,eminent persons,male,Brazil,Brasilia,banking,-15.7939,-47.8828,Vice President National Bank of Commerce Rio de Janeiro
+25,Uri,Pierre,eminent persons,male,France,Paris,academia,48.8566,2.3522,"Professor of Economics University of Paris Author and journalist == Mr. Uri helped write the treaty that gave birth in 1951 to the European Coal and Steel Community, which pooled the production of France, Belgium, Germany, Italy, the Netherlands and Luxembourg. He directed the group from 1952 to 1959 -- "
+6,Vagts,Detlev F.,experts,male,USA,Washington,academia,38.8951,-77.0364,"Law School, Harvard University"
+49,Vaitsos,Constantine V.,experts,male,Peru,Lima,IO,-12.0464,-77.0428,"Director, Technology Policy Group Junta del Acuerdo de Cartagena"
+53,Vollmer,Gustavo,experts,male,Venezuela,Caracas,business,10.4806,-66.9036,"President, Central El Palma S.A."
+27,Wagner,G.A.,experts,male,Netherlands,The Hague,business,52.0705,4.3007,"President, Royal Dutch Petroleum Company"
+65,Walker,Sir Ronald,experts,male,Australia,Canberra,government,-35.2809,149.13,Permanent Representative of Jamaica to the United Nations in Geneva 
+50,Walker,H.S.,experts,male,Jamaica,Kingston,government,17.9712,-76.7936,Special Adviser to the Government of Australia on Multinational Corporations
+42,Wallenberg,Marcus,experts,male,Sweden,Stockholm,business,59.3293,18.0686,"Chairman, Skandinaviska Enskilda Banken "
+21,Woodroofe / Klijnstra,,experts,male,UK,London,business,51.5074,-0.1278,"Chairmen, Unilever"
