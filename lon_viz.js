@@ -91,12 +91,26 @@ function normLevel(v){
 const normChapter = v => (clean(v) || null);
 
 const tt = d3.select("#tooltip");
-function showTT(ev, name, _path = "", data = null){
+
+// ---------- Touch-/Pointer-Logik & Tooltip-API ----------
+const isCoarsePointer = window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
+let ttPinned = false;
+
+function getClientPoint(ev) {
+  if (ev && ev.touches && ev.touches[0]) {
+    return { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+  }
+  return { x: ev?.clientX ?? 0, y: ev?.clientY ?? 0 };
+}
+
+function showTT(ev, name, _path = "", data = null, { pin = false } = {}) {
   tt.select(".t-name").text(name || "");
   tt.select(".t-path").text(data && data.committee_type ? data.committee_type : "");
+
   let box = tt.select(".t-extra");
   if (box.empty()) box = tt.append("div").attr("class","t-extra");
   box.html("");
+
   if(data){
     const fields = [
       ["creation","Creation"],
@@ -117,18 +131,33 @@ function showTT(ev, name, _path = "", data = null){
       }
     });
   }
-  tt.style("visibility","visible").style("opacity",1);
+
   const pad = 12, vw = window.innerWidth, vh = window.innerHeight;
+  const { x: cx, y: cy } = getClientPoint(ev);
+  tt.style("visibility","visible").style("opacity",1);
   const tw = tt.node().offsetWidth, th = tt.node().offsetHeight;
-  let x = ev.clientX + pad, y = ev.clientY - th - pad;
-  if (y < pad) y = ev.clientY + pad;
-  if (x + tw > vw - pad) x = ev.clientX - tw - pad;
+
+  let x = cx + pad, y = cy - th - pad;
+  if (y < pad) y = cy + pad;
+  if (x + tw > vw - pad) x = cx - tw - pad;
   x = Math.max(pad, Math.min(x, vw - tw - pad));
   y = Math.max(pad, Math.min(y, vh - th - pad));
   tt.style("left", x + "px").style("top", y + "px");
-}
-const hideTT = ()=> tt.style("opacity",0).style("visibility","hidden");
 
+  if (pin) ttPinned = true;
+}
+
+function hideTT(){
+  ttPinned = false;
+  tt.style("opacity",0).style("visibility","hidden");
+}
+
+
+document.addEventListener("click", () => {
+  if (ttPinned) hideTT();
+}, { capture: true });
+
+// ---------- Hilfen ----------
 function panelNote(svg, text){
   const vb = svg.node().viewBox.baseVal;
   svg.append("text").attr("x", vb.width/2).attr("y", 34)
@@ -141,6 +170,7 @@ function curveFromCenter(cx, cy, x, y, swoop = 0.16){
   return `M${cx},${cy} Q${mx+nx},${my+ny} ${x},${y}`;
 }
 
+// ---------- Sunburst-ähnliche Panels ----------
 function drawSun(svg, items, opts={}){
   const { width, height } = svg.node().viewBox.baseVal;
   const center = { x: width/2, y: height/2 + (opts.offsetY ?? 0) };
@@ -168,8 +198,22 @@ function drawSun(svg, items, opts={}){
     .attr("cx",d=>d.xNode).attr("cy",d=>d.yNode)
     .attr("r", opts.nodeRadius ?? 6)
     .attr("fill", nodeColor)
-    .on("mousemove", (ev,d)=> showTT(ev, d.name, "", d.meta || null))
-    .on("mouseleave", hideTT);
+    
+    .on("mousemove", (ev,d)=> {
+      if (!isCoarsePointer && !ttPinned) showTT(ev, d.name, "", d.meta || null);
+    })
+    .on("mouseleave", ()=> {
+      if (!isCoarsePointer && !ttPinned) hideTT();
+    })
+    
+    .on("click", function(ev, d){
+      ev.stopPropagation();
+      if (ttPinned) {
+        hideTT();
+      } else {
+        showTT(ev, d.name, "", d.meta || null, { pin: true });
+      }
+    });
 
   svg.append("circle").attr("cx",center.x).attr("cy",center.y).attr("r",22).attr("fill","#000");
 
@@ -180,6 +224,7 @@ function drawSun(svg, items, opts={}){
   return { applyFilter, labels: normItems.map(it=>it.label) };
 }
 
+// ---------- Radiale Hierarchie ----------
 function drawRadialHierarchy(svg, root, opts={}){
   const vb = svg.node().viewBox.baseVal, width = vb.width, height = vb.height;
   const R = Math.min(width,height)/2 - 30;
@@ -228,8 +273,22 @@ function drawRadialHierarchy(svg, root, opts={}){
       return 2.8;
     })
     .style("fill", d => chColor(d.data.chapter))
-    .on("mousemove",(ev,d)=> { showTT(ev, d.data.name, "", d.data); })
-    .on("mouseleave", hideTT);
+    
+    .on("mousemove",(ev,d)=> {
+      if (!isCoarsePointer && !ttPinned) showTT(ev, d.data.name, "", d.data);
+    })
+    .on("mouseleave", ()=> {
+      if (!isCoarsePointer && !ttPinned) hideTT();
+    })
+    
+    .on("click", function(ev, d){
+      ev.stopPropagation();
+      if (ttPinned) {
+        hideTT();
+      } else {
+        showTT(ev, d.data.name, "", d.data, { pin: true });
+      }
+    });
 
   g.append("circle").attr("cx", 6).attr("cy", 6).attr("r", 22).attr("fill", "#000");
 
@@ -240,6 +299,7 @@ function drawRadialHierarchy(svg, root, opts={}){
   return { applyFilter };
 }
 
+// ---------- Legende ----------
 function ensureLegendHost(svgSel){
   const svgNode = svgSel.node();
   const panel = svgNode.closest(".panel");
@@ -318,6 +378,7 @@ function createLegendDOM(hostSel, items, {
   return { getHidden: ()=>new Set(hidden) };
 }
 
+// ---------- Boot ----------
 (async function(){
   document.getElementById("viz1")?.classList.add("large");
   document.getElementById("viz2")?.classList.add("large");
