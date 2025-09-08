@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UN ESCAP Members Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- D3 + TopoJSON -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+  <!-- Meta -->
+  <meta name="author" content="Sabine Selchow">
+  <meta name="funding" content="European Research Council, Grant Agreement No. 885285">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="ecafe.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">Home & Visualisations</a></li>
+          <li><a href="about.html">About & Publications</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADLINE + DESCRIPTION -->
+  <div class="content-container intro-flex">
+    <img src="UN-escap.png" alt="UN ECAFE Visual" class="intro-image" />
+    <div class="intro-text-block">
+      <h1 class="left-aligned">UN ESCAP Members: Timeline (1947–2025)</h1>
+      <div id="description">
+        <b>Date:</b> September 2025 <br><br>
+        <b>Data source:</b> <a href="https://www.unescap.org/about/member-states#" target="_blank" style="color: #d90c1a; text-decoration: none; font-weight: 500;">Membership site of</a> the UN Economic and Social Commission for Asia and the Pacific (ESCAP)<br>
+          <b>Funded:</b> Part of a European Research Council (ERC) grant, <a href="https://www.ecoint.org" target="_blank" style="color: #d90c1a; text-decoration: none; font-weight: 500;">ECOINT</a>, Grant No. 885285
+        </p>
+          This visualization shows the evolution of the membership of the UN Economic and Social Commission for Asia and the Pacific (ESCAP) from 1947 to September 2025y.
+          All information (incl. country names) have been taken from the UNESCAP-site.
+        </p>
+        <ul>
+          <li>Click a year or press Play</li>
+          <li>Hover the map for details</li>
+          <li>Members:</li>
+          <ul style="margin:0; padding-left:20px; list-style-type:none;">
+              <li><span style="color:#d90c1a;font-weight:600;">Red</span> = joined in selected year</li>
+              <li><span style="color:#4A90E2;font-weight:600;">Blue</span> = members as of selected year</li>
+          </ul> 
+
+
+          <li>Associate Members:</li>
+          <ul style="margin:0; padding-left:20px; list-style-type:none;">
+              <li><span style="color:#c61fd5ff;font-weight:600;">Pink</span> = joined in selected year</li>
+              <li><span style="color:#10a10bff;font-weight:600;">Green</span> = members as of selected year</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3 VISUALIZATION -->
+  <main>
+    <div class="map-wrap">
+      <svg id="ecafeViz" aria-label="ECAFE Membership World Map"></svg>
+
+      <!-- Members overlay (links oben auf der Karte) -->
+      <aside id="memberOverlay" class="member-overlay" aria-label="Members grouped by join year">
+        <div class="overlay-header">
+          <span class="overlay-title">
+            Members in <span id="overlayYear">1947</span>
+          </span>
+          <button id="overlayToggle" class="overlay-toggle" aria-label="Collapse list" title="Collapse/Expand">–</button>
+        </div>
+        <div id="memberOverlayBody" class="overlay-body"></div>
+      </aside>
+    </div>
+
+  
+    <section id="controls">
+      <div id="yearDisplay" aria-live="polite">1947</div>
+      <div class="stats">
+        <span id="memberCount">0</span> members |
+        <span id="newMemberCount">0</span> new this year
+      </div>
+
+      <div id="mainButtons">
+        <button id="play" class="primary" aria-label="Play timeline">▶ Play</button>
+        <button id="pause" class="secondary" aria-label="Pause timeline">⏸ Pause</button>
+        <button id="reset" class="reset-style" aria-label="Reset timeline">Reset</button>
+      </div>
+
+
+      <div id="yearChips" class="year-chips" aria-label="Years with new members"></div>
+    </section>
+
+
+  </main>
+
+  <!-- Tooltip -->
+  <div id="tooltip" role="dialog" aria-hidden="true"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <!-- App JS -->
+  <script src="ecafe.js"></script>
+</body>
+</html>
