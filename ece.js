@@ -12,23 +12,6 @@ const COLOR_LAND = "#e8e8e8";
 const COLOR_MEMBER = "#4A90E2";
 const COLOR_NEW = "#d90c1a";
 
-const countryMappings = {
-  "Soviet Union": ["Russia","Ukraine","Belarus","Kazakhstan","Uzbekistan","Kyrgyzstan","Tajikistan","Turkmenistan","Georgia","Armenia","Azerbaijan","Moldova","Lithuania","Latvia","Estonia"],
-  "USSR": ["Russia","Ukraine","Belarus","Kazakhstan","Uzbekistan","Kyrgyzstan","Tajikistan","Turkmenistan","Georgia","Armenia","Azerbaijan","Moldova","Lithuania","Latvia","Estonia"],
-  "Yugoslavia": ["Serbia","Croatia","Bosnia and Herzegovina","Slovenia","Montenegro","Macedonia","Kosovo"],
-  "Czechoslovakia": ["Czech Republic","Slovakia"],
-  "German Democratic Republic": ["Germany"],
-  "East Germany": ["Germany"],
-  "West Germany": ["Germany"],
-  "Federal Republic of Germany": ["Germany"],
-  "German Federal Republic": ["Germany"],
-  "Yemen Arab Republic": ["Yemen"],
-  "People's Democratic Republic of Yemen": ["Yemen"],
-  "South Yemen": ["Yemen"],
-  "North Yemen": ["Yemen"]
-};
-const dissolutionYears = { "Soviet Union":1991, "USSR":1991, "Yugoslavia":1991, "Czechoslovakia":1993 };
-
 const aliasMap = {
   "united states of america": ["united states","usa","us"],
   "russian federation": ["russia","soviet union","ussr"],
@@ -180,20 +163,17 @@ async function loadData() {
 
   try {
     const rows = await d3.csv("ece.csv", d => {
-      const rawCountry = (d.Country || "").trim();
-      const yearText = String(d.Year || "").trim();
-      const yearMatch = yearText.match(/\d{4}/);
-      const year = yearMatch ? +yearMatch[0] : NaN;
+      const country = (d.Country || "").trim();
+      const sy = +String(d.StartYear||"").match(/\d{4}/)?.[0];
+      const ey = +String(d.EndYear||"").match(/\d{4}/)?.[0] || 9999;
       const date = (d.Date || "").trim() || null;
       const note = (d.Note || "").trim() || null;
-      return { country: rawCountry, year, date, note };
+      return Number.isFinite(sy) ? { country, start: sy, end: ey, date, note } : null;
     });
-    membershipData = rows
-      .filter(r => r.country && Number.isFinite(r.year))
-      .sort((a,b) => d3.ascending(a.year, b.year));
-    relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a,b) => a - b);
+    membershipData = rows.filter(Boolean).sort((a,b) => d3.ascending(a.start, b.start));
+    relevantYears = Array.from(new Set(membershipData.map(d => d.start))).sort((a,b) => a - b);
   } catch(e) {
-    alert("ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.");
+    alert("ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,StartYear,EndYear,Date,Note) neben index.html legen.");
   }
 }
 
@@ -286,16 +266,8 @@ function updateMemberOverlay(year) {
   const container = d3.select("#memberOverlayBody");
   if (container.empty()) return;
 
-  const activeCountries = membershipData.filter(d => {
-    if (d.year > year) return false;
-    if (countryMappings[d.country]) {
-      const dis = dissolutionYears[d.country] ?? 9999;
-      return year < dis;
-    }
-    return true;
-  });
-
-  const grouped = d3.group(activeCountries, d => d.year);
+  const activeCountries = membershipData.filter(d => d.start <= year && year < d.end);
+  const grouped = d3.group(activeCountries, d => d.start);
   const years = Array.from(grouped.keys()).sort((a,b) => a - b);
 
   container.selectAll("*").remove();
@@ -350,23 +322,8 @@ function filterCShapesByYear(year) {
 
 function getMembersUpToYear(year) {
   const members = new Set();
-  membershipData.filter(d => d.year <= year).forEach(d => {
-    if (d.country === "Germany" && year < 1990) {
-      members.add("Germany");
-      members.add("Federal Republic of Germany");
-      members.add("German Federal Republic");
-      members.add("West Germany");
-      members.add("German Democratic Republic");
-      members.add("East Germany");
-      members.add("FRG");
-      members.add("GDR");
-      return;
-    }
-    if (countryMappings[d.country]) {
-      const dissolves = dissolutionYears[d.country] ?? 9999;
-      if (year < dissolves) members.add(d.country);
-      else countryMappings[d.country].forEach(s => members.add(s));
-    } else {
+  membershipData.forEach(d => {
+    if (d.start <= year && year < d.end) {
       members.add(d.country);
       variants(d.country).forEach(v => members.add(v));
     }
@@ -376,18 +333,8 @@ function getMembersUpToYear(year) {
 
 function getNewMembersInYear(year) {
   const set = new Set();
-  membershipData.filter(d => d.year === year).forEach(d => {
-    if (d.country === "Germany" && year === 1973) {
-      [
-        "Germany",
-        "Federal Republic of Germany","German Federal Republic","West Germany","FRG",
-        "German Democratic Republic","East Germany","GDR",
-        "German Fed Rep","Fed Rep of Germany","German Dem Rep","German Dem Republic"
-      ].forEach(n => set.add(n));
-      return;
-    }
-    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
-    else {
+  membershipData.forEach(d => {
+    if (d.start === year) {
       set.add(d.country);
       variants(d.country).forEach(v => set.add(v));
     }
@@ -405,11 +352,11 @@ function getMembershipInfo(countryName) {
   let minYear = null, bestDate = null, bestNote = null;
   for (const v of vs) {
     membershipData.filter(d => variants(d.country).has(v)).forEach(d => {
-      if (minYear === null || d.year < minYear) {
-        minYear = d.year;
+      if (minYear === null || d.start < minYear) {
+        minYear = d.start;
         bestDate = d.date ?? null;
         bestNote = d.note ?? null;
-      } else if (d.year === minYear) {
+      } else if (d.start === minYear) {
         if (!bestDate && d.date) bestDate = d.date;
         if (!bestNote && d.note) bestNote = d.note;
       }
