@@ -1,6 +1,5 @@
-let svg, g, landG, countriesG, associatesG, projection, path, tooltip;
+let svg, g, landG, countriesG, projection, path, tooltip;
 let worldData, landData, membershipData = [];
-let associatesData = [];
 let currentYear = 1947;
 let isPlaying = false;
 let playInterval;
@@ -14,8 +13,6 @@ let yearIdx = 0;
 const COLOR_LAND = "#e8e8e8";
 const COLOR_MEMBER = "#4A90E2";
 const COLOR_NEW = "#d90c1a";
-const COLOR_ASSOC_MEMBER = "#10a10bff";
-const COLOR_ASSOC_NEW    = "#c61fd5ff";
 
 const countryMappings = {
   'Soviet Union': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
@@ -58,7 +55,6 @@ function setupSVG() {
   g = svg.append('g');
   landG = g.append('g').attr('id', 'land-layer');
   countriesG = g.append('g').attr('id', 'countries-layer');
-  associatesG = g.append('g').attr('id', 'associates-layer');
 
   tooltip = d3.select('#tooltip');
 
@@ -128,22 +124,6 @@ async function loadData() {
   } catch (err) {
     console.error('ece.csv konnte nicht geladen werden', err);
     alert('ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.');
-  }
-
-  try {
-    const pts = await d3.csv('ecafe_associates.csv', d => ({
-      name: String(d.name || '').trim(),
-      lat: +d.lat, lon: +d.lon,
-      start: +String(d.start_year || '').slice(0,4),
-      end: d.end_year ? +String(d.end_year).slice(0,4) : 9999,
-      date: (d.Date ?? d.date ?? '').toString().trim() || null,
-      note: (d.Note ?? d.note ?? '').toString().trim() || null
-    }));
-    associatesData = pts.filter(p =>
-      p.name && Number.isFinite(p.lat) && Number.isFinite(p.lon) && Number.isFinite(p.start)
-    );
-  } catch {
-    console.warn('Keine ecafe_associates.csv gefunden (optional).');
   }
 }
 
@@ -226,56 +206,11 @@ function updateVisualization() {
       return isCountryMember(p, currentMembers) ? 'pointer' : 'default';
     });
 
-  updateAssociates(currentYear);
-  associatesG.raise();
-
   d3.selectAll('.year-chip').classed('active', d => d === currentYear);
   const activeChip = document.querySelector('.year-chip.active');
   if (activeChip) activeChip.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
 
   updateMemberOverlay(currentYear);
-}
-
-function associateDisplayName(name, year) {
-  if (name === 'Hong Kong') return (year >= 1997) ? 'Hong Kong, China' : 'Hong Kong';
-  if (name === 'Macao' || name === 'Macau') return (year >= 1999) ? 'Macao, China' : name;
-  return name;
-}
-
-function updateAssociates(year) {
-  if (!associatesData.length) {
-    associatesG.selectAll('circle.associate').remove();
-    return;
-  }
-  const visible = associatesData.filter(p => year >= p.start && year < p.end);
-  const newSet = new Set(visible.filter(p => p.start === year).map(p => p.name));
-
-  const sel = associatesG.selectAll('circle.associate')
-    .data(visible, d => `${d.name}|${d.start}`);
-
-  const enter = sel.enter()
-    .append('circle')
-    .attr('class', 'associate')
-    .attr('r', 3.2)
-    .attr('stroke', '#fff')
-    .attr('stroke-width', 0.9);
-
-  enter.merge(sel)
-    .attr('cx', d => projection([d.lon, d.lat])[0])
-    .attr('cy', d => projection([d.lon, d.lat])[1])
-    .attr('fill', d => newSet.has(d.name) ? COLOR_ASSOC_NEW : COLOR_ASSOC_MEMBER)
-    .on('mouseover', (event, d) => {
-      const label = associateDisplayName(d.name, currentYear);
-      let html = `<div class="tooltip-title">${label}</div>`;
-      html += `<div class="tooltip-line">Associate member since: ${d.start}</div>`;
-      if (d.date) html += `<div class="tooltip-line">Joined on: ${d.date}</div>`;
-      if (d.note) html += `<div class="tooltip-line">Note: ${d.note}</div>`;
-      tooltip.html(html).style('visibility','visible').style('opacity',1);
-    })
-    .on('mousemove', handleMouseMove)
-    .on('mouseout', handleMouseOut);
-
-  sel.exit().remove();
 }
 
 function updateMemberOverlay(year) {
@@ -294,16 +229,7 @@ function updateMemberOverlay(year) {
     return true;
   });
 
-  const activeAssoc = associatesData
-    .filter(p => year >= p.start && year < p.end)
-    .map(p => ({
-      country: associateDisplayName(p.name, year) + ' (Assoc. member)',
-      year: p.start
-    }));
-
-  const activeEntries = activeCountries.concat(activeAssoc);
-
-  const grouped = d3.group(activeEntries, d => d.year);
+  const grouped = d3.group(activeCountries, d => d.year);
   const years = Array.from(grouped.keys()).sort((a,b) => a - b);
 
   container.selectAll('*').remove();
@@ -343,17 +269,10 @@ function dedupSort(arr) {
 }
 
 function displayLabelForList(rawName, groupYear) {
-  let suffix = '';
-  let core = rawName;
-  const assocFlag = /\(Assoc\. member\)$/;
-  if (assocFlag.test(rawName)) {
-    suffix = ' (Assoc. member)';
-    core = rawName.replace(assocFlag, '').trim();
+  if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) {
+    return 'Soviet Union';
   }
-  if ((core === 'Russia' || core === 'Russian Federation') && groupYear < 1991) {
-    return 'Soviet Union' + suffix;
-  }
-  return core + suffix;
+  return rawName;
 }
 
 function pickProp(o, keys, fallback = null) { for (const k of keys) if (o && o[k] != null) return o[k]; return fallback; }
