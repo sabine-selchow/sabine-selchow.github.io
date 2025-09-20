@@ -345,7 +345,6 @@ function getCountryVariations(countryName) {
     'Türkiye': ['Turkey'],
     'Côte d\'Ivoire': ['Ivory Coast'],
     'Timor-Leste': ['East Timor'],
-    'Germany': ['German Democratic Republic','East Germany','West Germany','Federal Republic of Germany','German Federal Republic'],
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   for (const [canonical, alts] of Object.entries(nameMap)) {
