@@ -323,9 +323,19 @@ function displayNameByYear(props, year) {
 function isCountryMember(props, memberSet) {
   const name = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
   if (!name) return false;
+  
   if (memberSet.has(name)) return true;
+  
   const variations = getCountryVariations(name);
-  return variations.some(v => memberSet.has(v));
+  if (variations.some(v => memberSet.has(v))) return true;
+  
+  for (const [csvCountry, mapCountries] of Object.entries(countryMappings)) {
+    if (memberSet.has(csvCountry) && mapCountries.includes(name)) {
+      return true;
+    }
+  }
+  
+  return false;
 }
 
 function getCountryVariations(countryName) {
@@ -345,6 +355,7 @@ function getCountryVariations(countryName) {
     'Türkiye': ['Turkey'],
     'Côte d\'Ivoire': ['Ivory Coast'],
     'Timor-Leste': ['East Timor'],
+    'Germany': ['German Democratic Republic','East Germany','West Germany','Federal Republic of Germany','German Federal Republic'],
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   for (const [canonical, alts] of Object.entries(nameMap)) {
