@@ -3,10 +3,8 @@ let worldData, landData, membershipData = [];
 let currentYear = 1947;
 let isPlaying = false;
 let playInterval;
-
 let useHistoricalBasemap = false;
 const cshapesCache = new Map();
-
 let relevantYears = [];
 let yearIdx = 0;
 
@@ -15,21 +13,78 @@ const COLOR_MEMBER = "#4A90E2";
 const COLOR_NEW = "#d90c1a";
 
 const countryMappings = {
-  'Soviet Union': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
-  'USSR': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
-  'Yugoslavia': ['Serbia','Croatia','Bosnia and Herzegovina','Slovenia','Montenegro','Macedonia','Kosovo'],
-  'Czechoslovakia': ['Czech Republic','Slovakia'],
-  'German Democratic Republic': ['Germany'],
-  'East Germany': ['Germany'],
-  'West Germany': ['Germany'],
-  'Federal Republic of Germany': ['Germany'],
-  'German Federal Republic': ['Germany'],
-  'Yemen Arab Republic': ['Yemen'],
-  "People's Democratic Republic of Yemen": ['Yemen'],
-  'South Yemen': ['Yemen'],
-  'North Yemen': ['Yemen']
+  "Soviet Union": ["Russia","Ukraine","Belarus","Kazakhstan","Uzbekistan","Kyrgyzstan","Tajikistan","Turkmenistan","Georgia","Armenia","Azerbaijan","Moldova","Lithuania","Latvia","Estonia"],
+  "USSR": ["Russia","Ukraine","Belarus","Kazakhstan","Uzbekistan","Kyrgyzstan","Tajikistan","Turkmenistan","Georgia","Armenia","Azerbaijan","Moldova","Lithuania","Latvia","Estonia"],
+  "Yugoslavia": ["Serbia","Croatia","Bosnia and Herzegovina","Slovenia","Montenegro","Macedonia","Kosovo"],
+  "Czechoslovakia": ["Czech Republic","Slovakia"],
+  "German Democratic Republic": ["Germany"],
+  "East Germany": ["Germany"],
+  "West Germany": ["Germany"],
+  "Federal Republic of Germany": ["Germany"],
+  "German Federal Republic": ["Germany"],
+  "Yemen Arab Republic": ["Yemen"],
+  "People's Democratic Republic of Yemen": ["Yemen"],
+  "South Yemen": ["Yemen"],
+  "North Yemen": ["Yemen"]
 };
-const dissolutionYears = { 'Soviet Union':1991, 'USSR':1991, 'Yugoslavia':1991, 'Czechoslovakia':1993 };
+const dissolutionYears = { "Soviet Union":1991, "USSR":1991, "Yugoslavia":1991, "Czechoslovakia":1993 };
+
+const aliasMap = {
+  "united states of america": ["united states","usa","us"],
+  "russian federation": ["russia","soviet union","ussr"],
+  "myanmar": ["burma"],
+  "democratic republic of the congo": ["congo","drc","congo kinshasa"],
+  "republic of the congo": ["congo brazzaville"],
+  "republic of korea": ["south korea","korea republic of"],
+  "democratic people's republic of korea": ["north korea","korea democratic people's republic of"],
+  "iran islamic republic of": ["iran"],
+  "viet nam": ["vietnam"],
+  "lao people's democratic republic": ["laos"],
+  "united kingdom of great britain and northern ireland": ["united kingdom","uk","britain"],
+  "türkiye": ["turkey","turkiye"],
+  "côte d'ivoire": ["ivory coast","cote d ivoire","cote d’ivoire"],
+  "timor-leste": ["east timor"],
+  "germany": ["federal republic of germany","german federal republic","west germany","german democratic republic","east germany","frg","gdr"],
+  "federal republic of germany": ["germany","german federal republic","west germany","frg"],
+  "german federal republic": ["germany","federal republic of germany","west germany","frg"],
+  "west germany": ["germany","federal republic of germany","german federal republic","frg"],
+  "german democratic republic": ["east germany","germany","gdr"],
+  "east germany": ["german democratic republic","germany","gdr"]
+};
+
+function normalize(s) {
+  return (s||"")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .replace(/[\u2019’]/g,"'")
+    .replace(/[^a-z0-9\s\-]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function variants(name) {
+  const n = normalize(name);
+  const out = new Set([n]);
+  if (aliasMap[n]) aliasMap[n].forEach(a => out.add(normalize(a)));
+  for (const [k, arr] of Object.entries(aliasMap)) {
+    if (arr.map(normalize).includes(n)) {
+      out.add(k);
+      arr.forEach(a => out.add(normalize(a)));
+    }
+  }
+  return out;
+}
+
+function makeNormalizedSet(names) {
+  const s = new Set();
+  names.forEach(n => variants(n).forEach(v => s.add(v)));
+  return s;
+}
+
+function basemapName(p) {
+  return p?.NAME || p?.NAME_EN || p?.ADMIN || p?.name || p?.CNTRY_NAME || "Unknown";
+}
 
 init();
 
@@ -44,130 +99,104 @@ async function init() {
 }
 
 function setupSVG() {
-  svg = d3.select('#ecafeViz')
-    .attr('preserveAspectRatio', 'xMidYMid meet')
-    .attr('viewBox', '0 0 1000 600');
-
+  svg = d3.select("#ecafeViz").attr("preserveAspectRatio","xMidYMid meet").attr("viewBox","0 0 1000 600");
   const width = 1000, height = 600;
   projection = d3.geoMercator().scale(150).translate([width/2, height/2 + 40]);
   path = d3.geoPath().projection(projection);
-
-  g = svg.append('g');
-  landG = g.append('g').attr('id', 'land-layer');
-  countriesG = g.append('g').attr('id', 'countries-layer');
-
-  tooltip = d3.select('#tooltip')
-    .style('max-width', 'min(46ch, 60vw)')
-    .style('white-space', 'normal')
-    .style('word-break', 'break-word')
-    .style('z-index', '9999');
+  g = svg.append("g");
+  landG = g.append("g").attr("id","land-layer");
+  countriesG = g.append("g").attr("id","countries-layer");
+  tooltip = d3.select("#tooltip").style("max-width","min(46ch, 60vw)").style("white-space","normal").style("word-break","break-word").style("z-index","9999");
 }
 
 function setupControls() {
-  d3.select('#play').on('click', startAnimation);
-  d3.select('#pause').on('click', stopAnimation);
-  d3.select('#reset').on('click', () => {
+  d3.select("#play").on("click", startAnimation);
+  d3.select("#pause").on("click", stopAnimation);
+  d3.select("#reset").on("click", () => {
     stopAnimation();
     yearIdx = 0;
     currentYear = relevantYears.length ? relevantYears[0] : 1947;
     updateVisualization();
   });
-
-  const toggleBtn = document.getElementById('overlayToggle');
-  const overlay = document.getElementById('memberOverlay');
+  const toggleBtn = document.getElementById("overlayToggle");
+  const overlay = document.getElementById("memberOverlay");
   if (toggleBtn && overlay) {
-    toggleBtn.addEventListener('click', () => {
-      overlay.classList.toggle('collapsed');
-      toggleBtn.textContent = overlay.classList.contains('collapsed') ? '+' : '–';
+    toggleBtn.addEventListener("click", () => {
+      overlay.classList.toggle("collapsed");
+      toggleBtn.textContent = overlay.classList.contains("collapsed") ? "+" : "–";
     });
   }
 }
 
 async function loadData() {
   try {
-    const landTopo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json');
+    const landTopo = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json");
     landData = topojson.feature(landTopo, landTopo.objects.land);
-  } catch(e){}
+  } catch(e) {}
 
   try {
-    const topo = await d3.json('CShapes-2.0-simplified.json');
+    const topo = await d3.json("CShapes-2.0-simplified.json");
     const firstKey = topo && topo.objects ? Object.keys(topo.objects)[0] : null;
-    if (!firstKey) throw new Error('TopoJSON objects missing');
+    if (!firstKey) throw new Error();
     const fc = topojson.feature(topo, topo.objects[firstKey]);
     window.__CSHAPES__ = fc;
     useHistoricalBasemap = true;
   } catch {
-    const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+    const world = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json");
     worldData = topojson.feature(world, world.objects.countries);
   }
 
   try {
-    const rows = await d3.csv('ece.csv', d => {
-      const rawCountry = (d.Country || '').trim();
-      const yearText = String(d.Year || '').trim();
+    const rows = await d3.csv("ece.csv", d => {
+      const rawCountry = (d.Country || "").trim();
+      const yearText = String(d.Year || "").trim();
       const yearMatch = yearText.match(/\d{4}/);
       const year = yearMatch ? +yearMatch[0] : NaN;
-      const date = (d.Date || '').trim() || null;
-      const note = (d.Note || '').trim() || null;
+      const date = (d.Date || "").trim() || null;
+      const note = (d.Note || "").trim() || null;
       return { country: rawCountry, year, date, note };
     });
-
-    membershipData = rows
-      .filter(r => r.country && Number.isFinite(r.year))
-      .sort((a, b) => d3.ascending(a.year, b.year));
-
-    relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a, b) => a - b);
-  } catch (err) {
-    alert('ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.');
+    membershipData = rows.filter(r => r.country && Number.isFinite(r.year)).sort((a,b) => d3.ascending(a.year, b.year));
+    relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a,b) => a - b);
+  } catch(e) {
+    alert("ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.");
   }
 }
 
 function drawLandMask() {
   if (!landData) return;
-  landG.selectAll('path').remove();
-  landG.append('path')
-    .datum(landData)
-    .attr('d', path)
-    .attr('fill', COLOR_LAND)
-    .attr('stroke', 'none');
+  landG.selectAll("path").remove();
+  landG.append("path").datum(landData).attr("d", path).attr("fill", COLOR_LAND).attr("stroke","none");
 }
 
 function buildYearChips() {
-  const wrap = d3.select('#yearChips');
+  const wrap = d3.select("#yearChips");
   if (wrap.empty()) return;
-  wrap.selectAll('*').remove();
-
-  wrap.selectAll('div.year-chip')
-    .data(relevantYears, d => d)
-    .enter()
-    .append('div')
-    .attr('class', 'year-chip')
-    .text(d => (d === 2006 ? "since 2006" : d))
-    .on('click', (event, y) => {
-      stopAnimation();
-      currentYear = y;
-      yearIdx = relevantYears.indexOf(y);
-      updateVisualization();
-    });
+  wrap.selectAll("*").remove();
+  wrap.selectAll("div.year-chip").data(relevantYears, d => d).enter().append("div").attr("class","year-chip").text(d => d === 2006 ? "since 2006" : d).on("click", (event, y) => {
+    stopAnimation();
+    currentYear = y;
+    yearIdx = relevantYears.indexOf(y);
+    updateVisualization();
+  });
 }
 
 function drawCountries(features) {
-  countriesG.selectAll('path').remove();
-  countriesG.selectAll('path')
+  countriesG.selectAll("path").remove();
+  countriesG.selectAll("path")
     .data(features)
     .enter()
-    .append('path')
-    .attr('d', path)
-    .attr('fill', 'transparent')
-    .attr('stroke', 'none')
-    .on('mouseover', handleMouseOver)
-    .on('mousemove', handleMouseMove)
-    .on('mouseout', handleMouseOut);
+    .append("path")
+    .attr("d", path)
+    .attr("fill", "transparent")
+    .attr("stroke", "none")
+    .on("mouseover", handleMouseOver)
+    .on("mousemove", handleMouseMove)
+    .on("mouseout", handleMouseOut);
 }
 
 function updateVisualization() {
-  d3.select('#yearDisplay').text(currentYear);
-
+  d3.select("#yearDisplay").text(currentYear);
   if (useHistoricalBasemap && window.__CSHAPES__) {
     drawCountries(filterCShapesByYear(currentYear));
   } else if (worldData) {
@@ -175,39 +204,42 @@ function updateVisualization() {
   }
 
   const currentMembers = getMembersUpToYear(currentYear);
+  const currentMembersNorm = makeNormalizedSet(currentMembers);
   const newMembers = getNewMembersInYear(currentYear);
+  const newMembersNorm = makeNormalizedSet(newMembers);
 
-  d3.select('#memberCount').text(currentMembers.size);
-  d3.select('#newMemberCount').text(newMembers.size);
+  d3.select("#memberCount").text(currentMembers.size);
+  d3.select("#newMemberCount").text(newMembers.size);
 
-  const normCurrent = makeNormalizedSet(currentMembers);
-  const normNew = makeNormalizedSet(newMembers);
-
-  countriesG.selectAll('path')
-    .attr('fill', d => {
-      const p = d.properties || {};
-      const nm = normalize(basemapName(p));
-      const isNew = normNew.has(nm);
-      const isMember = isNew ? false : normCurrent.has(nm);
+  countriesG.selectAll("path")
+    .attr("fill", d => {
+      const n = normalize(basemapName(d.properties||{}));
+      const isNew = newMembersNorm.has(n);
+      const isMember = isNew ? false : currentMembersNorm.has(n);
       if (isNew) return COLOR_NEW;
       if (isMember) return COLOR_MEMBER;
-      return 'transparent';
+      return "transparent";
     })
-    .style('pointer-events', d => makeNormalizedSet(currentMembers).has(normalize(basemapName(d.properties || {}))) ? 'auto' : 'none')
-    .style('cursor', d => makeNormalizedSet(currentMembers).has(normalize(basemapName(d.properties || {}))) ? 'pointer' : 'default');
+    .style("pointer-events", d => {
+      const n = normalize(basemapName(d.properties||{}));
+      return (currentMembersNorm.has(n) || newMembersNorm.has(n)) ? "auto" : "none";
+    })
+    .style("cursor", d => {
+      const n = normalize(basemapName(d.properties||{}));
+      return (currentMembersNorm.has(n) || newMembersNorm.has(n)) ? "pointer" : "default";
+    });
 
-  d3.selectAll('.year-chip').classed('active', d => d === currentYear);
-  const activeChip = document.querySelector('.year-chip.active');
-  if (activeChip) activeChip.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  d3.selectAll(".year-chip").classed("active", d => d === currentYear);
+  const activeChip = document.querySelector(".year-chip.active");
+  if (activeChip) activeChip.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
 
   updateMemberOverlay(currentYear);
 }
 
 function updateMemberOverlay(year) {
-  const titleYear = document.getElementById('overlayYear');
+  const titleYear = document.getElementById("overlayYear");
   if (titleYear) titleYear.textContent = year;
-
-  const container = d3.select('#memberOverlayBody');
+  const container = d3.select("#memberOverlayBody");
   if (container.empty()) return;
 
   const activeCountries = membershipData.filter(d => {
@@ -222,35 +254,27 @@ function updateMemberOverlay(year) {
   const grouped = d3.group(activeCountries, d => d.year);
   const years = Array.from(grouped.keys()).sort((a,b) => a - b);
 
-  container.selectAll('*').remove();
+  container.selectAll("*").remove();
 
-  const groups = container.selectAll('.year-group')
+  const groups = container.selectAll(".year-group")
     .data(years, d => d)
     .enter()
-    .append('div')
-    .attr('class', 'year-group');
+    .append("div")
+    .attr("class", "year-group");
 
-  groups.append('div')
-    .attr('class', 'year-title')
+  groups.append("div")
+    .attr("class", "year-title")
     .text(yr => {
-      const names = dedupSort(
-        grouped.get(yr).map(d => displayLabelForList(d.country, yr))
-      );
+      const names = dedupSort(grouped.get(yr).map(d => displayLabelForList(d.country, yr)));
       return `${yr} (${names.length})`;
     });
 
-  groups.append('ul')
-    .attr('class', 'country-list')
+  groups.append("ul")
+    .attr("class", "country-list")
     .each(function(yr) {
       const ul = d3.select(this);
-      const names = dedupSort(
-        grouped.get(yr).map(d => displayLabelForList(d.country, yr))
-      );
-      ul.selectAll('li')
-        .data(names)
-        .enter()
-        .append('li')
-        .text(n => n);
+      const names = dedupSort(grouped.get(yr).map(d => displayLabelForList(d.country, yr)));
+      ul.selectAll("li").data(names).enter().append("li").text(n => n);
     });
 }
 
@@ -259,7 +283,7 @@ function dedupSort(arr) {
 }
 
 function displayLabelForList(rawName, groupYear) {
-  if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) return 'Soviet Union';
+  if ((rawName === "Russia" || rawName === "Russian Federation") && groupYear < 1991) return "Soviet Union";
   return rawName;
 }
 
@@ -268,8 +292,8 @@ function pickProp(o, keys, fallback = null) { for (const k of keys) if (o && o[k
 function filterCShapesByYear(year) {
   if (cshapesCache.has(year)) return cshapesCache.get(year);
   const fc = window.__CSHAPES__;
-  const START_KEYS = ['GWSYEAR','START','start','begin','FROMYEAR','from'];
-  const END_KEYS   = ['GWEYEAR','END','end','to','TOYEAR'];
+  const START_KEYS = ["GWSYEAR","START","start","begin","FROMYEAR","from"];
+  const END_KEYS   = ["GWEYEAR","END","end","to","TOYEAR"];
   const features = fc.features.filter(f => {
     const p = f.properties || {};
     const ys = +pickProp(p, START_KEYS, -Infinity);
@@ -280,20 +304,27 @@ function filterCShapesByYear(year) {
   return features;
 }
 
-function basemapName(props) {
-  return props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
-}
-
 function getMembersUpToYear(year) {
   const members = new Set();
   membershipData.filter(d => d.year <= year).forEach(d => {
+    if (d.country === "Germany" && year < 1990) {
+      members.add("Germany");
+      members.add("Federal Republic of Germany");
+      members.add("German Federal Republic");
+      members.add("West Germany");
+      members.add("German Democratic Republic");
+      members.add("East Germany");
+      members.add("FRG");
+      members.add("GDR");
+      return;
+    }
     if (countryMappings[d.country]) {
       const dissolves = dissolutionYears[d.country] ?? 9999;
       if (year < dissolves) members.add(d.country);
       else countryMappings[d.country].forEach(s => members.add(s));
     } else {
       members.add(d.country);
-      getCountryVariations(d.country).forEach(v => members.add(v));
+      variants(d.country).forEach(v => members.add(v));
     }
   });
   return members;
@@ -302,160 +333,74 @@ function getMembersUpToYear(year) {
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
-    if (d.country === 'Germany' && year === 1973) {
-      set.add('Germany');
-      set.add('Federal Republic of Germany');
-      set.add('German Federal Republic');
-      set.add('West Germany');
-      set.add('German Democratic Republic');
-      set.add('East Germany');
-      set.add('FRG');
-      set.add('GDR');
+    if (d.country === "Germany" && year === 1973) {
+      set.add("Germany");
+      set.add("Federal Republic of Germany");
+      set.add("German Federal Republic");
+      set.add("West Germany");
+      set.add("German Democratic Republic");
+      set.add("East Germany");
+      set.add("FRG");
+      set.add("GDR");
       return;
     }
-    if (countryMappings[d.country]) {
-      countryMappings[d.country].forEach(s => set.add(s));
-    } else {
+    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
+    else {
       set.add(d.country);
-      getCountryVariations(d.country).forEach(v => set.add(v));
+      variants(d.country).forEach(v => set.add(v));
     }
   });
   return set;
 }
 
-function displayNameByYear(props, year) {
-  const raw = basemapName(props) || 'Unknown';
-  if (useHistoricalBasemap) return raw;
-  if ((raw === 'Russia' || raw === 'Russian Federation') && year < 1991) return 'Soviet Union';
-  return raw;
-}
-
-function isCountryMember(props, memberSet) {
-  const name = basemapName(props);
-  if (!name) return false;
-  if (memberSet.has(name)) return true;
-  const variations = getCountryVariations(name);
-  if (variations.some(v => memberSet.has(v))) return true;
-  for (const [csvCountry, mapCountries] of Object.entries(countryMappings)) {
-    if (memberSet.has(csvCountry) && mapCountries.includes(name)) return true;
-  }
-  const normSet = makeNormalizedSet(memberSet);
-  const n = normalize(name);
-  if (normSet.has(n)) return true;
-  for (const v of variations) if (normSet.has(normalize(v))) return true;
-  return false;
-}
-
-function getCountryVariations(countryName) {
-  const variations = [countryName];
-  const nameMap = {
-    'United States of America': ['United States','USA','US'],
-    'Russian Federation': ['Russia','Soviet Union','USSR'],
-    'Myanmar': ['Burma'],
-    'Democratic Republic of the Congo': ['Congo','DRC','Congo (Kinshasa)'],
-    'Republic of the Congo': ['Congo (Brazzaville)'],
-    'Republic of Korea': ['South Korea','Korea, Republic of'],
-    "Democratic People's Republic of Korea": ['North Korea','Korea, Democratic People\'s Republic of'],
-    'Iran (Islamic Republic of)': ['Iran'],
-    'Viet Nam': ['Vietnam'],
-    'Lao People\'s Democratic Republic': ['Laos'],
-    'United Kingdom of Great Britain and Northern Ireland': ['United Kingdom','UK','Britain'],
-    'Türkiye': ['Turkey'],
-    'Côte d\'Ivoire': ['Ivory Coast'],
-    'Timor-Leste': ['East Timor'],
-    'Germany': ['Federal Republic of Germany','German Federal Republic','West Germany','German Democratic Republic','East Germany','FRG','GDR'],
-    'Federal Republic of Germany': ['Germany','German Federal Republic','West Germany','FRG'],
-    'German Federal Republic': ['Germany','Federal Republic of Germany','West Germany','FRG'],
-    'West Germany': ['Germany','Federal Republic of Germany','German Federal Republic','FRG'],
-    'German Democratic Republic': ['East Germany','Germany','GDR'],
-    'East Germany': ['German Democratic Republic','Germany','GDR'],
-    'FRG': ['Germany','Federal Republic of Germany','West Germany','German Federal Republic'],
-    'GDR': ['German Democratic Republic','East Germany','Germany']
-  };
-  if (nameMap[countryName]) variations.push(...nameMap[countryName]);
-  for (const [canonical, alts] of Object.entries(nameMap)) {
-    if (alts.includes(countryName)) variations.push(canonical, ...alts);
-  }
-  return [...new Set(variations)];
-}
-
-function normalize(s) {
-  return String(s || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'')
-    .toLowerCase()
-    .replace(/\((.*?)\)/g,' ')
-    .replace(/[^a-z0-9\s]/g,' ')
-    .replace(/\b(federal)\b/g,'federal')
-    .replace(/\b(republic)\b/g,'republic')
-    .replace(/\b(german)\b/g,'german')
-    .replace(/\b(democratic)\b/g,'democratic')
-    .replace(/\b(frg)\b/g,'frg')
-    .replace(/\b(gdr)\b/g,'gdr')
-    .replace(/\s+/g,' ')
-    .trim();
-}
-
-function makeNormalizedSet(setLike) {
-  const out = new Set();
-  for (const v of setLike) {
-    out.add(normalize(v));
-    getCountryVariations(v).forEach(a => out.add(normalize(a)));
-  }
-  return out;
+function isCountryMember(props, memberSetNorm) {
+  const n = normalize(basemapName(props||{}));
+  return memberSetNorm.has(n);
 }
 
 function getMembershipInfo(countryName) {
-  const variations = getCountryVariations(countryName);
+  const vs = Array.from(variants(countryName));
   let minYear = null, bestDate = null, bestNote = null;
-  for (const v of variations) {
-    membershipData
-      .filter(d => d.country === v)
-      .forEach(d => {
-        if (minYear === null || d.year < minYear) {
-          minYear = d.year;
-          bestDate = d.date ?? null;
-          bestNote = d.note ?? null;
-        } else if (d.year === minYear) {
-          if (!bestDate && d.date) bestDate = d.date;
-          if (!bestNote && d.note) bestNote = d.note;
-        }
-      });
+  for (const v of vs) {
+    membershipData.filter(d => variants(d.country).has(v)).forEach(d => {
+      if (minYear === null || d.year < minYear) {
+        minYear = d.year;
+        bestDate = d.date ?? null;
+        bestNote = d.note ?? null;
+      } else if (d.year === minYear) {
+        if (!bestDate && d.date) bestDate = d.date;
+        if (!bestNote && d.note) bestNote = d.note;
+      }
+    });
   }
   return { year: minYear, date: bestDate, note: bestNote };
 }
 
 function handleMouseOver(event, d) {
   const p = d.properties || {};
-  const curr = getMembersUpToYear(currentYear);
+  const curr = makeNormalizedSet(getMembersUpToYear(currentYear));
   if (!isCountryMember(p, curr)) {
-    tooltip.style('visibility','hidden').style('opacity',0);
+    tooltip.style("visibility","hidden").style("opacity",0);
     return;
   }
-  const display = displayNameByYear(p, currentYear);
+  const display = basemapName(p);
   const info = getMembershipInfo(basemapName(p));
   let html = `<div class="tooltip-title">${display}</div>`;
-  html += `<div class="tooltip-since">UNECE member since: ${info.year ?? 'Unknown'}</div>`;
+  html += `<div class="tooltip-since">UNECE member since: ${info.year ?? "Unknown"}</div>`;
   if (info.date) html += `<div class="tooltip-line">Joined on: ${info.date}</div>`;
   if (info.note) html += `<div class="tooltip-line">Note: ${info.note}</div>`;
-  tooltip.html(html).style('visibility','visible').style('opacity',1);
+  tooltip.html(html).style("visibility","visible").style("opacity",1);
 }
 
 function handleMouseMove(event) {
-  const tt = document.getElementById('tooltip');
+  const tt = document.getElementById("tooltip");
   if (!tt) return;
-  if (tt.style.visibility !== 'visible') {
-    tt.style.visibility = 'visible';
-    tt.style.opacity = 1;
-  }
-  const padding = 18;
-  const margin  = 12;
+  if (tt.style.visibility !== "visible") { tt.style.visibility = "visible"; tt.style.opacity = 1; }
+  const padding = 18, margin = 12;
   const pageW = window.innerWidth || document.documentElement.clientWidth;
   const pageH = window.innerHeight || document.documentElement.clientHeight;
-  const ttW = tt.offsetWidth;
-  const ttH = tt.offsetHeight;
-  let x = event.pageX + padding;
-  let y = event.pageY + padding;
+  const ttW = tt.offsetWidth, ttH = tt.offsetHeight;
+  let x = event.pageX + padding, y = event.pageY + padding;
   if (x + ttW + margin > pageW) x = event.pageX - ttW - padding;
   if (y + ttH + margin > pageH + window.scrollY) y = event.pageY - ttH - padding;
   if (x < margin) x = margin;
@@ -467,7 +412,7 @@ function handleMouseMove(event) {
 }
 
 function handleMouseOut() {
-  tooltip.style('visibility','hidden').style('opacity',0);
+  tooltip.style("visibility","hidden").style("opacity",0);
 }
 
 function startAnimation() {
