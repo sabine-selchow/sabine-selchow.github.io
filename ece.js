@@ -56,9 +56,7 @@ function setupSVG() {
   landG = g.append('g').attr('id', 'land-layer');
   countriesG = g.append('g').attr('id', 'countries-layer');
 
-  tooltip = d3.select('#tooltip');
-
-  tooltip
+  tooltip = d3.select('#tooltip')
     .style('max-width', 'min(46ch, 60vw)')
     .style('white-space', 'normal')
     .style('word-break', 'break-word')
@@ -89,9 +87,7 @@ async function loadData() {
   try {
     const landTopo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json');
     landData = topojson.feature(landTopo, landTopo.objects.land);
-  } catch (e) {
-    console.warn('Land-110m konnte nicht geladen werden.', e);
-  }
+  } catch(e){}
 
   try {
     const topo = await d3.json('CShapes-2.0-simplified.json');
@@ -122,7 +118,6 @@ async function loadData() {
 
     relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a, b) => a - b);
   } catch (err) {
-    console.error('ece.csv konnte nicht geladen werden', err);
     alert('ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.');
   }
 }
@@ -147,10 +142,7 @@ function buildYearChips() {
     .enter()
     .append('div')
     .attr('class', 'year-chip')
-    .text(d => {
-      if (d === 2006) return "since 2006";
-      return d;
-    })
+    .text(d => (d === 2006 ? "since 2006" : d))
     .on('click', (event, y) => {
       stopAnimation();
       currentYear = y;
@@ -185,34 +177,24 @@ function updateVisualization() {
   const currentMembers = getMembersUpToYear(currentYear);
   const newMembers = getNewMembersInYear(currentYear);
 
-  if (currentYear === 1973) {
-    console.log('1973 Debug:');
-    console.log('newMembers has Germany:', newMembers.has('Germany'));
-    console.log('newMembers has Federal Republic of Germany:', newMembers.has('Federal Republic of Germany'));
-    console.log('newMembers has German Democratic Republic:', newMembers.has('German Democratic Republic'));
-    console.log('All newMembers:', Array.from(newMembers));
-  }
-
   d3.select('#memberCount').text(currentMembers.size);
   d3.select('#newMemberCount').text(newMembers.size);
+
+  const normCurrent = makeNormalizedSet(currentMembers);
+  const normNew = makeNormalizedSet(newMembers);
 
   countriesG.selectAll('path')
     .attr('fill', d => {
       const p = d.properties || {};
-      const isNew = isCountryMember(p, newMembers);
-      const isMember = isNew ? false : isCountryMember(p, currentMembers);
+      const nm = normalize(basemapName(p));
+      const isNew = normNew.has(nm);
+      const isMember = isNew ? false : normCurrent.has(nm);
       if (isNew) return COLOR_NEW;
       if (isMember) return COLOR_MEMBER;
       return 'transparent';
     })
-    .style('pointer-events', d => {
-      const p = d.properties || {};
-      return isCountryMember(p, currentMembers) ? 'auto' : 'none';
-    })
-    .style('cursor', d => {
-      const p = d.properties || {};
-      return isCountryMember(p, currentMembers) ? 'pointer' : 'default';
-    });
+    .style('pointer-events', d => makeNormalizedSet(currentMembers).has(normalize(basemapName(d.properties || {}))) ? 'auto' : 'none')
+    .style('cursor', d => makeNormalizedSet(currentMembers).has(normalize(basemapName(d.properties || {}))) ? 'pointer' : 'default');
 
   d3.selectAll('.year-chip').classed('active', d => d === currentYear);
   const activeChip = document.querySelector('.year-chip.active');
@@ -277,9 +259,7 @@ function dedupSort(arr) {
 }
 
 function displayLabelForList(rawName, groupYear) {
-  if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) {
-    return 'Soviet Union';
-  }
+  if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) return 'Soviet Union';
   return rawName;
 }
 
@@ -300,6 +280,10 @@ function filterCShapesByYear(year) {
   return features;
 }
 
+function basemapName(props) {
+  return props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
+}
+
 function getMembersUpToYear(year) {
   const members = new Set();
   membershipData.filter(d => d.year <= year).forEach(d => {
@@ -309,8 +293,7 @@ function getMembersUpToYear(year) {
       else countryMappings[d.country].forEach(s => members.add(s));
     } else {
       members.add(d.country);
-      const variations = getCountryVariations(d.country);
-      variations.forEach(v => members.add(v));
+      getCountryVariations(d.country).forEach(v => members.add(v));
     }
   });
   return members;
@@ -319,49 +302,47 @@ function getMembersUpToYear(year) {
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
-    // Hart-codiert für Deutschland 1973
     if (d.country === 'Germany' && year === 1973) {
       set.add('Germany');
-      set.add('Federal Republic of Germany'); 
-      set.add('German Democratic Republic');
+      set.add('Federal Republic of Germany');
+      set.add('German Federal Republic');
       set.add('West Germany');
+      set.add('German Democratic Republic');
       set.add('East Germany');
+      set.add('FRG');
+      set.add('GDR');
       return;
     }
-    
     if (countryMappings[d.country]) {
       countryMappings[d.country].forEach(s => set.add(s));
     } else {
       set.add(d.country);
-      const variations = getCountryVariations(d.country);
-      variations.forEach(v => set.add(v));
+      getCountryVariations(d.country).forEach(v => set.add(v));
     }
   });
   return set;
 }
 
 function displayNameByYear(props, year) {
-  const raw = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
+  const raw = basemapName(props) || 'Unknown';
   if (useHistoricalBasemap) return raw;
   if ((raw === 'Russia' || raw === 'Russian Federation') && year < 1991) return 'Soviet Union';
   return raw;
 }
 
 function isCountryMember(props, memberSet) {
-  const name = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
+  const name = basemapName(props);
   if (!name) return false;
-  
   if (memberSet.has(name)) return true;
-  
   const variations = getCountryVariations(name);
   if (variations.some(v => memberSet.has(v))) return true;
-  
   for (const [csvCountry, mapCountries] of Object.entries(countryMappings)) {
-    if (memberSet.has(csvCountry) && mapCountries.includes(name)) {
-      return true;
-    }
+    if (memberSet.has(csvCountry) && mapCountries.includes(name)) return true;
   }
-  
+  const normSet = makeNormalizedSet(memberSet);
+  const n = normalize(name);
+  if (normSet.has(n)) return true;
+  for (const v of variations) if (normSet.has(normalize(v))) return true;
   return false;
 }
 
@@ -382,18 +363,46 @@ function getCountryVariations(countryName) {
     'Türkiye': ['Turkey'],
     'Côte d\'Ivoire': ['Ivory Coast'],
     'Timor-Leste': ['East Timor'],
-    'Germany': ['Federal Republic of Germany','German Federal Republic','West Germany','German Democratic Republic','East Germany'],
-    'Federal Republic of Germany': ['Germany','German Federal Republic','West Germany'],
-    'German Federal Republic': ['Germany','Federal Republic of Germany','West Germany'],
-    'West Germany': ['Germany','Federal Republic of Germany','German Federal Republic'],
-    'German Democratic Republic': ['East Germany','Germany'],
-    'East Germany': ['German Democratic Republic','Germany'],
+    'Germany': ['Federal Republic of Germany','German Federal Republic','West Germany','German Democratic Republic','East Germany','FRG','GDR'],
+    'Federal Republic of Germany': ['Germany','German Federal Republic','West Germany','FRG'],
+    'German Federal Republic': ['Germany','Federal Republic of Germany','West Germany','FRG'],
+    'West Germany': ['Germany','Federal Republic of Germany','German Federal Republic','FRG'],
+    'German Democratic Republic': ['East Germany','Germany','GDR'],
+    'East Germany': ['German Democratic Republic','Germany','GDR'],
+    'FRG': ['Germany','Federal Republic of Germany','West Germany','German Federal Republic'],
+    'GDR': ['German Democratic Republic','East Germany','Germany']
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   for (const [canonical, alts] of Object.entries(nameMap)) {
     if (alts.includes(countryName)) variations.push(canonical, ...alts);
   }
   return [...new Set(variations)];
+}
+
+function normalize(s) {
+  return String(s || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .replace(/\((.*?)\)/g,' ')
+    .replace(/[^a-z0-9\s]/g,' ')
+    .replace(/\b(federal)\b/g,'federal')
+    .replace(/\b(republic)\b/g,'republic')
+    .replace(/\b(german)\b/g,'german')
+    .replace(/\b(democratic)\b/g,'democratic')
+    .replace(/\b(frg)\b/g,'frg')
+    .replace(/\b(gdr)\b/g,'gdr')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function makeNormalizedSet(setLike) {
+  const out = new Set();
+  for (const v of setLike) {
+    out.add(normalize(v));
+    getCountryVariations(v).forEach(a => out.add(normalize(a)));
+  }
+  return out;
 }
 
 function getMembershipInfo(countryName) {
@@ -424,9 +433,7 @@ function handleMouseOver(event, d) {
     return;
   }
   const display = displayNameByYear(p, currentYear);
-  const info = getMembershipInfo(
-    p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown'
-  );
+  const info = getMembershipInfo(basemapName(p));
   let html = `<div class="tooltip-title">${display}</div>`;
   html += `<div class="tooltip-since">UNECE member since: ${info.year ?? 'Unknown'}</div>`;
   if (info.date) html += `<div class="tooltip-line">Joined on: ${info.date}</div>`;
@@ -437,42 +444,24 @@ function handleMouseOver(event, d) {
 function handleMouseMove(event) {
   const tt = document.getElementById('tooltip');
   if (!tt) return;
-
   if (tt.style.visibility !== 'visible') {
     tt.style.visibility = 'visible';
     tt.style.opacity = 1;
   }
-
   const padding = 18;
   const margin  = 12;
-
   const pageW = window.innerWidth || document.documentElement.clientWidth;
   const pageH = window.innerHeight || document.documentElement.clientHeight;
-
   const ttW = tt.offsetWidth;
   const ttH = tt.offsetHeight;
-
   let x = event.pageX + padding;
   let y = event.pageY + padding;
-
-  if (x + ttW + margin > pageW) {
-    x = event.pageX - ttW - padding;
-  }
-  
-  if (y + ttH + margin > pageH + window.scrollY) {
-    y = event.pageY - ttH - padding;
-  }
-
+  if (x + ttW + margin > pageW) x = event.pageX - ttW - padding;
+  if (y + ttH + margin > pageH + window.scrollY) y = event.pageY - ttH - padding;
   if (x < margin) x = margin;
   if (y < window.scrollY + margin) y = window.scrollY + margin;
-
-  if (x + ttW > pageW - margin) {
-    x = Math.max(margin, pageW - ttW - margin);
-  }
-  if (y + ttH > pageH + window.scrollY - margin) {
-    y = Math.max(window.scrollY + margin, pageH + window.scrollY - ttH - margin);
-  }
-
+  if (x + ttW > pageW - margin) x = Math.max(margin, pageW - ttW - margin);
+  if (y + ttH > pageH + window.scrollY - margin) y = Math.max(window.scrollY + margin, pageH + window.scrollY - ttH - margin);
   tt.style.left = `${x}px`;
   tt.style.top  = `${y}px`;
 }
