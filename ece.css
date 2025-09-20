@@ -272,7 +272,7 @@ button:hover, button:focus {
 
 #tooltip .tooltip-line { 
   color:#000; 
-  margin-top:4px;
+  margin-top:4px; 
   line-height:1.4;
 }
 
