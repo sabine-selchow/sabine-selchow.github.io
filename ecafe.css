@@ -206,11 +206,10 @@ button#play.playing {
 
 .legend-box {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 3px;
-  margin-right: 6px;
+  margin-right: 8px;
   flex-shrink: 0;
-  border: 1px solid #ccc; 
 }
 
