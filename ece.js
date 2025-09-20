@@ -33,16 +33,13 @@ const aliasMap = {
     "german fed rep","fed rep of germany","german dem rep","german dem republic"
   ],
   "federal republic of germany": [
-    "germany","german federal republic","west germany","frg",
-    "german fed rep","fed rep of germany"
+    "germany","german federal republic","west germany","frg","german fed rep","fed rep of germany"
   ],
   "german federal republic": [
-    "germany","federal republic of germany","west germany","frg",
-    "german fed rep","fed rep of germany"
+    "germany","federal republic of germany","west germany","frg","german fed rep","fed rep of germany"
   ],
   "west germany": [
-    "germany","federal republic of germany","german federal republic","frg",
-    "german fed rep","fed rep of germany"
+    "germany","federal republic of germany","german federal republic","frg","german fed rep","fed rep of germany"
   ],
   "german democratic republic": [
     "east germany","gdr","germany","german dem rep","german dem republic"
@@ -92,7 +89,7 @@ function makeNormalizedSet(names) {
 }
 
 function basemapName(p) {
-  return p?.NAME_LONG || p?.NAME || p?.NAME_EN || p?.ADMIN || p?.name || p?.CNTRY_NAME || "Unknown";
+  return p?.NAME_LONG || p?.NAME || p?.GWSNAME || p?.NAME_EN || p?.ADMIN || p?.name || p?.CNTRY_NAME || "Unknown";
 }
 
 init();
@@ -196,7 +193,7 @@ function buildYearChips() {
     .enter()
     .append("div")
     .attr("class","year-chip")
-    .text(d => d === 2006 ? "since 2006" : d)
+    .text(d => d)
     .on("click", (event, y) => {
       stopAnimation();
       currentYear = y;
