@@ -10,12 +10,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 
   <!-- Meta -->
-  <meta name="description" content="Interactive timeline of membership in the UN Economic and Social Commission for Europe (UNECE), 1947–2025." />
+  <meta name="description" content="Interactive timeline of membership in the UN Economic Commission for Europe (UNECE), 1947–2025." />
   <meta name="author" content="Sabine Selchow" />
   <meta name="funding" content="European Research Council, Grant Agreement No. 885285" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="ece.css" />
+  <link rel="stylesheet" href="ece.css?v=20250921a" />
 </head>
 <body>
   <!-- HEADER -->
@@ -33,7 +33,7 @@
 
   <!-- HEADLINE + DESCRIPTION -->
   <div class="content-container intro-flex">
-    <img src="ece.svg" alt="UN ESCAP emblem / cover image" class="intro-image" />
+    <img src="ece.svg" alt="UNECE emblem / cover image" class="intro-image" />
     <div class="intro-text-block">
       <h1 class="left-aligned">UN ECE Members: Timeline (1947–2025)</h1>
 
@@ -44,7 +44,7 @@
           <a href="https://unece.org/member-states" target="_blank" rel="noopener" style="color:#d90c1a; text-decoration:none; font-weight:500;">
             Membership site
           </a>
-          of the UN Economic and Social Commission for Europe (UNECE)
+          of the UN Economic Commission for Europe (UNECE)
         </p>
         <p>
           <b>Funded:</b> Part of a European Research Council (ERC) grant,
@@ -53,7 +53,7 @@
           </a>, Grant No. 885285
         </p>
         <p>
-          This visualization shows the evolution of membership in the UN Economic and Social Commission for Europe (UNECE) from 1947 to September 2025.
+          This visualization shows the evolution of membership in UNECE from 1947 to September 2025.
           All information (including country names) is taken from the official UNECE site.
         </p>
 
@@ -61,19 +61,17 @@
           <li>Click a year or press <i>Play</i></li>
           <li>Hover the map for details</li>
           <li>Members:</li>
-              <ul class="legend">
-  <ul style="margin:0; padding-left:20px; list-style-type:none;">
-    <li>
-      <span class="legend-box" style="background-color:#d90c1a;"></span>
-      joined in selected year
-    </li>
-    <li>
-      <span class="legend-box" style="background-color:#4A90E2;"></span>
-      members as of selected year
-    </li>
-  </ul>
-  </ul>
-</ul>
+          <ul class="legend" style="margin:0; padding-left:20px; list-style-type:none;">
+            <li>
+              <span class="legend-box" style="background-color:#d90c1a;"></span>
+              joined in selected year
+            </li>
+            <li>
+              <span class="legend-box" style="background-color:#4A90E2;"></span>
+              members as of selected year
+            </li>
+          </ul>
+        </ul>
       </div>
     </div>
   </div>
@@ -121,7 +119,7 @@
   </footer>
 
   <!-- App JS -->
-  <script src="ece.js"></script>
+  <script src="ece.js?v=20250921a"></script>
   <noscript>This visualization requires JavaScript (D3) to run.</noscript>
 </body>
 </html>
