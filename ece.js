@@ -319,6 +319,16 @@ function getMembersUpToYear(year) {
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
+    // Hart-codiert für Deutschland 1973
+    if (d.country === 'Germany' && year === 1973) {
+      set.add('Germany');
+      set.add('Federal Republic of Germany'); 
+      set.add('German Democratic Republic');
+      set.add('West Germany');
+      set.add('East Germany');
+      return;
+    }
+    
     if (countryMappings[d.country]) {
       countryMappings[d.country].forEach(s => set.add(s));
     } else {
