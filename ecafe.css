@@ -188,3 +188,29 @@ button#play.playing {
   color: #000;     /* Text schwarz, wie gewünscht */
   border-color: #16a34a;
 }
+
+
+.legend {
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.legend li {
+  margin: 2px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  margin-right: 6px;
+  flex-shrink: 0;
+  border: 1px solid #ccc; 
+}
+
