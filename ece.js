@@ -1,3 +1,5 @@
+// UNECE Timeline viz (v2025-09-21a) — robust Germany 1973 mapping + alias variations
+
 let svg, g, landG, countriesG, projection, path, tooltip;
 let worldData, landData, membershipData = [];
 let currentYear = 1947;
@@ -19,6 +21,7 @@ const countryMappings = {
   'USSR': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
   'Yugoslavia': ['Serbia','Croatia','Bosnia and Herzegovina','Slovenia','Montenegro','Macedonia','Kosovo'],
   'Czechoslovakia': ['Czech Republic','Slovakia'],
+  // historical variants occasionally found in basemaps
   'German Democratic Republic': ['Germany'],
   'East Germany': ['Germany'],
   'West Germany': ['Germany'],
@@ -56,9 +59,7 @@ function setupSVG() {
   landG = g.append('g').attr('id', 'land-layer');
   countriesG = g.append('g').attr('id', 'countries-layer');
 
-  tooltip = d3.select('#tooltip');
-
-  tooltip
+  tooltip = d3.select('#tooltip')
     .style('max-width', 'min(46ch, 60vw)')
     .style('white-space', 'normal')
     .style('word-break', 'break-word')
@@ -147,10 +148,7 @@ function buildYearChips() {
     .enter()
     .append('div')
     .attr('class', 'year-chip')
-    .text(d => {
-      if (d === 2006) return "since 2006";
-      return d;
-    })
+    .text(d => (d === 2006 ? "since 2006" : d))
     .on('click', (event, y) => {
       stopAnimation();
       currentYear = y;
@@ -299,24 +297,26 @@ function getMembersUpToYear(year) {
       const dissolves = dissolutionYears[d.country] ?? 9999;
       if (year < dissolves) members.add(d.country);
       else countryMappings[d.country].forEach(s => members.add(s));
-    } else {
-      members.add(d.country);
-      const variations = getCountryVariations(d.country);
-      variations.forEach(v => members.add(v));
-    }
+    } else members.add(d.country);
   });
   return members;
 }
 
+// Robust: 1973 Germany → add FRG + GDR + Germany (independent of basemap)
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
-    if (countryMappings[d.country]) {
-      countryMappings[d.country].forEach(s => set.add(s));
+    const c = (d.country || '').trim();
+    if (c === 'Germany' && year === 1973) {
+      set.add('Germany');                        // world-atlas generic label
+      set.add('Federal Republic of Germany');    // CShapes
+      set.add('German Democratic Republic');     // CShapes
+      return;
+    }
+    if (countryMappings[c]) {
+      countryMappings[c].forEach(s => set.add(s));
     } else {
-      set.add(d.country);
-      const variations = getCountryVariations(d.country);
-      variations.forEach(v => set.add(v));
+      set.add(c);
     }
   });
   return set;
@@ -332,21 +332,12 @@ function displayNameByYear(props, year) {
 function isCountryMember(props, memberSet) {
   const name = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
   if (!name) return false;
-  
   if (memberSet.has(name)) return true;
-  
   const variations = getCountryVariations(name);
-  if (variations.some(v => memberSet.has(v))) return true;
-  
-  for (const [csvCountry, mapCountries] of Object.entries(countryMappings)) {
-    if (memberSet.has(csvCountry) && mapCountries.includes(name)) {
-      return true;
-    }
-  }
-  
-  return false;
+  return variations.some(v => memberSet.has(v));
 }
 
+// Alias-Varianten inkl. BRD/DDR (beide Richtungen)
 function getCountryVariations(countryName) {
   const variations = [countryName];
   const nameMap = {
@@ -364,8 +355,16 @@ function getCountryVariations(countryName) {
     'Türkiye': ['Turkey'],
     'Côte d\'Ivoire': ['Ivory Coast'],
     'Timor-Leste': ['East Timor'],
-    'Germany': ['German Democratic Republic','East Germany','West Germany','Federal Republic of Germany','German Federal Republic'],
+
+    // Germany variants
+    'Germany': ['Federal Republic of Germany','German Federal Republic','West Germany','German Democratic Republic','East Germany'],
+    'Federal Republic of Germany': ['Germany','German Federal Republic','West Germany'],
+    'German Federal Republic': ['Germany','Federal Republic of Germany','West Germany'],
+    'West Germany': ['Germany','Federal Republic of Germany','German Federal Republic'],
+    'German Democratic Republic': ['East Germany','Germany'],
+    'East Germany': ['German Democratic Republic','Germany'],
   };
+
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   for (const [canonical, alts] of Object.entries(nameMap)) {
     if (alts.includes(countryName)) variations.push(canonical, ...alts);
@@ -432,23 +431,13 @@ function handleMouseMove(event) {
   let x = event.pageX + padding;
   let y = event.pageY + padding;
 
-  if (x + ttW + margin > pageW) {
-    x = event.pageX - ttW - padding;
-  }
-  
-  if (y + ttH + margin > pageH + window.scrollY) {
-    y = event.pageY - ttH - padding;
-  }
-
+  if (x + ttW + margin > pageW) x = event.pageX - ttW - padding;
+  if (y + ttH + margin > pageH + window.scrollY) y = event.pageY - ttH - padding;
   if (x < margin) x = margin;
   if (y < window.scrollY + margin) y = window.scrollY + margin;
 
-  if (x + ttW > pageW - margin) {
-    x = Math.max(margin, pageW - ttW - margin);
-  }
-  if (y + ttH > pageH + window.scrollY - margin) {
-    y = Math.max(window.scrollY + margin, pageH + window.scrollY - ttH - margin);
-  }
+  if (x + ttW > pageW - margin) x = Math.max(margin, pageW - ttW - margin);
+  if (y + ttH > pageH + window.scrollY - margin) y = Math.max(window.scrollY + margin, pageH + window.scrollY - ttH - margin);
 
   tt.style.left = `${x}px`;
   tt.style.top  = `${y}px`;
