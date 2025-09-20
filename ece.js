@@ -304,16 +304,9 @@ function getMembersUpToYear(year) {
   return members;
 }
 
-// --- PATCH 2 (optional-robust): „neu im Jahr“ sauber mappen, v.a. 1973 BRD/DDR ---
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
-    // Sonderfall 1973: CSV hat "Germany", Basemap trennt BRD/DDR
-    if (d.country === 'Germany' && useHistoricalBasemap && year === 1973) {
-      set.add('Federal Republic of Germany');
-      set.add('German Democratic Republic');
-      return;
-    }
     if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
     else set.add(d.country);
   });
@@ -335,7 +328,6 @@ function isCountryMember(props, memberSet) {
   return variations.some(v => memberSet.has(v));
 }
 
-// --- PATCH 1: Alias-Varianten inkl. BRD/DDR, beide Richtungen robust ---
 function getCountryVariations(countryName) {
   const variations = [countryName];
   const nameMap = {
@@ -353,16 +345,7 @@ function getCountryVariations(countryName) {
     'Türkiye': ['Turkey'],
     'Côte d\'Ivoire': ['Ivory Coast'],
     'Timor-Leste': ['East Timor'],
-
-    // Deutschland / BRD / DDR
-    'Germany': ['Federal Republic of Germany','German Federal Republic','West Germany','German Democratic Republic','East Germany'],
-    'Federal Republic of Germany': ['Germany','German Federal Republic','West Germany'],
-    'German Federal Republic': ['Germany','Federal Republic of Germany','West Germany'],
-    'West Germany': ['Germany','Federal Republic of Germany','German Federal Republic'],
-    'German Democratic Republic': ['East Germany','Germany'],
-    'East Germany': ['German Democratic Republic','Germany'],
   };
-
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   for (const [canonical, alts] of Object.entries(nameMap)) {
     if (alts.includes(countryName)) variations.push(canonical, ...alts);
