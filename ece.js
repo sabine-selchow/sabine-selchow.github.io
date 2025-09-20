@@ -299,7 +299,11 @@ function getMembersUpToYear(year) {
       const dissolves = dissolutionYears[d.country] ?? 9999;
       if (year < dissolves) members.add(d.country);
       else countryMappings[d.country].forEach(s => members.add(s));
-    } else members.add(d.country);
+    } else {
+      members.add(d.country);
+      const variations = getCountryVariations(d.country);
+      variations.forEach(v => members.add(v));
+    }
   });
   return members;
 }
@@ -307,8 +311,13 @@ function getMembersUpToYear(year) {
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
-    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
-    else set.add(d.country);
+    if (countryMappings[d.country]) {
+      countryMappings[d.country].forEach(s => set.add(s));
+    } else {
+      set.add(d.country);
+      const variations = getCountryVariations(d.country);
+      variations.forEach(v => set.add(v));
+    }
   });
   return set;
 }
