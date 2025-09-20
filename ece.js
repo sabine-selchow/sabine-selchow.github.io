@@ -44,12 +44,35 @@ const aliasMap = {
   "türkiye": ["turkey","turkiye"],
   "côte d'ivoire": ["ivory coast","cote d ivoire","cote d’ivoire"],
   "timor-leste": ["east timor"],
-  "germany": ["federal republic of germany","german federal republic","west germany","german democratic republic","east germany","frg","gdr"],
-  "federal republic of germany": ["germany","german federal republic","west germany","frg"],
-  "german federal republic": ["germany","federal republic of germany","west germany","frg"],
-  "west germany": ["germany","federal republic of germany","german federal republic","frg"],
-  "german democratic republic": ["east germany","germany","gdr"],
-  "east germany": ["german democratic republic","germany","gdr"]
+  "germany": [
+    "federal republic of germany","german federal republic","west germany",
+    "german democratic republic","east germany","frg","gdr",
+    "german fed rep","fed rep of germany","german dem rep","german dem republic"
+  ],
+  "federal republic of germany": [
+    "germany","german federal republic","west germany","frg",
+    "german fed rep","fed rep of germany"
+  ],
+  "german federal republic": [
+    "germany","federal republic of germany","west germany","frg",
+    "german fed rep","fed rep of germany"
+  ],
+  "west germany": [
+    "germany","federal republic of germany","german federal republic","frg",
+    "german fed rep","fed rep of germany"
+  ],
+  "german democratic republic": [
+    "east germany","gdr","germany","german dem rep","german dem republic"
+  ],
+  "east germany": [
+    "german democratic republic","germany","gdr","german dem rep","german dem republic"
+  ],
+  "frg": ["federal republic of germany","west germany","germany","german fed rep","fed rep of germany"],
+  "gdr": ["german democratic republic","east germany","germany","german dem rep","german dem republic"],
+  "german fed rep": ["federal republic of germany","west germany","frg","germany","fed rep of germany"],
+  "fed rep of germany": ["federal republic of germany","west germany","frg","germany","german fed rep"],
+  "german dem rep": ["german democratic republic","east germany","gdr","germany","german dem republic"],
+  "german dem republic": ["german democratic republic","east germany","gdr","germany"]
 };
 
 function normalize(s) {
@@ -58,6 +81,9 @@ function normalize(s) {
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g,"")
     .replace(/[\u2019’]/g,"'")
+    .replace(/\./g,"")
+    .replace(/\brep\b/g,"republic")
+    .replace(/\bdem\b/g,"democratic")
     .replace(/[^a-z0-9\s\-]/g," ")
     .replace(/\s+/g," ")
     .trim();
@@ -83,7 +109,7 @@ function makeNormalizedSet(names) {
 }
 
 function basemapName(p) {
-  return p?.NAME || p?.NAME_EN || p?.ADMIN || p?.name || p?.CNTRY_NAME || "Unknown";
+  return p?.NAME_LONG || p?.NAME || p?.NAME_EN || p?.ADMIN || p?.name || p?.CNTRY_NAME || "Unknown";
 }
 
 init();
@@ -99,14 +125,20 @@ async function init() {
 }
 
 function setupSVG() {
-  svg = d3.select("#ecafeViz").attr("preserveAspectRatio","xMidYMid meet").attr("viewBox","0 0 1000 600");
+  svg = d3.select("#ecafeViz")
+    .attr("preserveAspectRatio","xMidYMid meet")
+    .attr("viewBox","0 0 1000 600");
   const width = 1000, height = 600;
   projection = d3.geoMercator().scale(150).translate([width/2, height/2 + 40]);
   path = d3.geoPath().projection(projection);
   g = svg.append("g");
   landG = g.append("g").attr("id","land-layer");
   countriesG = g.append("g").attr("id","countries-layer");
-  tooltip = d3.select("#tooltip").style("max-width","min(46ch, 60vw)").style("white-space","normal").style("word-break","break-word").style("z-index","9999");
+  tooltip = d3.select("#tooltip")
+    .style("max-width","min(46ch, 60vw)")
+    .style("white-space","normal")
+    .style("word-break","break-word")
+    .style("z-index","9999");
 }
 
 function setupControls() {
@@ -156,7 +188,9 @@ async function loadData() {
       const note = (d.Note || "").trim() || null;
       return { country: rawCountry, year, date, note };
     });
-    membershipData = rows.filter(r => r.country && Number.isFinite(r.year)).sort((a,b) => d3.ascending(a.year, b.year));
+    membershipData = rows
+      .filter(r => r.country && Number.isFinite(r.year))
+      .sort((a,b) => d3.ascending(a.year, b.year));
     relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a,b) => a - b);
   } catch(e) {
     alert("ece.csv fehlt oder ist nicht lesbar. Bitte ece.csv (Header: Country,Year,Date,Note) neben index.html legen.");
@@ -166,19 +200,29 @@ async function loadData() {
 function drawLandMask() {
   if (!landData) return;
   landG.selectAll("path").remove();
-  landG.append("path").datum(landData).attr("d", path).attr("fill", COLOR_LAND).attr("stroke","none");
+  landG.append("path")
+    .datum(landData)
+    .attr("d", path)
+    .attr("fill", COLOR_LAND)
+    .attr("stroke","none");
 }
 
 function buildYearChips() {
   const wrap = d3.select("#yearChips");
   if (wrap.empty()) return;
   wrap.selectAll("*").remove();
-  wrap.selectAll("div.year-chip").data(relevantYears, d => d).enter().append("div").attr("class","year-chip").text(d => d === 2006 ? "since 2006" : d).on("click", (event, y) => {
-    stopAnimation();
-    currentYear = y;
-    yearIdx = relevantYears.indexOf(y);
-    updateVisualization();
-  });
+  wrap.selectAll("div.year-chip")
+    .data(relevantYears, d => d)
+    .enter()
+    .append("div")
+    .attr("class","year-chip")
+    .text(d => d === 2006 ? "since 2006" : d)
+    .on("click", (event, y) => {
+      stopAnimation();
+      currentYear = y;
+      yearIdx = relevantYears.indexOf(y);
+      updateVisualization();
+    });
 }
 
 function drawCountries(features) {
@@ -334,14 +378,12 @@ function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.year === year).forEach(d => {
     if (d.country === "Germany" && year === 1973) {
-      set.add("Germany");
-      set.add("Federal Republic of Germany");
-      set.add("German Federal Republic");
-      set.add("West Germany");
-      set.add("German Democratic Republic");
-      set.add("East Germany");
-      set.add("FRG");
-      set.add("GDR");
+      [
+        "Germany",
+        "Federal Republic of Germany","German Federal Republic","West Germany","FRG",
+        "German Democratic Republic","East Germany","GDR",
+        "German Fed Rep","Fed Rep of Germany","German Dem Rep","German Dem Republic"
+      ].forEach(n => set.add(n));
       return;
     }
     if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
