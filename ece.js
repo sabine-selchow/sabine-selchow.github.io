@@ -22,9 +22,11 @@ const countryMappings = {
   'Yugoslavia': ['Serbia','Croatia','Bosnia and Herzegovina','Slovenia','Montenegro','Macedonia','Kosovo'],
   'Czechoslovakia': ['Czech Republic','Slovakia'],
   'German Democratic Republic': ['Germany'],
+  'German Dem. Rep.': ['Germany'],
   'East Germany': ['Germany'],
   'West Germany': ['Germany'],
   'Federal Republic of Germany': ['Germany'],
+  'German Fed. Rep.': ['Germany'],
   'German Federal Republic': ['Germany'],
   'Yemen Arab Republic': ['Yemen'],
   "People's Democratic Republic of Yemen": ['Yemen'],
@@ -316,12 +318,24 @@ function getMembersUpToYear(year) {
   });
   return members;
 }
+
 function getNewMembersInYear(year) {
   const set = new Set();
+  
+  // Neue Mitglieder die in diesem Jahr beitreten
   membershipData.filter(d => d.start_year === year).forEach(d => {
-    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
-    else set.add(d.country);
+    if (countryMappings[d.country]) {
+      countryMappings[d.country].forEach(s => set.add(s));
+    } else {
+      set.add(d.country);
+    }
   });
+  
+  // Spezialfall: Deutschland 1990 - Vereinigung
+  if (year === 1990) {
+    set.add('Germany');
+  }
+  
   return set;
 }
 
