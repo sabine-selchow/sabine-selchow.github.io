@@ -290,6 +290,8 @@ function getMembersUpToYear(year) {
   const members = new Set();
   membershipData.filter(d => d.start_year <= year && year < d.end_year).forEach(d => {
     if (!useHistoricalBasemap && (d.country === 'Federal Republic of Germany' || d.country === 'German Democratic Republic')) {
+      // Add both the original name and "Germany" to handle both historical and modern maps
+      members.add(d.country);
       members.add('Germany');
       return;
     }
@@ -312,6 +314,8 @@ function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.start_year === year).forEach(d => {
     if (!useHistoricalBasemap && (d.country === 'Federal Republic of Germany' || d.country === 'German Democratic Republic')) {
+      // Add both the original name and "Germany" to handle both historical and modern maps
+      set.add(d.country);
       set.add('Germany');
       return;
     }
@@ -367,4 +371,41 @@ function handleMouseOver(event, d) {
   const curr = getMembersUpToYear(currentYear);
   if (!isCountryMember(p, curr)) { tooltip.style('visibility','hidden').style('opacity',0); return; }
   const display = displayNameByYear(p, currentYear);
-  const info = getMembershipInfo(normalizeName(p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p
+  const info = getMembershipInfo(normalizeName(p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || ''));
+  let text = `<strong>${display}</strong>`;
+  if (info.year) text += `<br/>Member since: ${info.year}`;
+  if (info.date) text += `<br/>Date: ${info.date}`;
+  if (info.note) text += `<br/>Note: ${info.note}`;
+  tooltip.html(text).style('visibility','visible').style('opacity',1);
+}
+
+function handleMouseMove(event) {
+  const [x,y] = d3.pointer(event, document.body);
+  tooltip.style('left', (x + 10) + 'px').style('top', (y - 10) + 'px');
+}
+
+function handleMouseOut() {
+  tooltip.style('visibility','hidden').style('opacity',0);
+}
+
+function startAnimation() {
+  if (isPlaying) return;
+  isPlaying = true;
+  playInterval = setInterval(() => {
+    yearIdx++;
+    if (yearIdx >= relevantYears.length) {
+      stopAnimation();
+      return;
+    }
+    currentYear = relevantYears[yearIdx];
+    updateVisualization();
+  }, 1000);
+}
+
+function stopAnimation() {
+  isPlaying = false;
+  if (playInterval) {
+    clearInterval(playInterval);
+    playInterval = null;
+  }
+}
