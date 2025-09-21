@@ -1,3 +1,5 @@
+/* ece.js — patched */
+
 let svg, g, landG, countriesG, projection, path, tooltip;
 let worldData, landData, membershipData = [];
 let currentYear = 1947;
@@ -14,6 +16,20 @@ const COLOR_LAND = "#e8e8e8";
 const COLOR_MEMBER = "#4A90E2";
 const COLOR_NEW = "#d90c1a";
 
+/* -------------------------------
+   Utility: Name normalization
+--------------------------------*/
+function normalizeName(n) {
+  return String(n || '')
+    .replace(/\u2019/g, "'")     // typogr. Apostroph -> '
+    .replace(/\(.*?\)/g, '')     // Klammerzusätze entfernen
+    .replace(/\./g, '')          // Punkte entfernen (Rep.)
+    .replace(/,/g, '')           // Kommas entfernen
+    .replace(/\s+/g, ' ')        // Whitespace normalisieren
+    .trim();
+}
+
+/* Historische Staaten-Mappings */
 const countryMappings = {
   'Soviet Union': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
   'USSR': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
@@ -37,6 +53,57 @@ const dissolutionYears = {
   'Federal Republic of Germany': 1990,
   'German Democratic Republic': 1990
 };
+
+/* Alias-Varianten (normalisiert, ohne Punkte/Klammern) */
+function getCountryVariations(countryNameRaw) {
+  const countryName = normalizeName(countryNameRaw);
+  const variations = [countryName];
+
+  const nameMap = {
+    // Deutschland-Varianten (CShapes-kompatibel)
+    'Germany': ['Federal Republic of Germany','German Democratic Republic','West Germany','East Germany','Germany West','Germany East','German Fed Rep','German Dem Rep','FRG','GDR','DDR','Federal Rep of Germany','Fed Rep of Germany'],
+    'Federal Republic of Germany': ['Germany','West Germany','Germany West','FRG','German Fed Rep','Federal Rep of Germany','FR Germany'],
+    'Fed Rep of Germany': ['Federal Republic of Germany','FRG','West Germany','Germany West','German Fed Rep','FR Germany','Germany'],
+    'German Fed Rep': ['Federal Republic of Germany','FRG','West Germany','Germany West','FR Germany','Germany'],
+    'German Democratic Republic': ['Germany','East Germany','Germany East','GDR','DDR','German Dem Rep'],
+    'German Dem Rep': ['German Democratic Republic','East Germany','Germany East','GDR','DDR','Germany'],
+
+    // Weitere oft abweichend geschriebene Namen
+    'United States of America': ['United States','USA','US'],
+    'Russian Federation': ['Russia','Soviet Union','USSR'],
+    'Myanmar': ['Burma'],
+    'Democratic Republic of the Congo': ['Congo','DRC'],
+    'Republic of Korea': ['South Korea'],
+    "Democratic People's Republic of Korea": ['North Korea'],
+    'Iran (Islamic Republic of)': ['Iran'],
+    'Viet Nam': ['Vietnam'],
+    "Lao People's Democratic Republic": ['Laos'],
+    'United Kingdom': ['UK','Britain'],
+
+    // Frühere Verbundstaaten
+    'Czech Republic': ['Czechoslovakia'],
+    'Slovakia': ['Czechoslovakia'],
+    'Serbia': ['Serbia and Montenegro','Yugoslavia','Federal Republic of Yugoslavia'],
+    'Montenegro': ['Serbia and Montenegro','Yugoslavia','Federal Republic of Yugoslavia']
+  };
+
+  const key = Object.keys(nameMap).find(k => normalizeName(k) === countryName);
+  if (key) {
+    nameMap[key].forEach(a => variations.push(normalizeName(a)));
+  }
+
+  // Rückwärts: falls Input eine der Alternativen ist, Canonical + alle Alts pushen
+  Object.entries(nameMap).forEach(([canonical, alts]) => {
+    const cn = normalizeName(canonical);
+    const found = alts.map(normalizeName).includes(countryName);
+    if (found) {
+      variations.push(cn);
+      alts.forEach(a => variations.push(normalizeName(a)));
+    }
+  });
+
+  return [...new Set(variations)];
+}
 
 init();
 
@@ -101,20 +168,22 @@ async function loadData() {
     const fc = topojson.feature(topo, topo.objects[firstKey]);
     window.__CSHAPES__ = fc;
     useHistoricalBasemap = true;
+    console.log('✅ CShapes geladen (historische Grenzen aktiv).');
   } catch (e) {
+    console.warn('⚠️ CShapes konnte nicht geladen werden – nutze world-atlas (keine historischen Grenzen).', e);
     const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
     worldData = topojson.feature(world, world.objects.countries);
   }
 
   try {
     const rows = await d3.csv('ece.csv', d => {
-      const c = d.Country ?? d.country ?? d.Land ?? d.State ?? d.name ?? '';
+      const c = normalizeName(d.Country ?? d.country ?? d.Land ?? d.State ?? d.name ?? '');
       const startY = d.start_year ?? d.Start_year ?? d.year ?? d.Year ?? '';
       const endY = d.end_year ?? d.End_year ?? d.endYear ?? '';
       const dateStr = (d.Date ?? d.date ?? d.Datum ?? d.Joined ?? '').toString().trim();
       const noteStr = (d.Note ?? d.note ?? '').toString().trim();
       return {
-        country: String(c).trim(),
+        country: c,
         start_year: +String(startY).slice(0,4),
         end_year: +String(endY).slice(0,4) || 9999,
         date: dateStr || null,
@@ -126,6 +195,7 @@ async function loadData() {
       .sort((a,b) => d3.ascending(a.start_year,b.start_year));
 
     relevantYears = Array.from(new Set(membershipData.map(d => d.start_year))).sort((a,b) => a - b);
+    console.log(`Mitgliedschaftsdatensätze: ${membershipData.length}, Jahr-Cluster: ${relevantYears.length}`);
   } catch (err) {
     console.error('ece.csv konnte nicht geladen werden', err);
     alert('ece.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
@@ -180,7 +250,8 @@ function drawCountries(features) {
 }
 
 function updateVisualization() {
-  d3.select('#yearDisplay').text(currentYear);
+  const yearDisplay = d3.select('#yearDisplay');
+  yearDisplay.text(currentYear).attr('data-basemap', useHistoricalBasemap ? 'cshapes' : 'modern');
 
   if (useHistoricalBasemap && window.__CSHAPES__) {
     drawCountries(filterCShapesByYear(currentYear));
@@ -276,13 +347,14 @@ function dedupSort(arr) {
 }
 
 function displayLabelForList(rawName, groupYear) {
-  if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) {
+  const n = normalizeName(rawName);
+  if ((n === 'Russia' || n === 'Russian Federation') && groupYear < 1991) {
     return 'Soviet Union';
   }
-  if (rawName === 'Federal Republic of Germany') {
+  if (['Federal Republic of Germany','Fed Rep of Germany','German Fed Rep'].includes(n)) {
     return 'Federal Republic of Germany (West Germany)';
   }
-  if (rawName === 'German Democratic Republic') {
+  if (['German Democratic Republic','German Dem Rep'].includes(n)) {
     return 'German Democratic Republic (East Germany)';
   }
   return rawName;
@@ -296,8 +368,8 @@ function pickProp(o, keys, fallback = null) {
 function filterCShapesByYear(year) {
   if (cshapesCache.has(year)) return cshapesCache.get(year);
   const fc = window.__CSHAPES__;
-  const START_KEYS = ['GWSYEAR','START','start','begin','FROMYEAR','from'];
-  const END_KEYS   = ['GWEYEAR','END','end','to','TOYEAR'];
+  const START_KEYS = ['GWSYEAR','GWSTART','START','start','begin','FROMYEAR','from','YEARSTART'];
+  const END_KEYS   = ['GWEYEAR','GWEND','END','end','to','TOYEAR','YEAREND'];
   const features = fc.features.filter(f => {
     const p = f.properties || {};
     const ys = +pickProp(p, START_KEYS, -Infinity);
@@ -310,78 +382,64 @@ function filterCShapesByYear(year) {
 
 function getMembersUpToYear(year) {
   const members = new Set();
-  membershipData.filter(d => d.start_year <= year && year < d.end_year).forEach(d => {
-    if (countryMappings[d.country]) {
-      const dissolves = dissolutionYears[d.country] ?? 9999;
-      if (year < dissolves) {
-        members.add(d.country);
+  membershipData
+    .filter(d => d.start_year <= year && year < d.end_year)
+    .forEach(d => {
+      const mapped = countryMappings[d.country];
+      if (mapped) {
+        const dissolves = dissolutionYears[d.country] ?? 9999;
+        if (year < dissolves) {
+          // Vor Auflösung: historischer Name bleibt Mitglied
+          members.add(d.country);
+        } else {
+          // Nach Auflösung: Nachfolger-Staaten
+          mapped.forEach(s => members.add(normalizeName(s)));
+        }
       } else {
-        countryMappings[d.country].forEach(s => {
-          members.add(s);
-        });
+        members.add(d.country);
       }
-    } else {
-      members.add(d.country);
-    }
-  });
+    });
   return members;
 }
 
 function getNewMembersInYear(year) {
   const set = new Set();
-  membershipData.filter(d => d.start_year === year).forEach(d => {
-    if (countryMappings[d.country]) {
-      countryMappings[d.country].forEach(s => {
-        set.add(s);
-      });
-    } else {
-      set.add(d.country);
-    }
-  });
+  membershipData
+    .filter(d => d.start_year === year)
+    .forEach(d => {
+      const mapped = countryMappings[d.country];
+      if (mapped) {
+        const dissolves = dissolutionYears[d.country] ?? 9999;
+        if (year < dissolves) {
+          // Vor der Auflösung: historischer Name ist "new"
+          set.add(d.country);
+        } else {
+          // Nach Auflösung: Nachfolger sind "new"
+          mapped.forEach(s => set.add(normalizeName(s)));
+        }
+      } else {
+        set.add(d.country);
+      }
+    });
   return set;
 }
 
 function displayNameByYear(props, year) {
   const raw = props?.GWSNAME || props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
-  if (useHistoricalBasemap) return raw;
-  if ((raw === 'Russia' || raw === 'Russian Federation') && year < 1991) return 'Soviet Union';
+  const norm = normalizeName(raw);
+  if (useHistoricalBasemap) return raw; // Anzeige = Rohlabel (CShapes-Historie)
+  if ((norm === 'Russia' || norm === 'Russian Federation') && year < 1991) return 'Soviet Union';
   return raw;
 }
 
 function isCountryMember(props, memberSet) {
-  const name = props?.GWSNAME || props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
+  const name = normalizeName(
+    props?.GWSNAME || props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME
+  );
   if (!name) return false;
   if (memberSet.has(name)) return true;
   const variations = getCountryVariations(name);
   return variations.some(v => memberSet.has(v));
-}
-
-function getCountryVariations(countryName) {
-  const variations = [countryName];
-  const nameMap = {
-    'United States of America': ['United States','USA','US'],
-    'Russian Federation': ['Russia','Soviet Union','USSR'],
-    'Myanmar': ['Burma'],
-    'Democratic Republic of the Congo': ['Congo','DRC'],
-    'Republic of Korea': ['South Korea'],
-    "Democratic People's Republic of Korea": ['North Korea'],
-    'Iran (Islamic Republic of)': ['Iran'],
-    'Viet Nam': ['Vietnam'],
-    'Lao People\'s Democratic Republic': ['Laos'],
-    'United Kingdom': ['UK','Britain'],
-    'Germany': ['Federal Republic of Germany','German Democratic Republic','West Germany','East Germany','Germany West','Germany East','German Fed. Rep.','German Dem. Rep.'],
-    'Federal Republic of Germany': ['Germany','West Germany','FRG','Germany West','German Fed. Rep.','Federal Republic of Germany'],
-    'German Democratic Republic': ['Germany','East Germany','GDR','DDR','Germany East','German Dem. Rep.','German Democratic Republic'],
-    'Germany West': ['Federal Republic of Germany','West Germany','FRG','Germany'],
-    'Germany East': ['German Democratic Republic','East Germany','GDR','DDR','Germany'],
-    'German Fed. Rep.': ['Federal Republic of Germany','West Germany','FRG','Germany'],
-    'German Dem. Rep.': ['German Democratic Republic','East Germany','GDR','DDR','Germany']
-  };
-  if (nameMap[countryName]) variations.push(...nameMap[countryName]);
-  Object.entries(nameMap).forEach(([canonical, alts]) => {
-    if (alts.includes(countryName)) variations.push(canonical, ...alts);
-  });
-  return [...new Set(variations)];
 }
 
 function getMembershipInfo(countryName) {
@@ -416,7 +474,7 @@ function handleMouseOver(event, d) {
   }
   const display = displayNameByYear(p, currentYear);
   const info = getMembershipInfo(
-    p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown'
+    normalizeName(p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown')
   );
   let html = `<div class="tooltip-title">${display}</div>`;
   html += `<div class="tooltip-since">ECAFE Member since: ${info.year ?? 'Unknown'}</div>`;
