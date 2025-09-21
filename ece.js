@@ -30,10 +30,10 @@ const countryMappings = {
 };
 
 const dissolutionYears = { 
-  'Soviet Union':1991, 
-  'USSR':1991, 
-  'Yugoslavia':1991, 
-  'Czechoslovakia':1993,
+  'Soviet Union': 1991, 
+  'USSR': 1991, 
+  'Yugoslavia': 1991, 
+  'Czechoslovakia': 1993,
   'Federal Republic of Germany': 1990,
   'German Democratic Republic': 1990
 };
@@ -87,7 +87,6 @@ function setupControls() {
 }
 
 async function loadData() {
-  
   try {
     const landTopo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json');
     landData = topojson.feature(landTopo, landTopo.objects.land);
@@ -126,13 +125,7 @@ async function loadData() {
       .filter(r => r.country && Number.isFinite(r.start_year))
       .sort((a,b) => d3.ascending(a.start_year,b.start_year));
 
-    console.log('=== CSV DEBUG ===');
-    console.log('Total rows loaded:', membershipData.length);
-    console.log('German entries:', membershipData.filter(d => d.country.toLowerCase().includes('german')));
-    console.log('All 1973 entries:', membershipData.filter(d => d.start_year === 1973));
-
     relevantYears = Array.from(new Set(membershipData.map(d => d.start_year))).sort((a,b) => a - b);
-    console.log('Relevant years:', relevantYears);
   } catch (err) {
     console.error('ece.csv konnte nicht geladen werden', err);
     alert('ece.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
@@ -159,7 +152,11 @@ function buildYearChips() {
     .enter()
     .append('div')
     .attr('class', 'year-chip')
-    .text(d => d === 2003 ? "since 2003" : d)
+    .text(d => {
+      if (d === 2003) return "since 2003";
+      if (d === 2006) return "since 2006";
+      return d;
+    })
     .on('click', (event, y) => {
       stopAnimation(); 
       currentYear = y;
@@ -194,17 +191,6 @@ function updateVisualization() {
   const currentMembers = getMembersUpToYear(currentYear);
   const newMembers = getNewMembersInYear(currentYear);
 
-  if (currentYear === 1973) {
-    console.log('=== 1973 DEBUG ===');
-    console.log('Members:', Array.from(currentMembers));
-    console.log('New:', Array.from(newMembers));
-    const germanFeatures = countriesG.selectAll('path').data().filter(d => {
-      const name = d.properties?.GWSNAME || d.properties?.NAME || '';
-      return name.toLowerCase().includes('german');
-    });
-    console.log('German features found:', germanFeatures.map(d => d.properties));
-  }
-
   d3.select('#memberCount').text(currentMembers.size);
   d3.select('#newMemberCount').text(newMembers.size);
 
@@ -217,7 +203,6 @@ function updateVisualization() {
       if (isMember) return COLOR_MEMBER;
       return 'transparent';
     })
-
     .style('pointer-events', d => {
       const p = d.properties || {};
       return isCountryMember(p, currentMembers) ? 'auto' : 'none';
@@ -319,20 +304,6 @@ function filterCShapesByYear(year) {
     const ye = +pickProp(p, END_KEYS, 9999);
     return Number.isFinite(ys) && (year >= ys) && (year < ye);
   });
-  
-  if (year === 1973) {
-    console.log('=== CShapes 1973 German Features ===');
-    const germanFeatures = features.filter(f => {
-      const name = (f.properties?.GWSNAME || '').toLowerCase();
-      return name.includes('german') || name.includes('deutschland');
-    });
-    console.log('German features found:', germanFeatures.map(f => ({
-      GWSNAME: f.properties?.GWSNAME,
-      GWSYEAR: f.properties?.GWSYEAR,
-      GWEYEAR: f.properties?.GWEYEAR
-    })));
-  }
-  
   cshapesCache.set(year, features);
   return features;
 }
@@ -398,16 +369,18 @@ function getCountryVariations(countryName) {
     'Viet Nam': ['Vietnam'],
     'Lao People\'s Democratic Republic': ['Laos'],
     'United Kingdom': ['UK','Britain'],
-    'Germany': ['Federal Republic of Germany', 'German Democratic Republic', 'West Germany', 'East Germany', 'Germany West', 'Germany East', 'German Fed. Rep.', 'German Dem. Rep.'],
-    'Federal Republic of Germany': ['Germany', 'West Germany', 'FRG', 'Germany West', 'German Fed. Rep.', 'Federal Republic of Germany'],
-    'German Democratic Republic': ['Germany', 'East Germany', 'GDR', 'DDR', 'Germany East', 'German Dem. Rep.', 'German Democratic Republic'],
-    'Germany West': ['Federal Republic of Germany', 'West Germany', 'FRG', 'Germany'],
-    'Germany East': ['German Democratic Republic', 'East Germany', 'GDR', 'DDR', 'Germany'],
-    'German Fed. Rep.': ['Federal Republic of Germany', 'West Germany', 'FRG', 'Germany'],
-    'German Dem. Rep.': ['German Democratic Republic', 'East Germany', 'GDR', 'DDR', 'Germany']
+    'Germany': ['Federal Republic of Germany','German Democratic Republic','West Germany','East Germany','Germany West','Germany East','German Fed. Rep.','German Dem. Rep.'],
+    'Federal Republic of Germany': ['Germany','West Germany','FRG','Germany West','German Fed. Rep.','Federal Republic of Germany'],
+    'German Democratic Republic': ['Germany','East Germany','GDR','DDR','Germany East','German Dem. Rep.','German Democratic Republic'],
+    'Germany West': ['Federal Republic of Germany','West Germany','FRG','Germany'],
+    'Germany East': ['German Democratic Republic','East Germany','GDR','DDR','Germany'],
+    'German Fed. Rep.': ['Federal Republic of Germany','West Germany','FRG','Germany'],
+    'German Dem. Rep.': ['German Democratic Republic','East Germany','GDR','DDR','Germany']
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
-  Object.entries(nameMap).forEach(([canonical, alts]) => { if (alts.includes(countryName)) variations.push(canonical, ...alts); });
+  Object.entries(nameMap).forEach(([canonical, alts]) => {
+    if (alts.includes(countryName)) variations.push(canonical, ...alts);
+  });
   return [...new Set(variations)];
 }
 
@@ -437,17 +410,14 @@ function getMembershipInfo(countryName) {
 function handleMouseOver(event, d) {
   const p = d.properties || {};
   const curr = getMembersUpToYear(currentYear);
-
   if (!isCountryMember(p, curr)) {
     tooltip.style('visibility','hidden').style('opacity',0);
     return;
   }
-
   const display = displayNameByYear(p, currentYear);
   const info = getMembershipInfo(
     p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown'
   );
-
   let html = `<div class="tooltip-title">${display}</div>`;
   html += `<div class="tooltip-since">ECAFE Member since: ${info.year ?? 'Unknown'}</div>`;
   if (info.date) html += `<div class="tooltip-line">Joined on: ${info.date}</div>`;
@@ -466,9 +436,7 @@ function handleMouseOut() {
 function startAnimation() {
   if (isPlaying || relevantYears.length === 0) return;
   isPlaying = true;
-
   d3.select("#play").classed("playing", true);
-
   yearIdx = relevantYears.indexOf(currentYear);
   if (yearIdx < 0) yearIdx = 0;
   playInterval = setInterval(() => {
