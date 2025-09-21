@@ -1,0 +1,208 @@
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --primary: #4A90E2;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Containers / Header */
+.content-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 0 40px; }
+header {
+  background:#fff; border-bottom:1px solid #eee;
+  position: sticky; top:0; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.header-content { display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+.site-name { font-size: 20px; font-weight: 700; }
+.nav-menu { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
+.nav-menu a { text-decoration:none; color:#000; font-weight:500; }
+.nav-menu a.active, .nav-menu a:hover { color:#d90c1a; }
+
+/* Intro */
+.intro-flex { display:flex; gap:32px; align-items:flex-start; margin:40px auto; padding:0 20px; }
+.intro-image { width:200px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,.08); flex-shrink:0; }
+.intro-text-block { flex:1; max-width:800px; }
+h1.left-aligned { font-size:26px; margin:.2rem 0 1rem; }
+#description { font-size:15px; line-height:1.5; }
+
+/* Map */
+.map-wrap { position: relative; }
+svg#ecafeViz {
+  width: 100%;
+  height: clamp(300px, 50vh, 560px); 
+  background:#fff; border:1px solid #eee; border-radius:8px; display:block; margin:20px auto;
+}
+
+/* Land-Maske unten */
+.land { fill:#e8e8e8; stroke:none; }
+
+/* Länder-Overlay */
+.country { fill: transparent; stroke: none; cursor:pointer; transition:filter .2s; }
+.country:hover { filter: brightness(1.05); }
+.country.member { fill:#4A90E2; }
+.country.new-member { fill:#d90c1a; }
+
+/* Controls */
+#controls { margin: 10px auto 12px; padding: 8px 20px; max-width: 980px;
+  display:flex; flex-direction:column; align-items:center; gap:10px; }
+#yearDisplay { font-size:24px; font-weight:700; color:var(--primary); }
+.stats { font-size:14px; color:#666; }
+#mainButtons { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+button {
+  font-size:14px; padding:10px 20px; border-radius:999px; border:1.5px solid var(--primary);
+  background:#fff; color:var(--primary); font-weight:600; cursor:pointer; transition:all .15s;
+}
+button:hover, button:focus { background:var(--primary); color:#fff; }
+.reset-style { border-color:#16a34a; color:#16a34a; }
+.reset-style:hover { background:#16a34a; color:#fff; }
+
+/* Jahre */
+.year-chips {
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center;
+  max-width:980px; width:100%;
+  max-height: 96px; /* ca. 2 Zeilen */
+  overflow-y: auto;
+  padding: 8px; border:1px solid #eee; border-radius:12px; background:#fff;
+  overscroll-behavior: contain;
+}
+.year-chip {
+  padding:6px 12px; border:1.5px solid var(--primary); border-radius:999px;
+  background:#fff; color:var(--primary); font-weight:600; font-size:13px;
+  cursor:pointer; user-select:none; transition:all .15s ease;
+}
+.year-chip:hover { background:var(--primary); color:#fff; }
+.year-chip.active { background:#15a34a; border-color:#15a34a; color:#fff; }
+
+/* --- Mitgliederliste overlay  --- */
+.member-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 260px;
+  max-height: 72%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.35;
+  overflow: hidden; 
+}
+.overlay-header {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:8px; padding-bottom:6px; border-bottom:1px solid #efefef;
+}
+.overlay-title { font-weight:700; color:#111; }
+.overlay-toggle {
+  border:1px solid #ccc; background:#fff; border-radius:6px; padding:2px 8px; cursor:pointer;
+}
+.overlay-toggle:hover { background:#f5f5f5; }
+
+/* SCROLLBARE LISTE (fix) */
+.overlay-body {
+  overflow: auto;
+  margin-top: 6px;
+  padding-right: 4px;
+  flex: 1;        /* nimmt den restlichen Platz im Flex-Container */
+  min-height: 0;  /* wichtig, damit overflow in Flex-Layouts greift */
+}
+
+/* Jahr-Gruppen im Overlay */
+.year-group { margin: 6px 0 10px; }
+.year-title { font-weight:700; color:#111; margin: 4px 0 4px; }
+.country-list {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  grid-template-columns: 1fr;   
+  gap: 2px 10px;
+}
+.country-list li { list-style: disc; }
+
+/* Collapsed state */
+.member-overlay.collapsed .overlay-body { display:none; }
+.member-overlay.collapsed { max-height: unset; }
+
+/* Tooltip */
+#tooltip {
+  position:absolute; padding:10px 12px; background:#fff; border:1px solid #3a78c0;
+  border-radius:8px; pointer-events:none; font-size:12px; color:#000; 
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  transition:opacity .2s; visibility:hidden; opacity:0; max-width:240px; line-height:1.4; z-index:1000;
+}
+.tooltip-title { font-weight:700; margin-bottom:4px; color:#000; }
+
+/* Nur diese Zeile blau */
+#tooltip .tooltip-since { color: var(--primary); font-weight:600; }
+
+/* Alle anderen Zusatzzeilen schwarz */
+#tooltip .tooltip-line { color:#000; margin-top:2px; }
+
+/* Responsive tweaks */
+@media (max-width: 1000px) {
+  .intro-flex { flex-direction:column; align-items:center; }
+  .intro-image { width:60%; margin-bottom:12px; }
+}
+@media (max-width: 768px) {
+  svg#ecafeViz { height: clamp(260px, 45vh, 520px); }
+  .year-chips { max-height:120px; }
+  .year-chip { font-size:12px; padding:5px 10px; }
+  .member-overlay { width: 220px; font-size: 11px; }
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #fff;
+  color: #444;
+  font-size: 13px;
+  text-align: center;
+  padding: 50px 0 10px 0;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+}
+footer a { color: #3a3aff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* Play-Button aktiv (Animation läuft) */
+button#play.playing {
+  background: #16a34a;
+  color: #000;     /* Text schwarz, wie gewünscht */
+  border-color: #16a34a;
+}
+
+
+.legend {
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.legend li {
+  margin: 2px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
