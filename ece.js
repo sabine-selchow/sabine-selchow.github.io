@@ -21,17 +21,24 @@ const countryMappings = {
   'USSR': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
   'Yugoslavia': ['Serbia','Croatia','Bosnia and Herzegovina','Slovenia','Montenegro','Macedonia','Kosovo'],
   'Czechoslovakia': ['Czech Republic','Slovakia'],
-  'German Democratic Republic': ['Germany'],
-  'East Germany': ['Germany'],
-  'West Germany': ['Germany'],
   'Federal Republic of Germany': ['Germany'],
-  'German Federal Republic': ['Germany'],
+  'German Democratic Republic': ['Germany'],
+  'West Germany': ['Germany'],
+  'East Germany': ['Germany'],
   'Yemen Arab Republic': ['Yemen'],
   "People's Democratic Republic of Yemen": ['Yemen'],
   'South Yemen': ['Yemen'],
   'North Yemen': ['Yemen']
 };
-const dissolutionYears = { 'Soviet Union':1991, 'USSR':1991, 'Yugoslavia':1991, 'Czechoslovakia':1993 };
+
+const dissolutionYears = { 
+  'Soviet Union':1991, 
+  'USSR':1991, 
+  'Yugoslavia':1991, 
+  'Czechoslovakia':1993,
+  'Federal Republic of Germany': 1990,
+  'German Democratic Republic': 1990
+};
 
 // ---------- Boot ----------
 init();
@@ -284,6 +291,13 @@ function displayLabelForList(rawName, groupYear) {
   if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) {
     return 'Soviet Union';
   }
+  // Deutschland-spezifische Anzeige
+  if (rawName === 'Federal Republic of Germany') {
+    return 'Federal Republic of Germany (West Germany)';
+  }
+  if (rawName === 'German Democratic Republic') {
+    return 'German Democratic Republic (East Germany)';
+  }
   return rawName;
 }
 
@@ -353,7 +367,10 @@ function getCountryVariations(countryName) {
     'Iran (Islamic Republic of)': ['Iran'],
     'Viet Nam': ['Vietnam'],
     'Lao People\'s Democratic Republic': ['Laos'],
-    'United Kingdom': ['UK','Britain']
+    'United Kingdom': ['UK','Britain'],
+    'Germany': ['Federal Republic of Germany', 'German Democratic Republic', 'West Germany', 'East Germany'],
+    'Federal Republic of Germany': ['Germany', 'West Germany', 'FRG'],
+    'German Democratic Republic': ['Germany', 'East Germany', 'GDR', 'DDR']
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   Object.entries(nameMap).forEach(([canonical, alts]) => { if (alts.includes(countryName)) variations.push(canonical, ...alts); });
