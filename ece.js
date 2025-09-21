@@ -1,5 +1,3 @@
-// ECE/UNECE membership map — full script (with robust name matching + historical Germany handling)
-
 let svg, g, landG, countriesG, projection, path, tooltip;
 let worldData, landData, membershipData = [];
 let currentYear = 1947;
@@ -24,7 +22,6 @@ const countryMappings = {
   'Yugoslavia': ['Serbia','Croatia','Bosnia and Herzegovina','Slovenia','Montenegro','Macedonia','Kosovo'],
   'Czechoslovakia': ['Czech Republic','Slovakia'],
   'German Democratic Republic': ['Germany'],
-  'Federal Republic of Gemany': ['Germany'],
   'East Germany': ['Germany'],
   'West Germany': ['Germany'],
   'Federal Republic of Germany': ['Germany'],
@@ -89,6 +86,7 @@ function setupControls() {
 
 // ---------- Data loading ----------
 async function loadData() {
+  
   try {
     const landTopo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json');
     landData = topojson.feature(landTopo, landTopo.objects.land);
@@ -96,7 +94,6 @@ async function loadData() {
     console.warn('Land-110m konnte nicht geladen werden.', e);
   }
 
-  // Prefer historical basemap (CShapes) if present; fall back to World Atlas
   try {
     const topo = await d3.json('CShapes-2.0-simplified.json'); // mapshaper-Export
     const firstKey = topo && topo.objects ? Object.keys(topo.objects)[0] : null;
@@ -208,6 +205,7 @@ function updateVisualization() {
       if (isMember) return COLOR_MEMBER;
       return 'transparent';
     })
+
     .style('pointer-events', d => {
       const p = d.properties || {};
       return isCountryMember(p, currentMembers) ? 'auto' : 'none';
@@ -306,153 +304,60 @@ function filterCShapesByYear(year) {
   return features;
 }
 
-// ---------- Name normalization + matching (NEW) ----------
-function normalizeName(s) {
-  if (!s) return '';
-  return String(s)
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/['’`"]/g, '')                // remove quotes
-    .replace(/\(.*?\)/g, '')               // drop parentheticals
-    .replace(/[\.,]/g, '')                 // drop punctuation
-    .replace(/\b(the|of|and)\b/g, '')      // drop filler words
-    .replace(/\s+/g, ' ')                  // collapse spaces
-    .trim();
-}
-
-function getCountryVariations(countryName) {
-  const base = [countryName];
-  const nameMap = {
-    'United States of America': ['United States','USA','US','U.S.','U.S.A.'],
-    'Russian Federation': ['Russia','Soviet Union','USSR'],
-    'Germany': [
-      'Federal Republic of Germany',
-      'Federal Republic of Gemany',      // tolerate CSV typo
-      'German Democratic Republic',
-      'West Germany','East Germany',
-      'German Federal Republic',
-      'FRG','GFR','GDR','DEU','GER'
-    ],
-    'Myanmar': ['Burma'],
-    'Democratic Republic of the Congo': ['Congo','DRC','Congo, The Democratic Republic of the'],
-    'Republic of Korea': ['South Korea'],
-    "Democratic People's Republic of Korea": ['North Korea'],
-    'Iran (Islamic Republic of)': ['Iran'],
-    'Viet Nam': ['Vietnam'],
-    "Lao People's Democratic Republic": ['Laos'],
-    'United Kingdom': ['UK','Britain','Great Britain']
-  };
-
-  // Reverse lookup so alt-as-input expands too
-  const reverse = {};
-  for (const [canon, alts] of Object.entries(nameMap)) {
-    for (const a of alts) {
-      if (!reverse[a]) reverse[a] = new Set();
-      reverse[a].add(canon);
-      for (const b of alts) if (b !== a) reverse[a].add(b);
-    }
-  }
-
-  const out = new Set(base);
-  if (nameMap[countryName]) nameMap[countryName].forEach(v => out.add(v));
-  if (reverse[countryName]) reverse[countryName].forEach(v => out.add(v));
-  return [...out];
-}
-
-function isCountryMember(props, memberSet) {
-  const raw = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
-  if (!raw) return false;
-
-  const rawNorm = normalizeName(raw);
-
-  // direct normalized hit
-  for (const m of memberSet) {
-    if (normalizeName(m) === rawNorm) return true;
-  }
-
-  // alias/variation hits (normalized)
-  const vars = getCountryVariations(raw);
-  return vars.some(v => {
-    const nv = normalizeName(v);
-    for (const m of memberSet) if (normalizeName(m) === nv) return true;
-    return false;
-  });
-}
-
-// ---------- Membership-Logik (UPDATED) ----------
+// ---------- Membership-Logik ----------
 function getMembersUpToYear(year) {
   const members = new Set();
-
-  membershipData
-    .filter(d => d.start_year <= year && year < d.end_year)
-    .forEach(d => {
-      const c = d.country;
-      if (countryMappings[c]) {
-        const dissolves = dissolutionYears[c] ?? 9999;
-        if (year < dissolves) {
-          // before dissolution: show the historical entity
-          members.add(c);
-        } else {
-          // after dissolution: show successor states
-          countryMappings[c].forEach(s => members.add(s));
-        }
-      } else {
-        members.add(c);
-      }
-    });
-
+  membershipData.filter(d => d.start_year <= year && year < d.end_year).forEach(d => {
+    if (countryMappings[d.country]) {
+      const dissolves = dissolutionYears[d.country] ?? 9999;
+      if (year < dissolves) members.add(d.country);
+      else countryMappings[d.country].forEach(s => members.add(s));
+    } else members.add(d.country);
+  });
   return members;
 }
-
 function getNewMembersInYear(year) {
   const set = new Set();
-
   membershipData.filter(d => d.start_year === year).forEach(d => {
-    const c = d.country;
-
-    // Handle the two Germanies explicitly before 1990
-    const germanLabels = [
-      'German Democratic Republic',
-      'Federal Republic of Germany',
-      'Federal Republic of Gemany', // typo tolerant
-      'West Germany',
-      'East Germany',
-      'German Federal Republic'
-    ].map(normalizeName);
-
-    const isGermanSplit = germanLabels.includes(normalizeName(c));
-
-    if (isGermanSplit && year < 1990) {
-      // add variants to catch different basemap labels
-      set.add('German Democratic Republic');
-      set.add('Federal Republic of Germany');
-      set.add('West Germany');
-      set.add('East Germany');
-      return;
-    }
-
-    // Default mapping behavior
-    if (countryMappings[c]) {
-      const dissolves = dissolutionYears[c] ?? 9999;
-      if (year >= dissolves) countryMappings[c].forEach(s => set.add(s));
-      else set.add(c); // keep historical label until dissolution
-    } else {
-      set.add(c);
-    }
+    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
+    else set.add(d.country);
   });
-
-  // Reunification: treat 1990 as the “new” unified Germany year for the highlight
-  if (year === 1990) set.add('Germany');
-
   return set;
 }
 
 // ---------- Namen / Tooltip ----------
 function displayNameByYear(props, year) {
   const raw = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
-  if (useHistoricalBasemap) return raw; // keep historical label from the layer
+  if (useHistoricalBasemap) return raw;
   if ((raw === 'Russia' || raw === 'Russian Federation') && year < 1991) return 'Soviet Union';
   return raw;
+}
+
+function isCountryMember(props, memberSet) {
+  const name = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
+  if (!name) return false;
+  if (memberSet.has(name)) return true;
+  const variations = getCountryVariations(name);
+  return variations.some(v => memberSet.has(v));
+}
+
+function getCountryVariations(countryName) {
+  const variations = [countryName];
+  const nameMap = {
+    'United States of America': ['United States','USA','US'],
+    'Russian Federation': ['Russia','Soviet Union','USSR'],
+    'Myanmar': ['Burma'],
+    'Democratic Republic of the Congo': ['Congo','DRC'],
+    'Republic of Korea': ['South Korea'],
+    "Democratic People's Republic of Korea": ['North Korea'],
+    'Iran (Islamic Republic of)': ['Iran'],
+    'Viet Nam': ['Vietnam'],
+    'Lao People\'s Democratic Republic': ['Laos'],
+    'United Kingdom': ['UK','Britain']
+  };
+  if (nameMap[countryName]) variations.push(...nameMap[countryName]);
+  Object.entries(nameMap).forEach(([canonical, alts]) => { if (alts.includes(countryName)) variations.push(canonical, ...alts); });
+  return [...new Set(variations)];
 }
 
 function getMembershipInfo(countryName) {
