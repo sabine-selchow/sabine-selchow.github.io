@@ -126,7 +126,13 @@ async function loadData() {
       .filter(r => r.country && Number.isFinite(r.start_year))
       .sort((a,b) => d3.ascending(a.start_year,b.start_year));
 
+    console.log('=== CSV DEBUG ===');
+    console.log('Total rows loaded:', membershipData.length);
+    console.log('German entries:', membershipData.filter(d => d.country.toLowerCase().includes('german')));
+    console.log('All 1973 entries:', membershipData.filter(d => d.start_year === 1973));
+
     relevantYears = Array.from(new Set(membershipData.map(d => d.start_year))).sort((a,b) => a - b);
+    console.log('Relevant years:', relevantYears);
   } catch (err) {
     console.error('ece.csv konnte nicht geladen werden', err);
     alert('ece.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
@@ -313,6 +319,20 @@ function filterCShapesByYear(year) {
     const ye = +pickProp(p, END_KEYS, 9999);
     return Number.isFinite(ys) && (year >= ys) && (year < ye);
   });
+  
+  if (year === 1973) {
+    console.log('=== CShapes 1973 German Features ===');
+    const germanFeatures = features.filter(f => {
+      const name = (f.properties?.GWSNAME || '').toLowerCase();
+      return name.includes('german') || name.includes('deutschland');
+    });
+    console.log('German features found:', germanFeatures.map(f => ({
+      GWSNAME: f.properties?.GWSNAME,
+      GWSYEAR: f.properties?.GWSYEAR,
+      GWEYEAR: f.properties?.GWEYEAR
+    })));
+  }
+  
   cshapesCache.set(year, features);
   return features;
 }
@@ -378,9 +398,13 @@ function getCountryVariations(countryName) {
     'Viet Nam': ['Vietnam'],
     'Lao People\'s Democratic Republic': ['Laos'],
     'United Kingdom': ['UK','Britain'],
-    'Germany': ['Federal Republic of Germany', 'German Democratic Republic', 'West Germany', 'East Germany'],
-    'Federal Republic of Germany': ['Germany', 'West Germany', 'FRG'],
-    'German Democratic Republic': ['Germany', 'East Germany', 'GDR', 'DDR']
+    'Germany': ['Federal Republic of Germany', 'German Democratic Republic', 'West Germany', 'East Germany', 'Germany West', 'Germany East', 'German Fed. Rep.', 'German Dem. Rep.'],
+    'Federal Republic of Germany': ['Germany', 'West Germany', 'FRG', 'Germany West', 'German Fed. Rep.', 'Federal Republic of Germany'],
+    'German Democratic Republic': ['Germany', 'East Germany', 'GDR', 'DDR', 'Germany East', 'German Dem. Rep.', 'German Democratic Republic'],
+    'Germany West': ['Federal Republic of Germany', 'West Germany', 'FRG', 'Germany'],
+    'Germany East': ['German Democratic Republic', 'East Germany', 'GDR', 'DDR', 'Germany'],
+    'German Fed. Rep.': ['Federal Republic of Germany', 'West Germany', 'FRG', 'Germany'],
+    'German Dem. Rep.': ['German Democratic Republic', 'East Germany', 'GDR', 'DDR', 'Germany']
   };
   if (nameMap[countryName]) variations.push(...nameMap[countryName]);
   Object.entries(nameMap).forEach(([canonical, alts]) => { if (alts.includes(countryName)) variations.push(canonical, ...alts); });
