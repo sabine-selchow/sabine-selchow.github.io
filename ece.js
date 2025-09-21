@@ -10,12 +10,10 @@ const cshapesCache = new Map();
 let relevantYears = [];
 let yearIdx = 0;
 
-// Farben
 const COLOR_LAND = "#e8e8e8";
 const COLOR_MEMBER = "#4A90E2";
 const COLOR_NEW = "#d90c1a";
 
-// Mappings (Auflösungen / Nachfolgestaaten)
 const countryMappings = {
   'Soviet Union': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
   'USSR': ['Russia','Ukraine','Belarus','Kazakhstan','Uzbekistan','Kyrgyzstan','Tajikistan','Turkmenistan','Georgia','Armenia','Azerbaijan','Moldova','Lithuania','Latvia','Estonia'],
@@ -40,7 +38,6 @@ const dissolutionYears = {
   'German Democratic Republic': 1990
 };
 
-// ---------- Boot ----------
 init();
 
 async function init() {
@@ -53,7 +50,6 @@ async function init() {
   updateVisualization();
 }
 
-// ---------- SVG & Controls ----------
 function setupSVG() {
   svg = d3.select('#ecafeViz')
     .attr('preserveAspectRatio', 'xMidYMid meet')
@@ -80,7 +76,6 @@ function setupControls() {
     updateVisualization();
   });
 
-  // Overlay ein-/ausklappen
   const toggleBtn = document.getElementById('overlayToggle');
   const overlay = document.getElementById('memberOverlay');
   if (toggleBtn && overlay) {
@@ -91,7 +86,6 @@ function setupControls() {
   }
 }
 
-// ---------- Data loading ----------
 async function loadData() {
   
   try {
@@ -102,7 +96,7 @@ async function loadData() {
   }
 
   try {
-    const topo = await d3.json('CShapes-2.0-simplified.json'); // mapshaper-Export
+    const topo = await d3.json('CShapes-2.0-simplified.json');
     const firstKey = topo && topo.objects ? Object.keys(topo.objects)[0] : null;
     if (!firstKey) throw new Error('TopoJSON objects missing');
     const fc = topojson.feature(topo, topo.objects[firstKey]);
@@ -113,7 +107,6 @@ async function loadData() {
     worldData = topojson.feature(world, world.objects.countries);
   }
 
-  // CSV (Mitglieder) – mit Date & Note
   try {
     const rows = await d3.csv('ece.csv', d => {
       const c = d.Country ?? d.country ?? d.Land ?? d.State ?? d.name ?? '';
@@ -140,7 +133,6 @@ async function loadData() {
   }
 }
 
-// ---------- Land-Maske ----------
 function drawLandMask() {
   if (!landData) return;
   landG.selectAll('path').remove();
@@ -151,7 +143,6 @@ function drawLandMask() {
     .attr('stroke', 'none');
 }
 
-// ---------- Jahr-Chips ----------
 function buildYearChips() {
   const wrap = d3.select('#yearChips');
   if (wrap.empty()) return;
@@ -171,7 +162,6 @@ function buildYearChips() {
     });
 }
 
-// ---------- Länder-Layer ----------
 function drawCountries(features) {
   countriesG.selectAll('path').remove();
   countriesG.selectAll('path')
@@ -189,14 +179,12 @@ function drawCountries(features) {
 function updateVisualization() {
   d3.select('#yearDisplay').text(currentYear);
 
-  // Basemap zeichnen
   if (useHistoricalBasemap && window.__CSHAPES__) {
     drawCountries(filterCShapesByYear(currentYear));
   } else if (worldData) {
     drawCountries(worldData.features);
   }
 
-  // Mitgliedsstatus (Länderpolygone)
   const currentMembers = getMembersUpToYear(currentYear);
   const newMembers = getNewMembersInYear(currentYear);
 
@@ -229,7 +217,6 @@ function updateVisualization() {
   updateMemberOverlay(currentYear);
 }
 
-// ---------- Members-Overlay (Liste) ----------
 function updateMemberOverlay(year) {
   const titleYear = document.getElementById('overlayYear');
   if (titleYear) titleYear.textContent = year;
@@ -286,12 +273,10 @@ function dedupSort(arr) {
   return Array.from(new Set(arr)).sort((a,b) => a.localeCompare(b));
 }
 
-// Jahresabhängiger Anzeigename für LISTE
 function displayLabelForList(rawName, groupYear) {
   if ((rawName === 'Russia' || rawName === 'Russian Federation') && groupYear < 1991) {
     return 'Soviet Union';
   }
-  // Deutschland-spezifische Anzeige
   if (rawName === 'Federal Republic of Germany') {
     return 'Federal Republic of Germany (West Germany)';
   }
@@ -301,8 +286,11 @@ function displayLabelForList(rawName, groupYear) {
   return rawName;
 }
 
-// ---------- CShapes-Helfer ----------
-function pickProp(o, keys, fallback = null) { for (const k of keys) if (o && o[k] != null) return o[k]; return fallback; }
+function pickProp(o, keys, fallback = null) { 
+  for (const k of keys) if (o && o[k] != null) return o[k]; 
+  return fallback; 
+}
+
 function filterCShapesByYear(year) {
   if (cshapesCache.has(year)) return cshapesCache.get(year);
   const fc = window.__CSHAPES__;
@@ -318,37 +306,48 @@ function filterCShapesByYear(year) {
   return features;
 }
 
-// ---------- Membership-Logik ----------
 function getMembersUpToYear(year) {
   const members = new Set();
   membershipData.filter(d => d.start_year <= year && year < d.end_year).forEach(d => {
     if (countryMappings[d.country]) {
       const dissolves = dissolutionYears[d.country] ?? 9999;
-      if (year < dissolves) members.add(d.country);
-      else countryMappings[d.country].forEach(s => members.add(s));
-    } else members.add(d.country);
+      if (year < dissolves) {
+        members.add(d.country);
+      } else {
+        countryMappings[d.country].forEach(s => {
+          members.add(s);
+        });
+      }
+    } else {
+      members.add(d.country);
+    }
   });
   return members;
 }
+
 function getNewMembersInYear(year) {
   const set = new Set();
   membershipData.filter(d => d.start_year === year).forEach(d => {
-    if (countryMappings[d.country]) countryMappings[d.country].forEach(s => set.add(s));
-    else set.add(d.country);
+    if (countryMappings[d.country]) {
+      countryMappings[d.country].forEach(s => {
+        set.add(s);
+      });
+    } else {
+      set.add(d.country);
+    }
   });
   return set;
 }
 
-// ---------- Namen / Tooltip ----------
 function displayNameByYear(props, year) {
-  const raw = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
+  const raw = props?.GWSNAME || props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME || 'Unknown';
   if (useHistoricalBasemap) return raw;
   if ((raw === 'Russia' || raw === 'Russian Federation') && year < 1991) return 'Soviet Union';
   return raw;
 }
 
 function isCountryMember(props, memberSet) {
-  const name = props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
+  const name = props?.GWSNAME || props?.NAME || props?.NAME_EN || props?.ADMIN || props?.name || props?.CNTRY_NAME;
   if (!name) return false;
   if (memberSet.has(name)) return true;
   const variations = getCountryVariations(name);
@@ -411,7 +410,7 @@ function handleMouseOver(event, d) {
 
   const display = displayNameByYear(p, currentYear);
   const info = getMembershipInfo(
-    p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown'
+    p.GWSNAME || p.NAME || p.NAME_EN || p.ADMIN || p.name || p.CNTRY_NAME || 'Unknown'
   );
 
   let html = `<div class="tooltip-title">${display}</div>`;
@@ -420,14 +419,15 @@ function handleMouseOver(event, d) {
   if (info.note) html += `<div class="tooltip-line">Note from UN ESCAP site: ${info.note}</div>`;
   tooltip.html(html).style('visibility','visible').style('opacity',1);
 }
+
 function handleMouseMove(event) {
   tooltip.style('left', (event.pageX + 10) + 'px').style('top', (event.pageY - 10) + 'px');
 }
+
 function handleMouseOut() {
   tooltip.style('visibility','hidden').style('opacity',0);
 }
 
-// ---------- Animation ----------
 function startAnimation() {
   if (isPlaying || relevantYears.length === 0) return;
   isPlaying = true;
@@ -442,6 +442,7 @@ function startAnimation() {
     updateVisualization();
   }, 1500);
 }
+
 function stopAnimation() {
   isPlaying = false;
   clearInterval(playInterval);
