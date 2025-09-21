@@ -188,6 +188,17 @@ function updateVisualization() {
   const currentMembers = getMembersUpToYear(currentYear);
   const newMembers = getNewMembersInYear(currentYear);
 
+  if (currentYear === 1973) {
+    console.log('=== 1973 DEBUG ===');
+    console.log('Members:', Array.from(currentMembers));
+    console.log('New:', Array.from(newMembers));
+    const germanFeatures = countriesG.selectAll('path').data().filter(d => {
+      const name = d.properties?.GWSNAME || d.properties?.NAME || '';
+      return name.toLowerCase().includes('german');
+    });
+    console.log('German features found:', germanFeatures.map(d => d.properties));
+  }
+
   d3.select('#memberCount').text(currentMembers.size);
   d3.select('#newMemberCount').text(newMembers.size);
 
