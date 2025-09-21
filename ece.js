@@ -359,6 +359,7 @@ function getCountryVariations(countryName) {
   const nameMap = {
     'United States of America': ['United States','USA','US'],
     'Russian Federation': ['Russia','Soviet Union','USSR'],
+    'Germany': ['Federal Republic of Gemany','German Democratic Republic','West Germany','East Germany','FRG','GDR','DEU','GER'],
     'Myanmar': ['Burma'],
     'Democratic Republic of the Congo': ['Congo','DRC'],
     'Republic of Korea': ['South Korea'],
