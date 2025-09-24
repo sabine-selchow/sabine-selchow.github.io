@@ -252,7 +252,8 @@ function createChart() {
     .style('stroke-dasharray', '3,3')
     .style('opacity', 0.3);
   
-  svg.on('mouseleave', hideTooltip);
+  svg.on('click', hideTooltip);
+  svg.on('touchstart', hideTooltip);
   
   updateChart();
 }
@@ -389,6 +390,18 @@ function updateChart() {
             .duration(200)
             .attr('r', 4);
           hideTooltip();
+        })
+        .on('touchstart', function(event, d) {
+          event.preventDefault();
+          d3.selectAll('.dot').attr('r', 4);
+          d3.select(this).attr('r', 6);
+          showTooltip(event, d);
+        })
+        .on('click', function(event, d) {
+          event.stopPropagation();
+          d3.selectAll('.dot').attr('r', 4);
+          d3.select(this).attr('r', 6);
+          showTooltip(event, d);
         });
     });
 }
@@ -412,7 +425,14 @@ function showTooltip(event, d) {
     Budget: $${d.value} million${changeText}
   `);
   
-  const [x, y] = d3.pointer(event, document.body);
+  let x, y;
+  if (event.touches && event.touches[0]) {
+    x = event.touches[0].clientX;
+    y = event.touches[0].clientY;
+  } else {
+    [x, y] = d3.pointer(event, document.body);
+  }
+  
   tooltip
     .style('left', (x + 10) + 'px')
     .style('top', (y - 10) + 'px')
@@ -424,6 +444,8 @@ function showTooltip(event, d) {
 
 function hideTooltip() {
   if (!tooltip) return;
+  
+  d3.selectAll('.dot').attr('r', 4);
   
   tooltip
     .transition()
