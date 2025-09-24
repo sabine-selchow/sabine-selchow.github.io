@@ -437,6 +437,3 @@ window.addEventListener('resize', function() {
 });
 
 document.addEventListener('DOMContentLoaded', init);
-});
-
-document.addEventListener('DOMContentLoaded', init);
