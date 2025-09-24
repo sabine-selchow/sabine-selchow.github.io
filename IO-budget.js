@@ -32,6 +32,36 @@ function parseCSV(csvString) {
   return { organizations, data, years };
 }
 
+function calculatePercentageChange(currentValue, previousValue) {
+  if (previousValue === 0 || previousValue === null || previousValue === undefined) {
+    if (currentValue > 0) {
+      return "New organization";
+    }
+    return "No data";
+  }
+  
+  if (currentValue === 0) {
+    return "-100%";
+  }
+  
+  const change = ((currentValue - previousValue) / previousValue) * 100;
+  const sign = change > 0 ? '+' : '';
+  return `${sign}${change.toFixed(1)}%`;
+}
+
+function getChangeInfo(organization, year, value) {
+  const orgData = parsedData.data.find(d => d.organization === organization);
+  if (!orgData) return "No data";
+  
+  const yearIndex = parsedData.years.indexOf(year);
+  if (yearIndex <= 0) return "First data point";
+  
+  const previousYear = parsedData.years[yearIndex - 1];
+  const previousValue = orgData[previousYear];
+  
+  return calculatePercentageChange(value, previousValue);
+}
+
 async function loadCSV() {
   try {
     const response = await fetch('budget.csv');
@@ -197,7 +227,7 @@ function createChart() {
     .attr('dy', '1em')
     .style('text-anchor', 'middle')
     .style('font-size', '12px')
-    .text('Budget (in US$ million)');
+    .text('Budget (in US $ millions)');
   
   svg.append('g')
     .attr('class', 'grid')
@@ -362,10 +392,20 @@ function updateChart() {
 function showTooltip(event, d) {
   if (!tooltip) return;
   
+  const changeInfo = getChangeInfo(d.organization, d.year, d.value);
+  const changeColor = changeInfo.startsWith('+') ? '#16a34a' : 
+                     changeInfo.startsWith('-') && changeInfo !== '-100%' ? '#dc2626' : 
+                     changeInfo === '-100%' ? '#dc2626' : '#666';
+  
+  let changeText = '';
+  if (changeInfo !== "First data point" && changeInfo !== "No data") {
+    changeText = `<br>Change from previous datapoint:<span style="color: ${changeColor};"> ${changeInfo}</span>`;
+  }
+  
   tooltip.html(`
     <strong>${d.organization}</strong><br>
     Year: ${d.year}<br>
-    Budget: US$ ${d.value}m
+    Budget: $${d.value} million${changeText}
   `);
   
   const [x, y] = d3.pointer(event, document.body);
@@ -394,6 +434,9 @@ window.addEventListener('resize', function() {
   if (svg) {
     createChart();
   }
+});
+
+document.addEventListener('DOMContentLoaded', init);
 });
 
 document.addEventListener('DOMContentLoaded', init);
