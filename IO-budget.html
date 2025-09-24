@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<title>Growth of Expenditure within the UN System (1950-1975)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content="Sabine Selchow">
+<meta name="funding" content="European Research Council (ERC), Grant No. 885285">
+<link rel="stylesheet" href="IO-budget.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+<header>
+<div class="content-container header-content">
+<div class="site-name">Sabine Selchow</div>
+<nav>
+<ul class="nav-menu">
+<li><a href="index.html" class="active">Home &amp; Visualisations</a></li>
+<li><a href="about.html">About &amp; Publications</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="content-container intro-flex">
+<img src="UN-budget.jpg" alt="UN System Budget Growth" class="intro-image" />
+<div class="intro-text-block">
+<h1 class="left-aligned">Growth of Expenditure within the UN System (1950-1975)</h1>
+<div id="description">
+<p>
+<b>Date:</b> 24 September 2025<br><br>
+<b>Data source:</b> Luard, Evan (1977) <i>International Agencies: The Emerging Framework of Interdependence.</i> London: Macmillan Press, p.3.<br>
+<b>Funded:</b> ERC <a href="https://www.ecoint.org" target="_blank" style="color:#d90c1a;text-decoration:none;font-weight:500;">ECOINT</a>, Grant No. 885285
+</p>
+<p><br>
+This visualization shows the regular budget development of various international organizations from 1950 to 1975.
+Users can select and deselect individual organizations using the checkboxes to create different comparisons.
+All regular budget values are in US $.<br><br>
+*"Original appropriations, i.e. excluding supplementary expenditure. IBRD loans and IMF credits are also excluded." The data for 1975 are estimates (Luard 1975: 3).
+</p>
+</div>
+</div>
+</div>
+<main>
+<div class="viz-wrap">
+<div class="panel">
+<div class="panel-top">
+<h2 id="panel-title">Growth of Expenditure within the UN System*</h2>
+</div>
+<div class="controls">
+<button class="control-btn" onclick="selectAllOrgs()">Select all</button>
+<button class="control-btn" onclick="deselectAllOrgs()">Clear all</button>
+<button class="control-btn" onclick="selectTopOrgs()">Select Top 5</button>
+</div>
+<div id="legend" class="legend-host">
+<div class="legend legend-dom">
+<div class="legend-grid" id="legend-grid">
+</div>
+</div>
+</div>
+<div class="chart-container" id="chart"></div>
+</div>
+</div>
+<br><br><br><br><br>
+</main>
+<footer>
+<p>© 2025 Sabine Selchow</p>
+</footer>
+<script src="IO-budget.js"></script>
+</body>
+</html>

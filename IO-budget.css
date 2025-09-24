@@ -1,0 +1,132 @@
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --primary: #4A90E2;
+  --secondary: #f0f0f0;
+  --hover: #e0e0e0;
+  --accent: #7ED321;
+  --panel-bg: #ffffff;
+  --panel-border: #eeeeee;
+  --shadow: 0 2px 8px rgba(0,0,0,.04);
+  --shadow-strong: 0 4px 14px rgba(0,0,0,.08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+header {
+  background:#fff; border-bottom:1px solid #eee; box-shadow:0 1px 4px rgba(0,0,0,.05);
+  position: sticky; top: 0; z-index: 100;
+}
+.header-content { display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+.site-name { font-size:20px; font-weight:700; }
+.nav-menu { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
+.nav-menu a { text-decoration:none; color:#000; font-weight:500; }
+.nav-menu a:hover, .nav-menu a.active { color:#d90c1a; }
+
+.intro-flex { display:flex; align-items:flex-start; gap:32px; max-width:1200px; margin:40px auto 20px auto; padding:0 20px; }
+.intro-image { width:200px; height:auto; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,.1); margin-top:.5em; flex-shrink:0; }
+.intro-text-block { flex:1; padding-left:20px; max-width:800px; }
+h1.left-aligned { font-size:26px; margin:0 0 20px 0; }
+#description { font-size:15px; line-height:1.5; color:#000; }
+#description p { margin:10px 0 14px 0; }
+#description ul { margin: 8px 0 0 24px; }
+
+.viz-wrap { max-width:1200px; margin:20px auto 20px auto; padding:0 20px 20px; }
+.panel {
+  background:var(--panel-bg); border:1px solid var(--panel-border);
+  border-radius:12px; padding:16px; box-shadow:var(--shadow);
+}
+.panel:hover { box-shadow:var(--shadow-strong); }
+.panel h2 { font-size:18px; margin:0 0 10px 0; line-height:1.3; }
+
+.panel-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+
+.legend-host { margin: 12px 0 12px 0; }
+.legend.legend-dom { font-size: 16px; color:#333; user-select:none; }
+.legend.legend-dom .legend-grid {
+  display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:6px 18px;
+}
+.legend.legend-dom .legend-item {
+  display:grid; grid-template-columns: 14px 12px 1fr; align-items:center; column-gap:8px; position:relative; cursor:pointer;
+}
+.legend.legend-dom .legend-item input[type="checkbox"] {
+  position:absolute; left:0; top:50%; transform:translateY(-50%); width:14px; height:14px; margin:0; opacity:0; cursor:pointer;
+}
+.legend.legend-dom .legend-item .cb {
+  width:14px; height:14px; border:1px solid #999; border-radius:3px; background:#fff; pointer-events:none; position:relative;
+}
+.legend.legend-dom .legend-item input[type="checkbox"]:checked + .cb { border-color:#222; }
+.legend.legend-dom .legend-item input[type="checkbox"]:checked + .cb::after {
+  content:""; position:absolute; width:7px; height:4px; left:2px; top:3px; border-left:1px solid #222; border-bottom:1px solid #222; transform:rotate(-45deg);
+}
+.legend.legend-dom .legend-item .swatch { width:10px; height:10px; border-radius:50%; }
+.legend.legend-dom .legend-item .label { font-size:14px; color:#333; line-height:1.2; }
+
+.chart-container {
+  width: 100%;
+  height: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--panel-border);
+  background: var(--secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.control-btn:hover {
+  background: var(--hover);
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .chart-container { height: 400px; }
+}
+@media (max-width: 700px) {
+  .panel-top { flex-direction:column; align-items:flex-start; gap:6px; }
+  .chart-container { height: 350px; }
+  #description { font-size:14px; }
+  .intro-flex { flex-direction: column; margin:40px auto 10px auto; }
+  .intro-image { width: 150px; margin: 0 auto; }
+  .intro-text-block { padding-left: 0; }
+  .viz-wrap { margin:10px auto 20px auto; }
+}
