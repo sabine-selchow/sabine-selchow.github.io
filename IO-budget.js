@@ -32,6 +32,17 @@ function parseCSV(csvString) {
   return { organizations, data, years };
 }
 
+async function loadCSV() {
+  try {
+    const response = await fetch('budget.csv');
+    const csvText = await response.text();
+    return csvText;
+  } catch (error) {
+    console.error('Error loading CSV:', error);
+    return null;
+  }
+}
+
 function calculatePercentageChange(currentValue, previousValue) {
   if (previousValue === 0 || previousValue === null || previousValue === undefined) {
     if (currentValue > 0) {
@@ -50,6 +61,10 @@ function calculatePercentageChange(currentValue, previousValue) {
 }
 
 function getChangeInfo(organization, year, value) {
+  if (!parsedData || !parsedData.data || !parsedData.years) {
+    return "No data";
+  }
+  
   const orgData = parsedData.data.find(d => d.organization === organization);
   if (!orgData) return "No data";
   
@@ -60,17 +75,6 @@ function getChangeInfo(organization, year, value) {
   const previousValue = orgData[previousYear];
   
   return calculatePercentageChange(value, previousValue);
-}
-
-async function loadCSV() {
-  try {
-    const response = await fetch('budget.csv');
-    const csvText = await response.text();
-    return csvText;
-  } catch (error) {
-    console.error('Error loading CSV:', error);
-    return null;
-  }
 }
 
 async function init() {
@@ -399,7 +403,7 @@ function showTooltip(event, d) {
   
   let changeText = '';
   if (changeInfo !== "First data point" && changeInfo !== "No data") {
-    changeText = `<br>Change from previous datapoint:<span style="color: ${changeColor};"> ${changeInfo}</span>`;
+    changeText = `<br>Change from previous: <span style="color: ${changeColor}; font-weight: 500;">${changeInfo}</span>`;
   }
   
   tooltip.html(`
