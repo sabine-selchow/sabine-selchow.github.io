@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>International Delegates 1933</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Sabine Selchow">
+  <meta name="funding" content="European Research Council (ERC), Grant No. 885285">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="delegates-1933.css">
+</head>
+<body>
+<header>
+  <div class="content-container header-content">
+    <div class="site-name">Sabine Selchow</div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home &amp; Visualisations</a></li>
+        <li><a href="about.html">About &amp; Publications</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="content-container intro-flex">
+  <img src="delegates-1933.jpg" alt="International Delegates 1933" class="intro-image" />
+  <div class="intro-text-block">
+    <h1 class="left-aligned">International Delegates 1933</h1>
+    <div id="description">
+      <p>
+        <b>Date:</b> 25 September 2025<br><br>
+        <b>Source:</b> League of Nations. <i>Journal of the Monetary and Economic Conference.</i> 20 December 1933, Ref. 0000765427_D0001, p. 7-27, available: <a href="https://archives.ungeneva.org/xhpq-h9zx-89p8" target="_blank" style="color:#d90c1a;text-decoration:none;font-weight:500;">League of Nations Archive</a><br><br>
+        <b>Funded:</b> Part of a European Research Council (ERC)-grant,
+        <a href="https://www.ecoint.org" target="_blank" style="color:#d90c1a;text-decoration:none;font-weight:500;">ECOINT</a>, Grant No. 885285
+      </p>
+      <p>
+        The Monetary and Economic Conference (London Economic Conference) met in London from 12 June to 27 July 1933. It was convened by the League of Nations. Delegates from 66 states—including the British Dominions—discussed currency stabilisation, trade barriers, and intergovernmental debts. The conference ended without binding agreements. 
+        <br><br>This visualization displays the delegates who participated in the conferences. Some degelates represented countries, others represented international organisations, such as the ILO or ICC. Toggle between country and organisation views to explore these different groupings. Each square represents one delegate, colored by the country or organisation they represented. Use the buttons at the top or the country / organsiation names below the viz to filter. Hover squares to see details.
+      </p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="viz-wrap">
+    <div class="panel">
+      <div class="panel-top">
+        <h2 id="panel-title">Delegates by Country (1933)</h2>
+
+        <!-- Mode Umschalter -->
+        <div class="toggle-group" role="tablist" aria-label="Dataset toggle">
+          <button id="mode-country" class="toggle-btn active" onclick="switchMode('country')" aria-pressed="true">
+            Delegates by Country
+          </button>
+          <button id="mode-org" class="toggle-btn" onclick="switchMode('org')" aria-pressed="false">
+            Delegates by Organisations
+          </button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="control-btn" onclick="selectAllGroups()">All</button>
+        <button class="control-btn" onclick="deselectAllGroups()">Clear All</button>
+        <button class="control-btn" onclick="selectTopGroups()">Top 5</button>
+      </div>
+
+      <div class="chart-container" id="chart">
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+
+      <div id="legend" class="legend-container"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Sabine Selchow</p>
+</footer>
+
+<script src="delegates-1933.js"></script>
+</body>
+</html>
