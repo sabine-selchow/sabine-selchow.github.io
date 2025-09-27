@@ -476,7 +476,7 @@ function drawVisualization() {
     .style('font-weight', 'bold')
     .text(`${data.length} delegates, ${distinctFiltered} ${label}`);
 
-  const squareSize = 32, padding = 4, total = squareSize + padding;
+  const squareSize = 16, padding = 4, total = squareSize + padding;
   const cols = Math.max(1, Math.floor(width / total));
   const rows = Math.ceil(data.length / cols);
   const startY = infoY + 18;
