@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>International Delegates 1933</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Sabine Selchow">
+  <meta name="funding" content="European Research Council (ERC), Grant No. 885285">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="USoilProduction.css">
+</head>
+<body>
+<header>
+  <div class="content-container header-content">
+    <div class="site-name">Sabine Selchow</div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home &amp; Visualisations</a></li>
+        <li><a href="about.html">About &amp; Publications</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="content-container intro-flex">
+  <img src="Photo courtesy Orange County Archives.jpg" alt="View up the coast from the Huntington Beach Pier, 1926. Photo courtesy Orange County Archives" class="intro-image" />
+  <div class="intro-text-block">
+    <h1 class="left-aligned">Oil: U.S. Total Production, Imports and Annual New Supply (1918-1943)</h1>
+    <div id="description">
+      <p>
+        <b>Date:</b> 27 September 2025<br><br>
+        <b>Source:</b> United States, Office of Naval Petroleum and Oil Shale Reserves (1945). <i>Twentieth century petroleum statistics</i>. Washington, p. 22<br><br>
+        <b>Funded:</b> Part of the European Research Council (ERC)-grant 
+        <a href="https://www.ecoint.org" target="_blank" style="color:#d90c1a;text-decoration:none;font-weight:500;">ECOINT</a>, Grant No. 885285
+      </p>
+      <p>
+        This visualization shows the trajectory of U.S. oil production and imports between 1918 to 1943. It documents domestic production and two different kinds of imports.
+      </p>
+      <p>
+        Click the legend entries to toggle individual data series on or off. Hover over the points to see details.
+      </p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="viz-wrap">
+    <div class="panel">
+      <div class="panel-top">
+        <h2 id="panel-title">Click to show</h2>
+      </div>
+
+   <div id="legend" class="legend-container">
+        <div class="legend-grid" id="legend-grid"></div>
+      </div>
+
+      <div class="chart-container" id="chart">
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+
+      
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Sabine Selchow</p>
+</footer>
+
+<script src="USoilProduction.js"></script>
+</body>
+</html>
