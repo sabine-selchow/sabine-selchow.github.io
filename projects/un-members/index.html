@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UN Membership Evolution</title>
+  <link rel="stylesheet" href="members-style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="active">Home & Visualisations</a></li>
+          <li><a href="about.html">About & Publications</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1><br>UN Membership by type of economy (1945–1977)</h1>
+    <br>   
+    <div class="intro-text">
+      <b>Date:</b> 25 May 2025<br>
+      <b>Data source:</b> Commission on Transnational Corporations (1978) 'Transnational Corporations in World Development: A Re-Examination' E/C.10/38, p. 206.<br>
+      <b>Funding:</b> Part of a European Research Council (ERC)-grant, ECOINT, Grant No 885285<br><br>
+      These two semi-circular charts depict the evolution of UN membership from 1945 to 1977, based on data published by the UN Commission on Transnational Corporations in its 1978 report <i>Transnational Corporations in World Development: A Re-Examination</i> (E/C.10/38, p. 206).
+      <br><br>
+      The visualisations use the language of the 1978-Report and the report’s original classification of member states into economic and regional groupings.
+      <br><br>
+      <strong>Chart 1</strong> shows the distribution by economic system (developed market economies, socialist countries, developing countries).<br>
+      <strong>Chart 2</strong> zooms in on the regional composition of the category 'developing countries' (Western Hemisphere, Africa, West Asia, South and Southeast Asia).
+
+      <ul>
+        <li>The <b>percentage</b> above the blocks show the group's share of total membership in the given year.</li>
+        <li><b>Hover</b> over the blocks and see a) the total number of countries in the category, 2) the change in the number of countries compared to the previous recorded year, 3) the note provided in the 1978-Report.</li>
+        <li><b>Click</b> on a year below each chart to view how the composition of UN membership changed over time.</li>
+      </ul>
+    </div>
+
+    <div class="chart-wrapper">
+      <svg id="chart" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="total-count" class="total-box"></div>
+      <div id="legend" class="legend"></div>
+      <br><br>  
+      <div id="tooltip" class="tooltip" style="opacity: 0;"></div>
+    </div>
+
+    <div id="year-buttons" class="keyword-container"></div>
+  </main>
+
+  <main class="container">
+    <h1><br>Zoom in: Developing Countries (1945–1977)</h1>
+    <div class="intro-text">
+      This chart zooms in on the category 'developing countries'. It uses the language of the 1978-Report and the report’s original classification of member states into economic and regional groupings.
+      <br><br>
+    </div>
+
+    <div class="chart-wrapper">
+      <svg id="chart-zoom" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="total-count-zoom" class="total-box"></div>
+      <div id="legend-zoom" class="legend"></div>
+      <br><br>  
+      <div id="tooltip-zoom" class="tooltip" style="opacity: 0;"></div>
+    </div>
+
+    <div id="year-buttons-zoom" class="keyword-container"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <script src="members-script.js"></script>
+</body>
+</html>
