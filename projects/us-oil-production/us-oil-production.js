@@ -10,7 +10,7 @@ let svg, g, xScale, yScale, lineGen;
 let margin, width, height;
 let resizeObserver;
 
-d3.csv("USTotalProduction.csv").then(function(csvData) {
+d3.csv("./us-oil-production.csv").then(function(csvData) {
   APP_DATA = csvData.map(d => ({
     Year: +d.Year,
     Production: +d.Production,
