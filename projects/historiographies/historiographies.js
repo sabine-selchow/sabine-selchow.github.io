@@ -1,9 +1,9 @@
 /* Created by Dr Sabine Selchow, as part of a project funded by the European Research Council (ERC) under the EU’s Horizon 2020 research and innovation programme (grant agreement No 885285) 
     I asked AI to help me fix bugs in this .js */
 
-const FILE_PEOPLE = "komplett.csv";
-const FILE_BOOK_PRIMARY = "book.csv";
-const FILE_BOOK_FALLBACK = "books.csv";
+const FILE_PEOPLE = "./historiographies.csv";
+const FILE_BOOK_PRIMARY = "./historiographies--1.csv";
+const FILE_BOOK_FALLBACK = "./historiographies--2.csv";
 
 function normGender(g) {
   const s = String(g || "").trim().toLowerCase();
