@@ -1,4 +1,4 @@
-d3.csv("UNmembers.csv").then(data => {
+d3.csv("./un-members.csv").then(data => {
   data.forEach(d => {
     d.year = +d["end of year"];
     d.developed = +d["developed market economies"];
@@ -179,7 +179,7 @@ d3.csv("UNmembers.csv").then(data => {
 
 
 // === Zweite Visualisierung: Zoom in auf Developing Countries ===
-d3.csv("UNmembers_zoom.csv").then(dataZoom => {
+d3.csv("./un-members--zoom.csv").then(dataZoom => {
   dataZoom.forEach(d => {
     d.year = +d["end of year"];
 
