@@ -90,8 +90,8 @@ function parseCSVLine(line) {
 
 async function init() {
   try {
-    countryData = await loadCSV('delegates_1933.csv');
-    orgData     = await loadCSV('delegates_1933_NGOs.csv');
+    countryData = await loadCSV('./iec-1933.csv');
+    orgData     = await loadCSV('./iec-1933--ngos.csv');
     if (!countryData.length && !orgData.length) throw new Error('Keine gültigen Daten in den CSV-Dateien gefunden.');
 
     colorScales.country = buildColorScale(uniqueSorted(countryData, 'country'));
@@ -126,7 +126,7 @@ async function init() {
         <h3>Daten konnten nicht geladen werden</h3>
         <p><strong>Fehler:</strong> ${err.message}</p>
         <ul style="text-align:left; display:inline-block; margin-top:8px">
-          <li>Liegt "delegates_1933.csv" / "delegates_1933_NGOs.csv" im selben Verzeichnis?</li>
+          <li>Liegen "./iec-1933.csv" / "iec-1933--ngos.csv" im selben Verzeichnis?</li>
           <li>Groß-/Kleinschreibung korrekt?</li>
           <li>Seite über Webserver öffnen (nicht file://)</li>
           <li>Browser-Konsole prüfen</li>
