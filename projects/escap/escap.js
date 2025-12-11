@@ -100,7 +100,7 @@ async function loadData() {
 
 
   try {
-    const topo = await d3.json('CShapes-2.0-simplified.json'); // mapshaper-Export
+    const topo = await d3.json('./data/CShapes-2.0-simplified.json'); // mapshaper-Export
     const firstKey = topo && topo.objects ? Object.keys(topo.objects)[0] : null;
     if (!firstKey) throw new Error('TopoJSON objects missing');
     const fc = topojson.feature(topo, topo.objects[firstKey]);
