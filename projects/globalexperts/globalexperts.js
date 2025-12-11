@@ -20,7 +20,7 @@ const path = d3.geoPath(projection);
 
 Promise.all([
   d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"),
-  d3.csv("experts_mncs.csv")
+  d3.csv("./globalexperts.csv")
 ]).then(([worldData, people]) => {
   const land = topojson.feature(worldData, worldData.objects.countries).features
     .filter(d => d.id !== "010");
