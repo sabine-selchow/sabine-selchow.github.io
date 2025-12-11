@@ -34,7 +34,7 @@ let showAll = false;
 let yearSortMode = "chronological";
 let yMaxKeyword = 6000;
 
-d3.csv("adjective_frequencies.csv").then(data => {
+d3.csv("projects/wdr/wdr.csv").then(data => {
   data.forEach(d => {
     d.term = d.term.trim();
     d.year = +d.year;
