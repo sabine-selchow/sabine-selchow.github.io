@@ -34,7 +34,7 @@ function parseCSV(csvString) {
 
 async function loadCSV() {
   try {
-    const response = await fetch('budget.csv');
+    const response = await fetch('./un-budget.csv');
     const csvText = await response.text();
     return csvText;
   } catch (error) {
