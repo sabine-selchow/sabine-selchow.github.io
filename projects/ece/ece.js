@@ -104,7 +104,7 @@ async function loadData() {
   }
   
   try {
-    const rows = await d3.csv('ece.csv', d => {
+    const rows = await d3.csv('./ece.csv', d => {
       const c = d.Country ?? d.country ?? d.Land ?? d.State ?? d.name ?? '';
       const startY = d.start_year ?? d.Start_year ?? d.year ?? d.Year ?? '';
       const endY = d.end_year ?? d.End_year ?? d.endYear ?? '';
@@ -125,8 +125,8 @@ async function loadData() {
     
     relevantYears = Array.from(new Set(membershipData.map(d => d.start_year))).sort((a,b) => a - b);
   } catch (err) {
-    console.error('ece.csv konnte nicht geladen werden', err);
-    alert('ece.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
+    console.error('./ece.csv konnte nicht geladen werden', err);
+    alert('./ece.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
   }
 }
 
