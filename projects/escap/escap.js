@@ -113,7 +113,7 @@ async function loadData() {
 
   // CSV (Mitglieder) – mit Date & Note
   try {
-    const rows = await d3.csv('ecafe.csv', d => {
+    const rows = await d3.csv('./escap.csv', d => {
       const c = d.country ?? d.Country ?? d.Land ?? d.State ?? d.name ?? '';
       const y = d.year ?? d.Year ?? d.jahr ?? d.Jahr ?? d.date ?? d.Datum ?? '';
       const dateStr = (d.Date ?? d.date ?? d.Datum ?? d.Joined ?? '').toString().trim();
@@ -131,13 +131,13 @@ async function loadData() {
 
     relevantYears = Array.from(new Set(membershipData.map(d => d.year))).sort((a,b) => a - b);
   } catch (err) {
-    console.error('ecafe.csv konnte nicht geladen werden', err);
-    alert('ecafe.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
+    console.error('escap.csv konnte nicht geladen werden', err);
+    alert('escap.csv fehlt oder ist nicht ladbar. Bitte neben index.html legen und über lokalen Server öffnen.');
   }
 
   // CSV (Associate Members) – mit Date & Note
   try {
-    const pts = await d3.csv('ecafe_associates.csv', d => ({
+    const pts = await d3.csv('./escap-assoc.csv', d => ({
       name: String(d.name || '').trim(),
       lat: +d.lat, lon: +d.lon,
       start: +String(d.start_year).slice(0,4),
@@ -150,7 +150,7 @@ async function loadData() {
     );
     console.log(`✓ ${associatesData.length} associate point(s) loaded.`);
   } catch (e) {
-    console.warn('Keine ecafe_associates.csv gefunden (Associate-Marker sind optional).');
+    console.warn('Keine escap_assoc.csv gefunden (Associate-Marker sind optional).');
   }
 }
 
