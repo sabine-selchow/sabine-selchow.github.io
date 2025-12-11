@@ -25,7 +25,7 @@ let timer = null;
 const clean = str => (str || "").normalize("NFC").replace(/\s+/g, " ").trim();
 
 /* ---------- Daten laden ---------- */
-d3.csv("ecosoc_bodies_final_corrected.csv").then(raw => {
+d3.csv("./ecosoc.csv").then(raw => {
   raw.forEach(d => {
     d.StartYear = +d.StartYear;
     d.EndYear   = d.EndYear ? +d.EndYear : Infinity;
