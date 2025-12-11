@@ -1,7 +1,7 @@
 let publications = [];
 
 function loadPublications() {
-  fetch('publications.csv')
+  fetch('./publications.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\n').slice(1);
