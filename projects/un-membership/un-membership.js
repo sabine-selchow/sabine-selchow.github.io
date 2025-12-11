@@ -1,4 +1,4 @@
-d3.csv("UNmembers.csv").then(data => {
+d3.csv("./un-membership.csv").then(data => {
   data.forEach(d => {
     d.year = +d["end of year"];
     d.developed = +d["developed market economies"];
