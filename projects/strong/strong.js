@@ -1,7 +1,7 @@
 // === Grundeinstellungen ===
 const totalPages = 385;
 
-// === Kapitelzuordnung ===
+
 function getChapterInfo(page) {
   const chapters = [
     { name: "Intro", start: 1, end: 6 },
@@ -37,11 +37,7 @@ function getChapterInfo(page) {
   return { chapter: "", page, showLabel: false, isChapterStart: false };
 }
 
-
-
-
-// === Daten laden und visualisieren ===
-d3.csv("strong_data.csv").then(data => {
+d3.csv("./strong.csv").then(data => {
   data.forEach(d => {
     d.gender = d.gender ? d.gender.charAt(0).toUpperCase() + d.gender.slice(1).toLowerCase() : "";
   });
