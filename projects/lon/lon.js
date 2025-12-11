@@ -1,4 +1,4 @@
-const CSV_CANDIDATES = ["nodes.csv", "lon.csv"];
+const CSV_CANDIDATES = ["./lon-nodes.csv", "lon.csv"];
 
 const LEGEND_UI = {
   fontSize: 16,
