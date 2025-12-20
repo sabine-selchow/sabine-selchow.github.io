@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabine Selchow — Participants of the WEC 1927, Geneva</title>
-<!-- Created by Dr Sabine Selchow, as part of a project funded by the European Research Council (ERC) under the EU’s Horizon 2020 research and innovation programme (grant agreement No 885285) | I asked AI to help me fix some bugs I had in the related .js-->
 
-  <link rel="stylesheet" href="../style.css" />
+  <!-- Created by Dr Sabine Selchow, as part of a project funded by the European Research Council (ERC) under the EU’s Horizon 2020 research and innovation programme (grant agreement No 885285) | I asked AI to help me fix some bugs I had in the related .js-->
+
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
- 
   <link href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.3.1/dist/css/tabulator.min.css" rel="stylesheet">
 
-  
+  <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
 
   <header>
@@ -24,17 +23,17 @@
       <div class="site-name">Sabine Selchow</div>
       <nav>
         <ul class="nav-menu">
-          <li><a href="../index.html">Home &amp; Visualisations</a></li>
-          <li><a href="../about/">About &amp; Publications</a></li>
+          <li><a href="/index.html">Home &amp; Visualisations</a></li>
+          <li><a href="/about/">About &amp; Publications</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-  
     <div id="wec-dashboard" class="container-fluid py-4">
       <div class="row g-3 align-items-stretch">
+
         <div class="col-12 col-lg-3 col-xl-2">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
@@ -58,7 +57,6 @@
               <div class="d-grid gap-2">
                 <button id="btnReset" class="btn btn-outline-secondary">Reset</button>
               </div>
-
             </div>
           </div>
         </div>
@@ -72,8 +70,11 @@
                   <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
                     <div>
                       <h2 class="h5 mb-1">Participants of the World Economic Conference 1927, Geneva</h2>
-                      <div class="text-secondary small">This dashboard presents a structured dataset of delegates and committee/sub-committee memberships at the World Economic Conference (Geneva, 4–23 May 1927). The data is compiled and curated as part of the European Research Council (ERC) grant <a href="https://www.ecoint.org" target="_blank" style="color:#d90c1a;text-decoration:none;font-weight:500;">ECOINT</a>, Grant No. 885285.<br>
-                        Sources: League of Nations, Report and Proceedings of the World Economic Conference held at Geneva, May 4th to 23rd, 1927, vol. II (Geneva, 1927), C.356.M.129.1927.II.</div>
+                      <div class="text-secondary small">
+                        This dashboard presents a structured dataset of delegates and committee/sub-committee memberships at the World Economic Conference (Geneva, 4–23 May 1927). The data is compiled and curated as part of the European Research Council (ERC) grant
+                        <a href="https://www.ecoint.org" target="_blank" rel="noopener noreferrer" style="color:#d90c1a;text-decoration:none;font-weight:500;">ECOINT</a>, Grant No. 885285.<br>
+                        Sources: League of Nations, <em>Report and Proceedings of the World Economic Conference held at Geneva, May 4th to 23rd, 1927</em>, vol. II (Geneva, 1927), C.356.M.129.1927.II.
+                      </div>
                     </div>
 
                     <div class="d-flex flex-wrap gap-2">
@@ -126,7 +127,7 @@
                 <div class="card-body">
                   <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                     <h3 class="h6 mb-0">List of Participants</h3>
-                    <div class="small text-secondary">Participants appear more than once if there were members of committees / sub-committees.</div>
+                    <div class="small text-secondary">Participants appear more than once if they were members of committees / sub-committees.</div>
                   </div>
                   <div id="table" class="mt-3"></div>
                 </div>
@@ -144,9 +145,12 @@
     <p>© 2025 Sabine Selchow</p>
   </footer>
 
- 
+  <!-- Vendor JS -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+
+  <!-- App JS -->
   <script src="assets/js/app.js"></script>
 </body>
 </html>
+
