@@ -164,3 +164,19 @@ button, input, select, textarea{
   .metric{ min-width: 120px; }
   .tabulator{ font-size: 12px; }
 }
+:root{
+  --bs-body-font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --bs-font-sans-serif:  "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+html, body{
+  font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+button, input, select, textarea{
+  font-family: inherit !important;
+}
+
+.tabulator, .tabulator *{
+  font-family: inherit !important;
+}
