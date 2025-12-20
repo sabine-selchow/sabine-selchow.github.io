@@ -1,0 +1,13 @@
+body_id,body_name,body_type,parent_body_id,phase,notes
+COM_I,Committee I,committee,WEC,during,
+COM_I_SC_I,Committee I – Subcommittee I,subcommittee,COM_I,during,
+COM_I_SC_II,Committee I – Subcommittee II,subcommittee,COM_I,during,
+COM_I_SC_III,Committee I – Subcommittee III,subcommittee,COM_I,during,
+COM_II,Committee II,committee,WEC,during,
+COM_III,Committee III,committee,WEC,during,
+COM_III_SC_I,Committee III – Subcommittee I,subcommittee,COM_III,during,
+COM_III_SC_II,Committee III – Subcommittee II,subcommittee,COM_III,during,
+COM_III_SC_III,Committee III – Subcommittee III,subcommittee,COM_III,during,
+ECC,Economic Consultative Committee (ECC),institution,,post,Successor/follow-up institution (not subordinate to WEC)
+PREP,Preparatory Group,group,,pre,Preparatory body before the WEC
+WEC,World Economic Conference 1927,conference,,during,

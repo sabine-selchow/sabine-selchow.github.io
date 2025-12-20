@@ -1,0 +1,503 @@
+﻿person_id,family_name,given_names,appointed_by,gender,description
+WEC1927_P0001,Smit,Jacobus Stephanus,South Africa,male,High Commissioner for the Union of South Africa in London
+WEC1927_P0002,de Kock,Dr. Michiel Hendrik,South Africa,male,Member of the Board of Trade and Industries
+WEC1927_P0003,Libohova,Malik,Albania,male,Chargé d'Affaires d'Albanie a Paris
+WEC1927_P0004,Eggert,Wilhelm,Germany,male,Membre du Bureau de la Confédération générale des syndicats allemands
+WEC1927_P0005,Hermes,Dr. Andreas,Germany,male,"Ancien Ministre du Reich, membre de la Commission internationale d'agriculture"
+WEC1927_P0006,Lammers,Clemens,Germany,male,"Membre du Reichstag, Président de la Commission d'enquête allemande, membre du Comité de Direction du Reichsverband de l'Industrie allemande"
+WEC1927_P0007,von Siemens,Carl Friedrich,Germany,male,"Ingénieur, Président du Conseil économique du Reich, Président du Conseil d'administration de la Société allemande des Chemins de fef"
+WEC1927_P0008,Trendelenburg,Dr. Ernst,Germany,male,Secrétaire d'Etat au Ministère de l'Economie nationale
+WEC1927_P0009,Roechling,Hermann,Germany,male,
+WEC1927_P0010,Keiser,,Germany,male,Oekonomierat
+WEC1927_P0011,Keyserlingk,,Germany,male,"Cammerau, Silesia"
+WEC1927_P0012,Sering,Dr. Max,Germany,male,"Conseiller secret, Professeur à l'Université de Berlin"
+WEC1927_P0013,Baltrusch,Friedrich,Germany,male,
+WEC1927_P0014,Dauch,Walter,Germany,male,Député au Reichstag
+WEC1927_P0015,Aschmann,,Germany,male,Consul général
+WEC1927_P0016,Behrens,B.,Germany,male,Député au Reichstag
+WEC1927_P0017,Baade,Dr.,Germany,male,
+WEC1927_P0018,Gennes,,Germany,male,Ancien Conseiller du Gouvernement
+WEC1927_P0019,Kaufmann,,Germany,male,Directeur des Coopératives
+WEC1927_P0020,Kissler,,Germany,male,Conseiller secret
+WEC1927_P0021,Lang,Prof.,Germany,male,
+WEC1927_P0022,Lange,Karl,Germany,male,
+WEC1927_P0023,Lemmer,Dr.,Germany,male,Député au Reichstag
+WEC1927_P0024,Wolff,,Germany,male,Conseiller secret
+WEC1927_P0025,Gordon,David,Australia,male,Director North Broken Hill Ltd; Broken Hill South Ltd; Broken Hill Associated Smelters Proprietary; Adelaide Electric Supply Co Ltd; Member of the Legislative Council of South Australia
+WEC1927_P0026,Kerr,William Warren,Australia,male,Managing Director Richardson Kerr Proprietary Ltd Melbourne (Insurance Brokers); Commissioner of the State Savings Bank of Victoria
+WEC1927_P0027,Heinl,Edouard,Austria,male,"Ancien Ministre fédéral du Commerce, Député"
+WEC1927_P0028,Riedl,Richard,Austria,male,Ancien Envoyé extraordinaire et Ministre plénipotentiaire
+WEC1927_P0029,Freundlich,Emmi,Austria,female,"Conseiller national, Présidente de la Ligue internationale des coopératrices"
+WEC1927_P0030,Schueller,Dr. Richard,Austria,male,Chef de Section à la Chancellerie fédérale
+WEC1927_P0031,Breza,Dr. Robert,Austria,male,"Conseiller ministériel en retraite. Chef de bureau de la Chambre de commerce, des métiers et de l'industrie, à Vienne"
+WEC1927_P0032,Brichta,Dr. Rodolphe,Austria,male,Secrétaire de l'Association des commerçants de Vienne
+WEC1927_P0033,Colloredo-Mannsfeld,Rodolphe,Austria,male,"Propriétaire foncier, membre de la Chambre d'agriculture de Basse-Autriche"
+WEC1927_P0034,Hietel,Dr. Francois,Austria,male,"Conseiller économique, Conseiller de la Chambre d'Agriculture de Basse-Autriche"
+WEC1927_P0035,Kautsky,Dr. Benedikt,Austria,male,Secrétaire de la Chambre du travail de Vienne
+WEC1927_P0036,Tibbaut,Baron,Belgium,male,"Premier Vice-Président de la Chambre des Représentants, ancien Président du Conseil supérieur de l'Agriculture"
+WEC1927_P0037,van den Broeck,,Belgium,male,Membre de la Chambre des Représentants
+WEC1927_P0038,Gérard,Gustave-Léo,Belgium,male,Directeur général adjoint du Comité central industriel de Belgique
+WEC1927_P0039,Bell,Alexander Foulis,Australia,male,Merchant; Managing Director of Robert Harper & Co Ltd Melbourne
+WEC1927_P0040,Fuhrmann,O. C. W.,Australia,male,Secretary
+WEC1927_P0041,Koerber,Jean,Austria,male,"Conseiller municipal, Vice-président de la Fédération des Associations des métiers"
+WEC1927_P0042,Stadler,Dr. Ernest,Austria,male,"Conseiller ministériel en retraite, Syndic de la Fédération des Associations des métiers"
+WEC1927_P0043,Flandera,Joseph P.,Austria,male,"Secrétaire général de l'Association des métiers, à Vienne"
+WEC1927_P0044,Lenhart,Henri,Austria,male,"Conseiller commercial, Président de l'Union du commerce et des métiers, Vice-président de la Chambre de commerce, des métiers et de l'industrie, à Vienne"
+WEC1927_P0045,Sokal,Dr. Max,Austria,male,"Directeur du Giro- uni Cassen- Verein, à Vienne, Secrétaire général de l'Union des banques"
+WEC1927_P0046,Werner,Dr. Frédéric,Austria,male,Conseiller ministériel en retraite. Secrétaire général de la Fédération des banques et banquiers autrichiens
+WEC1927_P0047,Spalowsky,Francois,Austria,male,Député
+WEC1927_P0048,Weiss-Wellenstein,Dr. Gustave,Austria,male,Secrétaire général de la Fédération de l'industrie
+WEC1927_P0049,Serwy,Victor,Belgium,male,Directeur de l'Office coopératif belge
+WEC1927_P0050,Mertens,C.,Belgium,male,Secrétaire général de la Commission syndicale de Belgique
+WEC1927_P0051,Delvigne,,Belgium,male,"Membre de la Chambre des Représentants, Président du Syndicat des métallurgistes"
+WEC1927_P0052,Chevremont,,Belgium,male,"Directeur de coopératives, à Liège"
+WEC1927_P0053,Pauwels,,Belgium,male,Secrétaire général de la Confédération des syndicats chrétiens
+WEC1927_P0054,Lambert,J.,Belgium,male,"Licencié du degré supérieur en sciences commerciales et consulaires. Directeur adjoint de la coopération belge «Bien-être», 15 rue de Demer, à Hasselt."
+WEC1927_P0055,Mullie,G.,Belgium,male,Sénateur
+WEC1927_P0056,Ansiaux,Maurice,Belgium,male,"Professeur à l'Université libre, Bruxelles"
+WEC1927_P0057,Delmer,,Belgium,male,"Ingénieur en chef. Administration des mines, rue Guimard, Bruxelles"
+WEC1927_P0058,van Langenhove,,Belgium,male,Chef du Cabinet du Ministre des Affaires étrangères
+WEC1927_P0059,Bondas,,Belgium,male,Secrétaire de la Commission syndicale de Belgique
+WEC1927_P0060,Lombard,A.,Belgium,male,Trésorier de la Centrale des mineurs
+WEC1927_P0061,Gailly,A.,Belgium,male,Secrétaire de la Section des métallurgistes de Charleroi
+WEC1927_P0062,Didier,Georges,Belgium,male,Directeur général de la Fédération des Associations charbonnières de Belgique
+WEC1927_P0063,Roisin,Louis,Belgium,male,Directeur gérant des Charbonnages de Sacré-Madame
+WEC1927_P0064,Gravez,Leon,Belgium,male,"Directeur des charbonnages des Produits, à Flénu"
+WEC1927_P0065,Habets,Marcel,Belgium,male,Directeur des charbonnages de la Société John Cockerill
+WEC1927_P0066,Orban,Ivan,Belgium,male,Directeur général des charbonnages de Mariemont-Bascoup
+WEC1927_P0067,van Buggenhout,,Belgium,male,Secrétaire de la Centrale des Francs-Mineurs
+WEC1927_P0068,Rio-Branco,His Excellency Raul de,Brazil,male,Envoyé extraordinaire et Ministre plénipotentiaire du Brésil à Berne
+WEC1927_P0069,Bandeira de Mello,Affonso,Brazil,male,"Directeur au Ministère de l'Agriculture, de l'Industrie et du Commerce, Expert de la Commission d'émigration du Bureau international du Travail."
+WEC1927_P0070,de Campos,Deoclecio,Brazil,male,"Attaché commercial à l'Ambassade du Brésil à Rome, membre du Comité permanent de l'Institut international d'Agriculture à Rome"
+WEC1927_P0071,Barboza-Carneiro,Julio Augusto,Brazil,male,"Attaché commercial à l'Ambassade du Brésil à Londres, Membre du Comité économique de la Société des Nations."
+WEC1927_P0072,Balfour,Sir Arthur,British Empire,male,Chairman of the Committee on Trade and Industry
+WEC1927_P0073,Hill,Sir A. Norman,British Empire,male,Chairman of the Board of Trade Advisory Committee on Merchant Shipping (London)
+WEC1927_P0074,Layton,W. T.,British Empire,male,Editor of The Economist (London)
+WEC1927_P0075,Muspratt,Sir Max,British Empire,male,President of the Federation of British Industries; Chairman of the Association of British Chemical Manufacturers
+WEC1927_P0076,Pugh,Arthur,British Empire,male,Vice-President of the General Council of the Trades Union Congress; Secretary of the Iron and Steel Trades Confederation
+WEC1927_P0077,Hill,P. Maurice,British Empire,male,Assistant General Manager of the Chamber of Shipping
+WEC1927_P0078,Varley,Arthur,British Empire,male,Chairman of the Finance Committee of the Co-operative Wholesale Society
+WEC1927_P0079,Hutchinson,H. J.,British Empire,male,Secretary
+WEC1927_P0080,Enfield,R. R.,British Empire,male,Assistant Secretary (for Agriculture)
+WEC1927_P0081,Milner,George,British Empire,male,Private Secretary to Sir Arthur Balfour
+WEC1927_P0082,Danailoff,Georges,Bulgaria,male,"Ancien Ministre, Député au Sobranié, Professeur d'économie politique à l'Université de Sofia"
+WEC1927_P0083,Popoff,Cyrille,Bulgaria,male,Directeur de la Statistique du Royaume de Bulgarie
+WEC1927_P0084,Bourilkoff,Jélu Th.,Bulgaria,male,Gouverneur adjoint de la Banque nationale de Bulgarie
+WEC1927_P0085,Bainoff,Dr. Ivan,Bulgaria,male,"Docteur en droit, Assistant des sciences économiques à l'Université de Sofia"
+WEC1927_P0086,Matthews,Albert,Canada,male,Investment banker; Director
+WEC1927_P0087,Wilson,W. A.,Canada,male,Canadian Agricultural Products Representative in Great Britain
+WEC1927_P0088,Quezada,Armando,Chile,male,"Envoyé extraordinaire et Ministre plénipotentiaire en France, ancien Ministre des Finances, ancien Professeur d'économie politique à l'Université du Chili"
+WEC1927_P0089,Edwards-Matte,Guillermo,Chile,male,"Ancien Ministre des Finances, Membre de la Société nationale d'agriculture"
+WEC1927_P0090,Urzua,Dario,Chile,male,"Professeur à l'Université catholique de Santiago (économie politique, questions monétaires, législation minière et nitratière)"
+WEC1927_P0091,Brieba,Enrique,Chile,male,"Ingénieur du Ministère des Finance du Chili, Expert pour les questions de nitrate"
+WEC1927_P0092,Chao,Chuan,China,male,Secretary-General of the Permanent Office of the Chinese Delegation to the League of Nations
+WEC1927_P0093,Nan-Ju,Wu,China,male,
+WEC1927_P0094,Gui-Tong,Tchang,China,male,
+WEC1927_P0095,Fang,R. Paotchung,China,male,Secretary of Legation
+WEC1927_P0096,Ting,Chin,China,male,Secretary of the Chinese Delegation to the League of Nations
+WEC1927_P0097,Chu,Su-Seng,China,male,
+WEC1927_P0098,Lou,C. N.,China,male,Attaché
+WEC1927_P0099,Pen-Chiang,Shen,China,male,
+WEC1927_P0100,Restrepo,Antonio José,Colombia,male,"Ministre plénipotentiaire, Délégué permanent de la Colombie auprès de la Société des Nations, Sénateur, ancien Professeur d'économie politique, etc."
+WEC1927_P0101,de Narvaez,Antonio,Colombia,male,"Ancien Professeur de Finances à l'Université libre de Bogota, ancien Consul général de Colombie à Paris"
+WEC1927_P0102,Gaitan Hurtado,Efrain,Colombia,male,Docteur en droit
+WEC1927_P0103,Koppel,Jorge,Colombia,male,
+WEC1927_P0104,Lorenzana,Fernan,Colombia,male,
+WEC1927_P0105,de Blanck,His Excellency Guillermo,Cuba,male,"Envoyé extraordinaire et Ministre plénipotentiaire, Délégué auprès de la Société des Nations"
+WEC1927_P0106,de Armenteros,His Excellency Dr. Carlos,Cuba,male,"Envoyé extraordinaire et Ministre plénipotentiaire, ancien sous-secrétaire au Secrétariat de l'Agriculture, de l'Industrie et du Commerce, ancien délégué à la Conférence financière de Washington"
+WEC1927_P0107,Garcia Kohly,Dr. Juan de Dios,Cuba,male,"Ex-ministre de la République de Cuba, ancien Président de la Délégation de Cuba à la deuxième Conférence financière de Buenos-Ayres (1916), ancien Délégué Contrôleur du Gouvernement à la Banque nationale de Cuba"
+WEC1927_P0108,Perez,Luis Marino,Cuba,male,Attaché commercial à l'Ambassade à Washington
+WEC1927_P0109,Dussaq,Emiliano,Cuba,male,
+WEC1927_P0110,de Moltke,Count C.,Denmark,male,Ancien Ministre des Affaires étrangères.
+WEC1927_P0111,Meyer,Ernst,Denmark,male,Président du Comité de la Chambre de commerce de Copenhague
+WEC1927_P0112,Sonne,Chr.,Denmark,male,Ancien Ministre de l'Agriculture
+WEC1927_P0113,Munck,Ove,Denmark,male,Vice-Président du Conseil danois de l'industrie
+WEC1927_P0114,Nielsen,Jens Peter,Denmark,male,"Depute, Secretaire de la Donfederation generale du Travail de Danemark"
+WEC1927_P0115,Ohlin,Prof. Bertil G.,Denmark,male,"Docteur ès lettres, Professeur d'économie à l'Université de Copenhague"
+WEC1927_P0116,Cohn,Einar D.,Denmark,male,Chef de bureau au Département statistique de l'Etat
+WEC1927_P0117,Rasmussen,Gustav,Denmark,male,Secrétaire de Légation
+WEC1927_P0118,Vestberg,Jens,Denmark,male,Secrétaire de la Chambre de commerce de Copenhague
+WEC1927_P0119,Klavitter,William,Free City of Danzig,male,Président de la Chambre de commerce de Dantzig
+WEC1927_P0120,Noe,Prof. Ludwig,Free City of Danzig,male,"Directeur général de l' International Shipbuilding and Engineering Co., a Dantzig"
+WEC1927_P0121,Henein,Sadik,Egypt,male,"Ancien sous-secrétaire d'Etat au Ministère des Finances, Envoyé extraordinaire et Ministre plénipotentiaire à Rome"
+WEC1927_P0122,Ibrahim,Wahbé,Egypt,male,Sous-directeur général des Douanes égyptiennes
+WEC1927_P0123,Baxter,James,Egypt,male,Secrétaire financier du Ministère des Finances
+WEC1927_P0124,Fikry,Abdul Rahman,Egypt,male,"Premier secrétaire à la Légation d'Egypte à Londres, ancien Professeur de finances publiques à l'Université égyptienne du Caire"
+WEC1927_P0125,Hetata,Fathalla,Egypt,male,Inspecteur à la Section des coopératives agricoles au Ministère de l'Agriculture
+WEC1927_P0126,Toenisson,Jaan,Estonia,male,"Député, Président du Conseil économique d'Etat, ancien Président du Parlement"
+WEC1927_P0127,Strandman,Otto,Estonia,male,"Envoyé extraordinaire et Ministre plénipotentiaire d'Estonie en Pologne, ancien Président du Conseil, ancien Ministre des Finances"
+WEC1927_P0128,Huenerson,Jaan,Estonia,male,"Ministère de l'Intérieur, Député, Secrétaire général de l'Association agricole de l'Estonie du Sud"
+WEC1927_P0129,Kukk,Johan,Estonia,male,"Directeur de la Société centrale des consommateurs, ancien chef d'Etat"
+WEC1927_P0130,Oinas,Aleksander,Estonia,male,"Député, ancien Contrôleur d'Etat"
+WEC1927_P0131,Vestel,Georg,Estonia,male,"Directeur de la Banque de Crédit à Tallinn, ancien Ministre des Finances"
+WEC1927_P0132,Lehtman,Johannes,Estonia,male,Député
+WEC1927_P0133,Koestner,Nikolai,Estonia,male,"Conseiller au Ministère des Finances, Economiste, ancien Ministre du Commerce et de l'Industrie"
+WEC1927_P0134,Robinson,Henry M.,United States of America,male,"President of the First National Bank, Los Angeles, and Member of the Dawes Commission."
+WEC1927_P0135,Young,Dr. Arthur N.,United States of America,male,Economic Adviser to the Department of State
+WEC1927_P0136,Davis,Norman H.,United States of America,male,Formerly Assistant Secretary of Treasury and Under-Secretary of State
+WEC1927_P0137,Durand,Dr. E. Dana,United States of America,male,"Chief of the Research Division, Department of Commerce"
+WEC1927_P0138,O'Leary,John W.,United States of America,male,President of the United States Chamber of Commerce.
+WEC1927_P0139,Taylor,Alonso E.,United States of America,male,"Director of Food Research Institute, Stanford University"
+WEC1927_P0140,Jones,Grosvenor,United States of America,male,"Chief of the Finance and Investment Division, Department of Commerce"
+WEC1927_P0141,Klein,Julius,United States of America,male,"Director, Bureau of Foreign and Domestic Commerce, U.S. Department of Commerce"
+WEC1927_P0142,Domeratzky,Dr. Louis,United States of America,male,"Chief of the Regional Division, Department of Commerce"
+WEC1927_P0143,Camp,E. W.,United States of America,male,"Acting Commissioner of Customs, Treasury Department"
+WEC1927_P0144,Hobson,Asher,United States of America,male,Permanent American Delegate to the International Institute of Agriculture at Rome
+WEC1927_P0145,Bidwell,Dr. Percy W.,United States of America,male,An Economist of the United States Tariff Commission
+WEC1927_P0146,Lagarde,His Excellency Count,Ethiopia,male,"Ministre plénipotentiaire, Représentant diplomatique de l'Empire d'Ethiopie accrédité auprès de la Société des Nations"
+WEC1927_P0147,Chalmers,Henry,United States of America,male,"Chief of the Division of Foreign Tariffs, Department of Commerce"
+WEC1927_P0148,Frey,John P.,United States of America,male,
+WEC1927_P0149,Tuck,Somerville Pinkney,United States of America,male,Consul of the United States of America at Geneva.
+WEC1927_P0150,Endelkatchou,Lidj Makonnen,Ethiopia,male,
+WEC1927_P0151,Maryam,Ato Wolde ,Ethiopia,male,
+WEC1927_P0152,Paasikivi,Dr. J. K.,Finland,male,"Ex-Premier, Director-in-Chief of Kansallis Osake Pankki (National Joint-Stock Bank)"
+WEC1927_P0153,Lavonius,W. A.,Finland,male,General Manager of the "Suomi" Life Insurance Company, late Chairman of the Representatives of the Parliament at the Bank of Finland
+WEC1927_P0154,Hynninen,Dr. Eemil,Finland,male,Member of the International Institute of Agriculture at Rome; Agricultural Attach√© at the Finnish Legation
+WEC1927_P0155,Keto,J. W.,Finland,male,Manager of the Central Union of Distributive Societies; Vice-Chairman of the Finnish Diet
+WEC1927_P0156,Ramsay,Dr. Henrik,Finland,male,Managing Director of Suomen Hôyrylaiva Osakeyhtiô (Finnish Steamship Company)
+WEC1927_P0157,Savolahti,K. R.,Finland,male,Consul-General
+WEC1927_P0158,Loucheur,,France,male,"Député du Nord, ancien Ministre"
+WEC1927_P0159,Jouhaux,,France,male,Secrétaire général de la Confédération générale du Travail
+WEC1927_P0160,Serruys,,France,male,Directeur des Accords commerciaux au Ministère du Commerce
+WEC1927_P0161,Gautier,Jules,France,male,"Conseiller d'Etat, Président de la Confédération nationale des associations agricoles"
+WEC1927_P0162,de Peyerimhoff,,France,male,Président du Comité central des houillères de France
+WEC1927_P0163,Augé-Laribé,Dr.,France,male,"Docteur ès sciences économiques, Secrétaire général de la Confédération nationale des Associations agricoles"
+WEC1927_P0164,Buisson,,France,male,Secretary-General of the National Federation of Employees
+WEC1927_P0165,Cahen-Salvador,,France,male,"Conseiller d'Etat, Secrétaire général du Conseil national économique."
+WEC1927_P0166,de Chalendar,,France,male,"Inspecteur des finances, membre du Comité financier de la Société des Nations."
+WEC1927_P0167,Cuvelette,,France,male,Administrateur-directeur général des Mines de Lens
+WEC1927_P0168,Dalbouze,,France,male,Président de la Fédération de la construction mécanique
+WEC1927_P0169,Dubrulle,,France,male,"Industriel, Membre du Comité central de la laine."
+WEC1927_P0170,Duchemin,,France,male,"Industriel, Président de la Confédération générale de la production française, Président de l'Union des industries chimiques"
+WEC1927_P0171,Duchene,Albert,France,male,"Conseiller d'Etat en service extraordinaire, Directeur des Affaires politiques au Ministère des Colonies"
+WEC1927_P0172,Duchon,,France,male,Secrétaire général de la Fédération de la construction mécanique.
+WEC1927_P0173,Fougère,,France,male,"Président de l'Association d'expansion économique, Président de la Fédération de la soie."
+WEC1927_P0174,Garcin,,France,male,Président de l'Union du Sud-Est des Syndicats agricoles
+WEC1927_P0175,Gillet,Edmond,France,male,Vice-président du Syndicat des textiles artificiels
+WEC1927_P0176,Gounod,,France,male,Vice-président délégué de l'Union des industries chimiques
+WEC1927_P0177,Hecker,,France,male,Administrateur-délégué de la Société Thomson-Houston
+WEC1927_P0178,Hoelling,,France,male,Directeur du Port de Strasbourg
+WEC1927_P0179,Kiener,,France,male,Président de la Chambre de commerce de Colmar
+WEC1927_P0180,Laederich,,France,male,"Régent de la Banque de France, Président du Syndicat général de l'industrie cotonnière française"
+WEC1927_P0181,Lambert-Ribot,,France,male,"Délégué général de l'Union des industries métallurgiques et minières, Délégué général du Comité des forges de France"
+WEC1927_P0182,Laurent,Theodore,France,male,Vice-Président du Comité des forges de France
+WEC1927_P0183,Magnan,,France,male,Administrateur à la Direction générale des Douanes
+WEC1927_P0184,Mahieu,Albert,France,male,"Sénateur du Nord, Président du Conseil supérieur des Chemins de fer"
+WEC1927_P0185,Marlio,,France,male,Président du Comité central de l'aluminium
+WEC1927_P0186,Mathon,,France,male,Président du Comité central de la laine
+WEC1927_P0187,Mercier,Ernest,France,male,Administrateur-délégué de l'Union d'électricité
+WEC1927_P0188,Mieg,Daniel,France,male,Président de la Société industrielle de Mulhouse
+WEC1927_P0189,Parent,,France,male,Secrétaire général du Comité central des houillères de France
+WEC1927_P0190,Poisson,Ernest,France,male,Secrétaire général de la Fédération nationale des coopératives de consommation
+WEC1927_P0191,Roche,,France,male,Membre du Conseil d'administration de l'Union des industries chimiques.
+WEC1927_P0192,de Rousiers,,France,male,Vice-président du Comité central des armateurs de France
+WEC1927_P0193,Schwob,,France,male,Directeur des Chemins de fer au Ministère des Travaux publics.
+WEC1927_P0194,Siegfried,Prof. André-Robert,France,male,Professeur à l'Ecole des sciences politiques.
+WEC1927_P0195,Théry,René,France,male,"Directeur de l'Economiste européen, Professeur à l'Ecole coloniale."
+WEC1927_P0196,Vimeux,,France,male,Secrétaire général de la Fédération de la coopération et de la mutualité agricoles
+WEC1927_P0197,Clauzel,,France,male,"Ministre plénipotentiaire, chef du Service français de la Société des Nations."
+WEC1927_P0198,Vourloumis,Panaghis,Greece,male,Ancien Ministre
+WEC1927_P0199,Sideris,Aristote,Greece,male,Secrétaire général du Ministère de l'Agriculture
+WEC1927_P0200,Galoghirou,G.,Greece,male,Ex-directeur des Domaines
+WEC1927_P0201,Papatzoni,Panayotis,Greece,male,Chef de la Section des traités de commerce du Ministère des Finances
+WEC1927_P0202,Tournakis,Prof. Jean,Greece,male,"Professeur d'économie politique à l'Ecole des sciences économiques et commerciales, ancien Secrétaire général du Ministère de l'Economie nationale"
+WEC1927_P0203,Pratsicas,Nicolas P.,Greece,male,Chef du Service de Statistique de la Banque nationale de Grèce
+WEC1927_P0204,Solares,Felipe,Guatemala,male,"Ancien Ministre des Finances, ancien Conseiller d'Etat, Directeur de la Banque centrale de Guatémala, Vice- Président de la Chambre de Commerce de Guatémala"
+WEC1927_P0205,Popovich,Hiis Excellency Alexandre,Hungary,male,"Ancien Ministre, Président de la Banque nationale hongroise"
+WEC1927_P0206,Balkanyi,Kalman,Hungary,male,Directeur de l'Association nationale hongroise des commerçants
+WEC1927_P0207,Hadik,Jean,Hungary,male,Ancien Ministre
+WEC1927_P0208,Horvat,Etienne,Hungary,male,Secrétaire général de l'Association nationale hongroise des commerçants
+WEC1927_P0209,Somssich,Ladislas,Hungary,male,Président de la Société nationale hongroise d'agriculture
+WEC1927_P0210,Mutschenbacher,Emile,Hungary,male,Directeur de l'Association nationale de l'agriculture
+WEC1927_P0211,Kornfeld,Maurice,Hungary,male,Membre de la Haute Chambre de Hongrie
+WEC1927_P0212,Kresz,Charles,Hungary,male,Directeur de la Société des caisses d'épargne et des banques
+WEC1927_P0213,de Végh,Charles,Hungary,male,"Membre de la Haute Chambre de Hongrie, Président de la Bourse de Budapest, Vice-Président de la Société anonyme hongroise de navigation fluviale et maritime"
+WEC1927_P0214,Nyulâszy,Jean,Hungary,male,Directeur de la Société des caisses d'épargne et des banques
+WEC1927_P0215,Nickl,Alfred,Hungary,male,Conseiller de légation au Ministère des Affaires étrangères.
+WEC1927_P0216,Zelovich,Ladislas,Hungary,male,Rédacteur au Ministère des Affaires étrangères
+WEC1927_P0217,Jarmay,Elemér,Hungary,male,"Ancien sous-secrétaire d'Etat, Directeur de la Société de navigation fluviale et maritime hongroise"
+WEC1927_P0218,Schiller,Otto,Hungary,male,Secrétaire général de l'Association nationale des textiles
+WEC1927_P0219,Ferenczi,Izso,Hungary,male,Conseiller ministériel au Ministère du Commerce
+WEC1927_P0220,Blaskovich,Alexandre,Hungary,male,"Membre de la Commission internationale d'agriculture, ancien Député"
+WEC1927_P0221,Lengyel,Géza,Hungary,male,"Secrétaire de l'Association nationale des fabricants de Hongrie, Directeur du Bureau central de politique douanière hongroise"
+WEC1927_P0222,Wadia,Sir Ness,India,male,"Ex-Chairman of the Bombay Mill-Owners' Association, Member of the Indian Cotton Committee"
+WEC1927_P0223,Hyder,Dr. L. K.,India,male,"Professor of Economics at the Aligarh University, Member of the Legislative Assembly, Member of the Royal Commission on Agriculture in India"
+WEC1927_P0224,Rhodes,Sir Campbell W.,India,male,"Member of the Council of India, formerly President of the Bengal Chamber of Commerce, President of the Associated Chamber of Commerce of India and Ceylon"
+WEC1927_P0225,Lindsay,H. A. F.,India,male,
+WEC1927_P0226,Croft,W. D.,India,male,India Office
+WEC1927_P0227,MacWhite,Michael,Irish Free State,male,Representative of the Irish Free State accredited to the League of Nations
+WEC1927_P0228,Dinan,William,Irish Free State,male,Former President of the Cork Incorporated Chamber of Commerce and Shipping
+WEC1927_P0229,McElligott,James J.,Irish Free State,male,Assistant Secretary to the Ministry of Finance
+WEC1927_P0230,Ferguson,Robert C.,Irish Free State,male,Director of the Industries Branch of the Ministry of Industry and Commerce
+WEC1927_P0231,Barrington,Thomas A.,Irish Free State,male,Assistant Director of the Commerce and Technical Branch of the Department of Industry and Commerce
+WEC1927_P0232,Adams,James M.,Irish Free State,male,Inspector of Agriculture
+WEC1927_P0233,Bonin Longare,His Excellency Count Lelio,Italy,male,"Ministre d'Etat, Ambassadeur de Sa Majesté, Sénateur du Royaume"
+WEC1927_P0234,Pirelli,Alberto,Italy,male,"Ministre plénipotentiaire honoraire, Industriel, Président de l'Institut national pour les exportations"
+WEC1927_P0235,Belloni,Ernesto,Italy,male,"Député au Parlement, Industriel, ""Podestà"" de Milan"
+WEC1927_P0236,Rossoni,Edmondo,Italy,male,"Député au Parlement, Président des Confédérations syndicales fascistes."
+WEC1927_P0237,di Nola,Angelo,Italy,male,Directeur général du Commerce
+WEC1927_P0238,Buti,Gino,Italy,male,Conseiller de Légation
+WEC1927_P0239,Paci,Guido,Italy,male,Directeur du Bureau central des Douanes italiennes
+WEC1927_P0240,Marchesi,Enrico,Italy,male,Industriel
+WEC1927_P0241,Guarneri,Felice,Italy,male,Directeur général de l'Association des Sociétés italiennes anonymes
+WEC1927_P0242,Tassinari,Prof. Giuseppe,Italy,male,Professeur ordinaire d'économie rurale à. l'Institut Royal Supérieur Agraire de Bologne
+WEC1927_P0243,Signoretti,Alfredo,Italy,male,Publiciste
+WEC1927_P0244,Caravale,Erasmo,Italy,male,Inspecteur supérieurau Ministère de l'Economie nationale
+WEC1927_P0245,Coppola d'Anna,Francesco,Italy,male,Engineer
+WEC1927_P0246,Mauro,Francesco,Italy,male,Ingénieur
+WEC1927_P0247,Borga,Guido,Italy,male,Attaché consulaire
+WEC1927_P0248,Bonomi,Ambrogio,Italy,male,
+WEC1927_P0249,Roncagli,Wladimiro,Italy,male,
+WEC1927_P0250,Shidachi,Dr. Tetsujiro,Japan,male,Ancien Président de la Banque industrielle du Japon
+WEC1927_P0251,Shiba,Baron Chuzaburo,Japan,male,"Membre de la Chambre des pairs, Professeur à la Faculté technologique de l'Université impériale de Tokio"
+WEC1927_P0252,Uyeda,Dr. Teijiro,Japan,male,Professeur à l'Université de Commerce de Tokio
+WEC1927_P0253,Sato,Naotake,Japan,male,"Ministre plénipotentiaire, Directeur du Bureau impérial du Japon à la Société des Nations"
+WEC1927_P0254,Sato,Dr. Kwanji,Japan,male,"Professeur à la Faculté d'agriculture de l'Université impériale de Tokio, Président de l'Association des Sciences agricoles"
+WEC1927_P0255,Matsuyama,S.,Japan,male,Secrétaire commercial de l'Ambassade du Japon à Londres
+WEC1927_P0256,Narusé,Prof. Y.,Japan,male,"Professeur d'économie politique à l'Université Keio, Editeur de la Revue Economique et Financière"
+WEC1927_P0257,Takashima,S.,Japan,male,Secrétaire général du Comité national du Japon de la Chambre de Commerce internationale
+WEC1927_P0258,Shibata,T.,Japan,male,"Manager of the London Branch of the Sumitomo Bank, Ltd"
+WEC1927_P0259,Kurahashi,T.,Japan,male,"Directeur général de l'Association des industries, Maître de conférences de l'Université Chuo"
+WEC1927_P0260,Ito,N.,Japan,male,Premier Secrétaire d'ambassade
+WEC1927_P0261,Inui,K.,Japan,male,"Maître de conférences de l'Université de Commerce de Tokio, Commissaire chargé de la Section étrangère de l'Association japonaise pour la Société des Nations"
+WEC1927_P0262,Sato,S.,Japan,male,Secrétaire d'ambassade
+WEC1927_P0263,Hasumi,Y.,Japan,male,"Secrétaire du Ministère de l'Agriculture et des Forêts, Conseiller de l'Union centrale des coopératives du Japon."
+WEC1927_P0264,Sakamoto,T.,Japan,male,Secrétaire d'ambassade
+WEC1927_P0265,Nagai,A.,Japan,male,Secrétaire commercial de l'Ambassade du Japon à Berlin
+WEC1927_P0266,Kadowaki,S.,Japan,male,Attaché d'ambassade
+WEC1927_P0267,Duzmans,Charles,Latvia,male,Délégué permanent auprès de la Société des Nations
+WEC1927_P0268,Balodis,Charles,Latvia,male,Professeur d'économie politique à l'Université lettone
+WEC1927_P0269,Jagars,Jean,Latvia,male,"Ingénieur, Conseiller municipal de Riga"
+WEC1927_P0270,Siecenieks,Pierre,Latvia,male,"Directeur en chef des Sociétés coopératives agricoles, Membre du Conseil de la Banque de Lettonie"
+WEC1927_P0271,Mayrisch,Emile,Luxembourg,male,Président de la Direction des Aciéries réunies de Burbach-Eich-Dudelange
+WEC1927_P0272,Laval,Leon,Luxembourg,male,"Ingénieur, Vice-président de la Chambre de Commerce du Grand-Duché de Luxembourg"
+WEC1927_P0273,Dupong,Pierre,Luxembourg,male,Directeur général du Travail et de la Prévoyance sociale
+WEC1927_P0274,Sottile,Antoine,Nicaragua,male,Délégué permanent du Nicaragua auprès de la Société des Nations
+WEC1927_P0275,Rygg,N.,Norway,male,Président de la Banque de Norvège
+WEC1927_P0276,Five,Haakon,Norway,male,"Ancien Ministre de l'Agriculture, Député au Storting"
+WEC1927_P0277,Jahn,Gunnar,Norway,male,Directeur en chef du Bureau central de statistique de la Norvège
+WEC1927_P0278,Wessel,Hjalmar,Norway,male,"Industriel, Directeur général de la Société anonyme Borregaard"
+WEC1927_P0279,Willumsen,Wilh.,Norway,male,Négociant (importateur)
+WEC1927_P0280,Lund,H. Heiberg ,Norway,male,Secrétaire à la Banque de Norvège
+WEC1927_P0281,Elliot,Sir George,New Zealand,male,Chairman of the Bank of New Zealand
+WEC1927_P0282,Hight,Professor James,New Zealand,male,"Professor of History and Political Science and Dean of the Faculty of Commerce, Canterbury College, University of New Zealand"
+WEC1927_P0283,Galeano,Venancio B.,Paraguay,male,Chargé d'affaires du Paraguay à Londres
+WEC1927_P0284,Colijn,H.,Netherlands,male,"Ancien Président du Conseil des Ministres, ancien Ministre des Finances, Membre de la Première Chambre des Etats-Généraux"
+WEC1927_P0285,Steenberghe,M. P.-L.,Netherlands,male,"Docteur en droit, Industriel, Membre du Conseil de l'Industrie"
+WEC1927_P0286,Gelderman,Joan,Netherlands,male,"Industriel, Président de la Chambre de Commerce, à Hengelo"
+WEC1927_P0287,Molenaar,Dr. A. N.,Netherlands,male,Secrétaire général de la Fédération des employeurs néerlandais. Membre du Conseil de l'Industrie
+WEC1927_P0288,Lovink,Dr. H. J.,Netherlands,male,"Membre de la Seconde Chambre des Etats-Généraux, ancien Directeur général de l'agriculture aux Pays-Bas, ancien Directeur du Département de l'Agriculture, du Commerce et de l'Industrie aux Indes néerlandaises"
+WEC1927_P0289,Serrarens,P.-J.-S.,Netherlands,male,"Membre du Bureau de la Fédération ouvrière catholique romaine des Pays-Bas, Secrétaire général de la Confédération internationale des Syndicats chrétiens."
+WEC1927_P0290,Oudegeest,J.,Netherlands,male,Secrétaire général de la Fédération syndicale internale
+WEC1927_P0291,Amelink,H.,Netherlands,male,Secrétaire de la Fédération des Syndicats chrétiens des Pays-Bas
+WEC1927_P0292,Zimmerman,Dr. A. R.,Netherlands,male,"Ancien Bourgmestre de la Ville de Rotterdam, ancien Commissaire général de la Société des Nations pour l'Autriche"
+WEC1927_P0293,Meyers,L.,Netherlands,male,Chef de la Division des douanes au Ministère des Finances
+WEC1927_P0294,de Kruyff,E.,Netherlands,male,"Ingénieur, ancien Chef de la Division du commerce du Département de l'Agriculture, du Commerce et de l'Industrie aux Indes néerlandaises"
+WEC1927_P0295,Lamping,A. Th.,Netherlands,male,Consul au Ministère des Affaires étrangères
+WEC1927_P0296,van Woerden,,Netherlands,male,Attaché au Service consulaire
+WEC1927_P0297,Amid,,Persia,male,Ministre plénipotentiaire et Envoyé extraordinaire à Rome
+WEC1927_P0298,Molitor,,Persia,male,Administrateur général des Douanes
+WEC1927_P0299,Chadimy,Dr.,Persia,male,Directeur de l'Office de Perse à la Société des Nations.
+WEC1927_P0300,Kitabgi Khan,Dr.,Persia,male,
+WEC1927_P0301,Gliwic,Hipolit,Poland,male,"Ancien Ministre de l'Industrie et du Commerce, Vice-Président du Syndicat des forges polonaises, Administrateur délégué de la Banque du Commerce à Varsovie"
+WEC1927_P0302,Dolezal,Franciszek,Poland,male,Sous-secrétaire d'Etat au Ministère du Commerce et de l'Industrie
+WEC1927_P0303,Diamand,Herman,Poland,male,Député
+WEC1927_P0304,Sokal,His Excellency Franciszek,Poland,male,"Ministre plénipotentiaire, Délégué permanent à la Société des Nations, ancien Ministre du Travail et de l'Assistance sociale"
+WEC1927_P0305,Stecki,Jan,Poland,male,"Sénateur, Président de l'Union des Producteurs agricoles de Pologne"
+WEC1927_P0306,Mlynarski,Felix,Poland,male,Vice-président de la Banque de Pologne
+WEC1927_P0307,Trepka,Edmond,Poland,male,"Député, Directeur de l'Union des industries chimiques en Pologne"
+WEC1927_P0308,Cybulski,Juljan,Poland,male,Directeur de l'Union des industries minière et métallurgique do Haute-Silésie
+WEC1927_P0309,Chmielewski,Zygmunt,Poland,male,Directeur de la Caisse centrale des coopératives agricoles
+WEC1927_P0310,Ostrowski,Rawita Christian,Poland,male,Président du Comité permanent du Bois
+WEC1927_P0311,Babinski,Leon,Poland,male,Jurisconsulte du Ministère des Affaires étrangères
+WEC1927_P0312,Battaglia,Roger,Poland,male,"Membre du Comité consultatif économique, Directeur de l'Association de l'industrie de la Confection"
+WEC1927_P0313,Tempski,Esden,Poland,male,Président de la Chambre d'Agriculture de Poméranie
+WEC1927_P0314,Fajans,Waclaw,Poland,male,Ancien Sous-Secrétaire d'Etat au Ministère des Finances
+WEC1927_P0315,Gieysztor,Jozef,Poland,male,Professeur à l'Ecole polytechnique
+WEC1927_P0316,Goscicki,Jerzy,Poland,male,"Député, ancien Ministre de l'Agriculture"
+WEC1927_P0317,Gwiazdowski,Tadeusz,Poland,male,Conseiller de la Délégation Polonaise auprès de la Société des Nations.
+WEC1927_P0318,Krolikowski,Etienne,Poland,male,Chef de division au Ministère de l'Agriculture
+WEC1927_P0319,Landié,Stanislaw,Poland,male,Directeur du Département du Commerce au Ministère de l'Industrie et du Commerce
+WEC1927_P0320,Litwinski,Leon,Poland,male,Conseiller commercial de la Légation de Pologne à Bruxelles
+WEC1927_P0321,Lubienski,Leon,Poland,male,"Sénateur, agriculteur"
+WEC1927_P0322,Okolski,,Poland,male,"Professeur à l'Ecole polytechnique, Président de l'Union de l'Industrie mécanique"
+WEC1927_P0323,Poniatowski,,Poland,male,Deputy; Vice-Marshal of the Sejm
+WEC1927_P0324,Skokowski,,Poland,male,Conseiller ministériel au Ministère du Travail et de l'Assistance sociale
+WEC1927_P0325,Wartalski,,Poland,male,Député
+WEC1927_P0326,Zagleniczny,J.,Poland,male,Président de l'Union de l'Industrie sucrière
+WEC1927_P0327,Zwolinski,,Poland,male,Chef de division au Ministère de l'Industrie et du Commerce
+WEC1927_P0328,Lepkowski,Stanislaw,Poland,male,"Docteur en droit, Conseiller au Ministère des Affaires étrangères"
+WEC1927_P0329,Roman,Antoine,Poland,male,Conseiller au Ministère des Affaires étrangères
+WEC1927_P0330,Benis,A. G.,Poland,male,Secrétaire de Légation
+WEC1927_P0331,Morstin,Pawel,Poland,male,Secrétaire de Légation
+WEC1927_P0332,Szymanowski,,Poland,male,Secrétaire particulier de M. Gliwic
+WEC1927_P0333,da Cunha Leal,Francisco Pinto ,Portugal,male,"Ingénieur, Gouverneur de la Banque d'Angola, ancien Président du Conseil et Ministre des Finances"
+WEC1927_P0334,Correa,Francisco Antonio,Portugal,male,"Directeur de l'Institut supérieur de commerce, ancien Ministre des Affaires étrangères et des Finances."
+WEC1927_P0335,Moniz,Jorge Botelho ,Portugal,male,"Commerçant, ancien Directeur général des Approvisionnements, ancien Directeur de la Fédération des syndicats agricoles"
+WEC1927_P0336,de Lima Santos,Joseph,Portugal,male,
+WEC1927_P0337,Neculcea,Eugène,Romania,male,"Ministre plénipotentiaire, ancien Professeur universitaire, ancien Directeur général au Ministère des Finances, ancien Délégué commun de la Grèce, de la Pologne, de la Roumanie, du Royaume des Serbes, Croates et Slovènes et de la Tchécoslovaquie à la Commission des Réparations, Membre de la Commission économique et financière de la Société des Nations."
+WEC1927_P0338,Catargi,Barbu,Romania,male,"Député, Délégué suppléant de la Roumanie à la Société des Nations"
+WEC1927_P0339,Murgasianu,N.,Romania,male,"Sénateur, ancien Secrétaire général au Ministère des Finances, ancien censeur à la Banque nationale de Roumanie, membre du Conseil d'administration des Chemins de fer roumains"
+WEC1927_P0340,Gigurtu,I.,Romania,male,"Ingénieur, Député, Directeur général de la Société minière ""Mica"""
+WEC1927_P0341,Stefanescu,G.,Romania,male,"Député, Avocat"
+WEC1927_P0342,Karadja,Const. I.,Romania,male,Consul général
+WEC1927_P0343,Marian,Emile,Romania,male,"Agronome, Directeur général de la Société roumaine pour la sélection des céréales, Membre de la Commission internationale d'Agriculture de Paris"
+WEC1927_P0344,Gafencu,Grégoire,Romania,male,Directeur du journal économique et financier Argus
+WEC1927_P0345,Karadja,C.,Romania,male,Consul général
+WEC1927_P0346,Sandoval,Arcadio,El Salvador,male,"Secrétaire de la Délégation permanente à la Société des Nations, ancien Consul général du Salvador"
+WEC1927_P0347,Secerov,Dr. Slavko,"Kingdom of the Serbs, Croats and Slovenes",male,Député
+WEC1927_P0348,Frangesch,Dr. Otto,"Kingdom of the Serbs, Croats and Slovenes",male,Professeur à l'Université de Zagreb
+WEC1927_P0349,Ilitch,Vlada,"Kingdom of the Serbs, Croats and Slovenes",male,"Industriel, Vice-Président de la Chambre de l'Industrie à Belgrade"
+WEC1927_P0350,Avsenek,Ivan,"Kingdom of the Serbs, Croats and Slovenes",male,Industriel
+WEC1927_P0351,Bouiditch,Radmilo,"Kingdom of the Serbs, Croats and Slovenes",male,Inspecteur au Ministère des Finances
+WEC1927_P0352,Curcin,Georges,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire général de la Confédération des corporations industrielles
+WEC1927_P0353,Lazarevitch,Dr. Milan,"Kingdom of the Serbs, Croats and Slovenes",male,Inspecteur au Ministère du Commerce et de l'Industrie
+WEC1927_P0354,Georgevitch,Douchan,"Kingdom of the Serbs, Croats and Slovenes",male,Chef de section au Ministère des Affaires étrangères
+WEC1927_P0355,Maroditch,Svetislav,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire de la Chambre de commerce de Belgrade
+WEC1927_P0356,Lovnatchék,Valdémar,"Kingdom of the Serbs, Croats and Slovenes",male,"Docteur en droit, Secrétaire de la Chambre de commerce et de l'industrie de Zagreb"
+WEC1927_P0357,Mohoritch,Ivan,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire de la Chambre de commerce et de l'industrie de Ljoubljana
+WEC1927_P0358,Béssarovitch,Voislav,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire de la Chambre de commerce de Sarajévo
+WEC1927_P0359,Krekitch,Milan,"Kingdom of the Serbs, Croats and Slovenes",male,Membre du Secrétariat central des Chambres ouvrières
+WEC1927_P0360,Lazitch,Bogosav,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire au Ministère des Finances
+WEC1927_P0361,Gavrilovitch,Milivoy√© B.,"Kingdom of the Serbs, Croats and Slovenes",male,Secrétaire au Ministère des Affaires étrangères
+WEC1927_P0362,Draschkovitch,Douchan,"Kingdom of the Serbs, Croats and Slovenes",male,Attaché au Ministère des Affaires étrangères
+WEC1927_P0363,Charoon,His Highness Prince,Siam,male,Ministre du Siam à Paris
+WEC1927_P0364,Oerne,Anders,Sweden,male,"Directeur général des Postes, Sénateur, ancien Ministre des Communications"
+WEC1927_P0365,Guenther,Christian,Sweden,male,Chef de la Division commerciale au Ministère des Affaires étrangères
+WEC1927_P0366,Rydbeck,Oscar,Sweden,male,Directeur en chef de la Banque Skandinaviska Kredit-aktiebelaget
+WEC1927_P0367,Cassel,Gustav,Sweden,male,Professeur à l'Université libre de Stockholm
+WEC1927_P0368,Sjoestrand,Dr. Erik,Sweden,male,"Conseiller social, Représentant de la Suède auprès du Bureau international du Travail"
+WEC1927_P0369,Lundvik,V. G.,Sweden,male,"Conseiller commercial, Directeur en chef de la Fédération des industries suédoises"
+WEC1927_P0370,Hoeijer,Dr. Ernst,Sweden,male,Chef de la Statistique agricole de Suède
+WEC1927_P0371,Johansson,J. O.,Sweden,male,Trésorier de la Confédération générale du Travail
+WEC1927_P0372,Wijkman,Per,Sweden,male,Secrétaire au Ministère des Affaires étrangères
+WEC1927_P0373,Stucki,Walter,Switzerland,male,"Directeur de la Division du commerce au Département fédéral de l'Economie publique, à Berne"
+WEC1927_P0374,Scherrer,Joseph,Switzerland,male,"Conseiller national, Président de l'Union ouvrière chrétienne sociale suisse, à Saint-Gall"
+WEC1927_P0375,Dubois,Leopold,Switzerland,male,"Président de la Société de Banque Suisse, à Bâle, membre du Comité financier de la Société des Nations"
+WEC1927_P0376,Porchet,Dr. Ferdinand,Switzerland,male,"Conseiller d'Etat, Chef du Département de l'Agriculture, de l'Industrie et du Commerce du Canton de Vaud, à Lausanne"
+WEC1927_P0377,Baumann,Rodolphe,Switzerland,male,Ancien conseiller national. Directeur de l'Union Helvetia ; Président de la Fédération des sociétés suisses d'employés
+WEC1927_P0378,Cattani,,Switzerland,male,"Ingénieur, Secrétaire de la Société suisse des constructeurs de machines, à Zurich"
+WEC1927_P0379,Wetter,Dr. Ernest,Switzerland,male,"Vice-Président du Directoire de l'Union suisse du commerce et de l'industrie, à Zurich"
+WEC1927_P0380,Cagianut,Dr. J.,Switzerland,male,"Président de la Société suisse des entrepreneurs, à Zurich"
+WEC1927_P0381,Weber,Dr. Max,Switzerland,male,"Secrétaire de l'Union syndicale suisse, à Berne"
+WEC1927_P0382,Steinmann,Dr. O.,Switzerland,male,"Secrétaire de l'Union centrale des associations patronales suisses, à Zurich"
+WEC1927_P0383,de Torrente,H.,Switzerland,male,"Secrétaire de la Division du commerce au Département fédéral de l'Economie publique, à Berne."
+WEC1927_P0384,Dvoracek,J.,Czechoslovakia,male,"Ingénieur, ancien Ministre du Commerce"
+WEC1927_P0385,Klindera,Ferdinand,Czechoslovakia,male,"Ingénieur, Président de Centrokooperativ et de l'Union centrale des coopératives agricoles"
+WEC1927_P0386,Hodac,Dr. F.,Czechoslovakia,male,"Professeur d'économie politique, Président de la Confédération des organisations patronales tchécoslovaques"
+WEC1927_P0387,Tayerle,Rodolphe,Czechoslovakia,male,"Député, Secrétaire général de la Confédération des syndicats"
+WEC1927_P0388,Urban,Dr. Charles,Czechoslovakia,male,Ancien Ministre du Commerce
+WEC1927_P0389,Ibl,Dr. V.,Czechoslovakia,male,Conseiller de légation
+WEC1927_P0390,Stodola,Dr. Kornel,Czechoslovakia,male,"Sénateur, Président de la Chambre de Commerce, Bratislava"
+WEC1927_P0391,Sanka,Leopold,Czechoslovakia,male,"Président de la Confédération des cheminots socialistes-chrétiens, à Brno"
+WEC1927_P0392,Tucny,A.,Czechoslovakia,male,"Député, ancien Ministre des Travaux publics"
+WEC1927_P0393,Basch,Dr. A.,Czechoslovakia,male,Chargé des cours d'économie politique à l'Université de Prague et Directeur du Bureau d'études de la Banque nationale tchécoslovaque
+WEC1927_P0394,Fafl,Dr. Zdenko,Czechoslovakia,male,"Secrétaire de la Chambre du commerce et de l'industrie, à Prague"
+WEC1927_P0395,Hanosek,Dr. B.,Czechoslovakia,male,Conseiller au Ministère tchécoslovaque de l'Agriculture
+WEC1927_P0396,Horacek,Dr. Cyril,Czechoslovakia,male,Chargé des cours d'économie politique à l'Université de Prague et sous-secrétaire au Ministère tchécoslovaque du commerce
+WEC1927_P0397,Kislinger,Dr. J.,Czechoslovakia,male,Membre du Conseil d'administration de la Fédération des industriels allemands en Tchécoslovaquie
+WEC1927_P0398,Lenfeld,Dr. Fran√ßois,Czechoslovakia,male,Secrétaire de la délégation permanente des Conseils d'agriculture à Prague
+WEC1927_P0399,Mayer,Dr. A.,Czechoslovakia,male,Propriétaire à Viklantice
+WEC1927_P0400,Mayer,J.,Czechoslovakia,male,Député
+WEC1927_P0401,Pohl,Adolf,Czechoslovakia,male,"Député, Secrétaire de la Confédération des mineurs, à Teplice-Trnovany"
+WEC1927_P0402,Mecir,Charles,Czechoslovakia,male,"Ministre plénipotentiaire, Secrétaire général du Bureau international agraire"
+WEC1927_P0403,Radimsky,Dr. L.,Czechoslovakia,male,Attaché au Ministère des Affaires étrangères
+WEC1927_P0404,Vanek,Dr. Joseph,Czechoslovakia,male,Secrétaire de la Fédération des industriels tchécoslovaques
+WEC1927_P0405,Walter,Dr. Joseph,Czechoslovakia,male,"Secrétaire de la Chambre de commerce, à Libérée"
+WEC1927_P0406,Zucker,Dr. Ernest,Czechoslovakia,male,"Industriel, Vice-Président de l'Association de l'industrie textile tchécoslovaque"
+WEC1927_P0407,Hassan Bey,His Excellency,Turkey,male,"Député de Trébizonde, Vice-président de la grande Assemblée nationale, ancien Ministre des Finances"
+WEC1927_P0408,Djelal Bey,His Excellency,Turkey,male,"Député de Smyrne, ancien Ministre de l'Economie publique, Directeur général de l'Ichbankassi "
+WEC1927_P0409,Moustafa Cheref Bey,His Excellency,Turkey,male,"Ancien Ministre d'F.tat, Député de Bourdour"
+WEC1927_P0410,Faik Hussein Bey,,Turkey,male,Deuxième secrétaire de la Section consulaire du Département des Affaires étrangères
+WEC1927_P0411,Safvet Bey,Rechid ,Turkey,male,"Ancien Conseiller d'Etat, Rédacteur en chef de l'Economiste d'Orient"
+WEC1927_P0412,Hakki Bey,,Turkey,male,Inspecteur en chef des Douanes turques à Constantinople
+WEC1927_P0413,Isbak Avni Bey,,Turkey,male,Conseiller
+WEC1927_P0414,Obolenski-Ossinski,Valerien,USSR,male,"Chef de l'Administration centrale statistique de l'U.R.S.S., membre du Conseil des Commissaires du Peuple de l'U.R.S.S."
+WEC1927_P0415,Sokolnikoff,Grégoire,USSR,male,Président adjoint de la Commission des plans et des projets de l'Etat de l'U.R.S.S.
+WEC1927_P0416,Khinchuk,Léon,USSR,male,résident de la Délégation commerciale de l'U.R.S.S. à Londres
+WEC1927_P0417,Lepse,Jean,USSR,male,Président du Syndicat professionnel des ouvriers en métaux
+WEC1927_P0418,Boriline,Boris,USSR,male,Docent d'Economie politique à l'Institut d'Economie nationale à Moscou
+WEC1927_P0419,Groman,Vladimir,USSR,male,Membre du présidium de la Commission des plans et des projets de l'Etat de l'U.R.S.S.
+WEC1927_P0420,Kaufmann,Michel,USSR,male,Directeur de l'Administration des traités et du droit au Commissariat du Peuple pour le Commerce extérieur et intérieur
+WEC1927_P0421,Varga,Eugene,USSR,male,Membre du Conseil de la Représentation commerciale de l'U.R.S.S. à Berlin
+WEC1927_P0422,Lioubimoff,Prof. N. N.,USSR,male,
+WEC1927_P0423,Kissin,A. A.,USSR,male,
+WEC1927_P0424,Eventoff,Léon,USSR,male,"Professeur, Directeur de la Commission des plans et des projets d'Etat de l'U.R.S.S."
+WEC1927_P0425,Stein,Boris,USSR,male,Directeur du Département de l'Europe centrale au Commissariat du Peuple pour les Affaires étrangères
+WEC1927_P0426,Schapiro-Socoline,Vladimir,USSR,male,Chef adjoint du Service du Protocole au Commissariat du Peuple pour les Affaires étrangères
+WEC1927_P0427,Schuster,Antoine,USSR,male,Secrétaire d'Ambassade; Secrétaire particulier de M. Obolenski-Ossinski
+WEC1927_P0428,Swavitch,I. S.,USSR,male,Bachelier ès sciences économiques; Secrétaire particulier de M. Khinchuk
+WEC1927_P0429,Dvorine,Alexandre,USSR,male,Secrétaire-expert du Président du Conseil des Commissaires du Peuple
+WEC1927_P0430,Bairoulevitch,Anastasie,USSR,female,
+WEC1927_P0431,Bolschakoff,Xenie,USSR,female,
+WEC1927_P0432,Rosenblatt,Julien,USSR,male,Correspondant spécial de l'Agence télégraphique de l'U.R.S.S. (TASS)
+WEC1927_P0433,Sosa,Julio Maria,Uruguay,male,"Membre du Conseil national d'administration, ancien Président du Conseil national d'administration, ancien Sénateur, ancien Député"
+WEC1927_P0434,Bachini,Antonio,Uruguay,male,"Ancien Ministre des Affaires étrangères, ancien Député, Envoyé extraordinaire et Ministre plénipotentiaire à Berlin"
+WEC1927_P0435,Buero,His Excellency Enrique,Uruguay,male,"Ministre de l'Uruguay à Berne, ancien Sous-secrétaire d'Etat aux Finances, ancien Député"
+WEC1927_P0436,Cosio,Dr. Pedro,Uruguay,male,"Docteur ès sciences politiques, Directeur de la Banque populaire, ancien Ministre des Finances, ancien
+Ministre de l'Uruguay en Grande-Bretagne, ancien Député, ancien Inspecteur général des Douanes"
+WEC1927_P0437,Gallinal,Hipolite,Uruguay,male,Ancien Sénateur
+WEC1927_P0438,Parra-Perez,His Excellency Dr. C.,Venezuela,male,"Ancien Plénipotentiaire spécial près le Conseil fédéral suisse, Chargé d'affaires à Berne."
+WEC1927_P0439,Arreaza,Manuel Tiberio,Venezuela,male,"Docteur en droit, Professeurà l'Université de Caracas"
+WEC1927_P0440,Fontaine,Arthur,"Council on March 9, 1927",male,Président du Conseil d'administration du Bureau international du Travail
+WEC1927_P0441,de Michelis,G.,"Council on March 9, 1927",male,"Président de l'Institut international d'Agriculture, Rome"
+WEC1927_P0442,Dop,Louis,"Council on March 9, 1927",male,Vice-Président de l'Institut international d'Agriculture
+WEC1927_P0443,Capone,Dr. Giorgio,"Council on March 9, 1927",male,Rédacteur principal à l'Institut international d'Agriculture
+WEC1927_P0444,Grinenko,Ivan,"Council on March 9, 1927",male,"Docteur ès sciences agronomiques, Rédacteur principal à l'Institut international d'Agriculture"
+WEC1927_P0445,Dragoni,Carlo,"Council on March 9, 1927",male,Secrétaire général de l'Institut international d'Agriculture
+WEC1927_P0446,May,Henry John,"Council on March 9, 1927",male,Secrétaire général de l'Alliance coopérative internationale
+WEC1927_P0447,van Dorp,E. C.,"Council on March 9, 1927",female,"Docteur en droit, Secrétaire du Comité national hollandais de coopération intellectuelle"
+WEC1927_P0448,Lueders,Dr. Marie-Elisabeth,"Council on March 9, 1927",female,"Membre du Reichstag, membre du Comité exécutif du Normenausschuss der Deutschen Industrie, membre du Reichskuratorium fuer Wirtschaftlichkeit"
+WEC1927_P0449,Wootton,Barbara,"Council on March 9, 1927",female,"Principal of Morley College for Working Men and Women, Member of Central Executive Committee, Workers' Educational Association"
+WEC1927_P0450,Clémentel,Etienne,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Président-Fondateur de la Chambre de commerce internationale, ancien Ministre de3 Finances, Sénateur "
+WEC1927_P0451,Duchemin,R. P.,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Industriel, Président de la Confédération générale de la production française, Président de l'Union des industries chimiques"
+WEC1927_P0452,Boyden,Roland W.,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Former unofficial American Observer on the Reparations Commission, Member of the firm of Ropes, Gray, Boyden & Perkins"
+WEC1927_P0453,Kotzenberg,Dr. Karl,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Membre du Conseil économique du Reich, Membre du Prasidium du Zentralverband des Deutschen
+Grosshandels, Président du Conseil de l'Aviation allemande, Vice-président de la Chambre de commerce et d'industrie de Francfort, Membre du Conseil
+économique du Reich"
+WEC1927_P0454,Olivetti,Gino,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Député, Secrétaire général de la Confédération fasciste de l'industrie italienne"
+WEC1927_P0455,Runciman,Walter,"Council on March 9, 1927",male,"International Chamber of Commerce (Paris); Member of the Privy Council, Former President of the Board of Trade, Director of the Westminster
+Bank Ltd., Chairman of the United Kingdom Temperance and General Provident Institution"
+WEC1927_P0456,Dolléans,Edouard,"Council on March 9, 1927",male,"Secrétaire général de la Chambre de Commerce internationale, Président du Comité de coordination des travaux de la Commission des entraves au commerce"
+WEC1927_P0457,Jelf,Arthur R.,"Council on March 9, 1927",male,Membre du Comité de coordination des travaux de la Commission des entraves au commerce
+WEC1927_P0458,Laval,Léon,"Council on March 9, 1927",male,"Ingénieur, Vice-Président de la Chambre de Commerce"
+WEC1927_P0459,de Lavergne,Alexandre,"Council on March 9, 1927",male,"Maître des requêtes honoraires du Conseil d'Etat, Délégué général de la Conférence générale de la Production française"
+WEC1927_P0460,Miles,Basil,"Council on March 9, 1927",male,Commissaire administratif américain près la Chambre de Commerce internationale
+WEC1927_P0461,Proix,Jean,"Council on March 9, 1927",male,Premier Secrétaire adjoint de la Chambre de Commerce internationale
+WEC1927_P0462,Riedberg,Dr. Gerhard,"Council on March 9, 1927",male,Commissaire administratif allemand près la Chambre de Commerce internationale
+WEC1927_P0463,Siegert,Dr.,"Council on March 9, 1927",male,Syndic
+WEC1927_P0464,Vasseur,Pierre,"Council on March 9, 1927",male,Secrétaire adjoint de la Chambre de Commerce internationale
+WEC1927_P0465,de Vogue,L.,President of the Conference,male,Président de la Commission internationale d'agriculture de Paris
+WEC1927_P0466,Brunet,Jules,President of the Conference,male,"Président du Bureau international pour la publication des tarifs douaniers, membre du Comité économique de la Société des Nations"
+WEC1927_P0467,Mauro,Francisco,President of the Conference,male,Président du Conseil de direction de l'Institut international d'organisation scientifique du travail
+WEC1927_P0468,Hunt,Edward E.,President of the Conference,male,Membre du Comité international d'Organisation scientifique du travail
+WEC1927_P0469,Snow,Dr. E. C.,President of the Conference,male,Secretary-General of the International Council of Tanners
+WEC1927_P0470,Pascall,,President of the Conference,male,President of the Rotary International
+WEC1927_P0471,Mander,Geoffrey,President of the Conference,male,Member of the Rotary International
+WEC1927_P0472,Reveillaud,J.,President of the Conference,male,Président de la Commission de répartition des dépenses de la Société des Nations
+WEC1927_P0473,Smith,Hubert Llewellyn,President of the Conference,male,Membre du Comité économique de la Société des Nations
+WEC1927_P0474,Serrano,Carlos,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Paris
+WEC1927_P0475,Narvaez,Enrique,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Madrid
+WEC1927_P0476,Martinez Baez,Alfredo,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Londres
+WEC1927_P0477,Poulat,Julio,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Vienne
+WEC1927_P0478,Prieto,Salvadrez,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Rome
+WEC1927_P0479,Phillipe S.,F.,President of the Conference,male,Observer; Attaché commercial à la Légation du Mexique à Buenos-Ayres
+WEC1927_P0480,Lecoco,Jules,President of the Conference,male,Observer; Secrétaire général de l'Organisation internationale des employeurs industriels
+WEC1927_P0481,Hentsch,Aloys,President of the Conference,male,"Observer; Economiste, rapporteur du Sous-Comité économique de l'Union internationale des Associations pour la Société des Nations"
+WEC1927_P0482,Schmidt,Georg,President of the Conference,male,"Membre du Reichstag, Secrétaire de la Fédération allemande des Travailleurs agricoles, Secrétaire de la Fédération internationale des Travailleurs agricoles."
+WEC1927_P0483,Delaisi,Francis,President of the Conference,male,"Observer; Economiste, membre du Sous-Comité économique de l'Union internationale des Associations pour la Société des Nations."
+WEC1927_P0484,de Paranagua,Octavio,Brazil,male,Attaché commercial du Brésil
+WEC1927_P0485, Nugent,R. T.,British Empire,male,Director of the Federation of British Industries
+WEC1927_P0486,Streat,E. Raymond,British Empire,male,Secretary of the Manchester Chamber of Commerce
+WEC1927_P0487,Bellerby,John R.,British Empire,male,Member of the Mixed Committee of the League of Nations and the International Labour Office on Economic Crises
+WEC1927_P0488,Daoust,Joseph,Canada,male,"President, Daoust, Lalonde & Co., Ltd., Montreal, former President of the Montreal Chamber of Commerce, former President of the Boot and Shoe Manufacturers' Association of Canada"
+WEC1927_P0489,Shortt,Adam,Canada,male,"Chairman of the Board of Historical Documents (Economic and Political), Board of Historical Publications, Ottawa, formerly Commissioner of the Civil Service of Canada, and Professor of Economics, Queen's University"
+WEC1927_P0490,Riddell,W.A.,Canada,male,Dominion of Canada Advisory Officer accredited to the League of Nations
+WEC1927_P0491,Theunis,G.,Belgium,male,Minister of State 
+WEC1927_P0492,Studholme,V. M. R.,New Zealand,male,Deputy of Elliot
+WEC1927_P0493,Politis,A,Council,male,Advisory Committee for Communications and Transit
+WEC1927_P0494,Haas,R,Council,male,Communications and Transit Section of the League of Nations
+WEC1927_P0495,Nomura,,Japan,male,
+WEC1927_P0496,Schreiner,,Czechoslovakia,male,
+WEC1927_P0497,Loehr,,Germany,male,
+WEC1927_P0498,Mitchell,,United States of America,male,
