@@ -1,16 +1,50 @@
 :root{
   --page-max: 1400px;
---card-radius: 16px;
+  --card-radius: 16px;
+
+  /* Make Bootstrap use your font */
+  --bs-body-font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --bs-font-sans-serif:  "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 body{
   background: transparent;
-  font-family: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--bs-body-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keep the dashboard surface styled, but don’t break global header/footer */
 #wec-dashboard{
   background: #f6f7f9;
   border-radius: var(--card-radius);
+}
+
+/* Ensure everything inside the dashboard uses Urbanist (including Tabulator) */
+#wec-dashboard, #wec-dashboard *{
+  font-family: inherit;
+}
+
+/* Tabulator sometimes sets its own font */
+.tabulator, .tabulator *{
+  font-family: inherit;
+}
+
+/* Headings: make them feel like your other pages (heavier) */
+#wec-dashboard h1,
+#wec-dashboard h2,
+#wec-dashboard h3,
+#wec-dashboard h4,
+#wec-dashboard h5,
+#wec-dashboard h6,
+#wec-dashboard .h1,
+#wec-dashboard .h2,
+#wec-dashboard .h3,
+#wec-dashboard .h4,
+#wec-dashboard .h5,
+#wec-dashboard .h6{
+  font-weight: 750;
+  letter-spacing: -0.01em;
 }
 
 .card{
@@ -32,13 +66,13 @@ body{
 
 .metric-value{
   font-size: 26px;
-  font-weight: 650;
+  font-weight: 750;
   line-height: 1.1;
 }
 
 .chart{
-width: 100%;
-overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tabulator{
@@ -46,11 +80,11 @@ overflow-x: auto;
   overflow: hidden;
 }
 
+/* If you ever use .plot elsewhere */
 .plot svg{
   max-width: 100%;
   height: auto;
 }
-
 
 .wec-tooltip{
   position: fixed;
@@ -69,7 +103,7 @@ overflow-x: auto;
 }
 
 .wec-tooltip .tt-title{
-  font-weight: 650;
+  font-weight: 750;
   margin-bottom: 4px;
 }
 
@@ -115,7 +149,6 @@ overflow-x: auto;
   color: rgba(0,0,0,.55);
 }
 
-
 .wec-barchart svg{
   width: 100%;
   height: auto;
@@ -126,7 +159,7 @@ overflow-x: auto;
   font-size: 12px;
 }
 
-/* Farbe der Balken */
+/* Balkenfarbe */
 .wec-barchart rect{
   fill: rgb(3, 63, 128);
 }
@@ -135,12 +168,10 @@ overflow-x: auto;
   fill: rgba(0,0,0,.75);
 }
 
-/* Farbe der Schrift re Frauen in den Charts */
+/* Frauen-Anteil rot */
 .wec-barchart tspan.female-part{
-  fill: rgba(197, 48, 48, 1); 
-  
+  fill: rgba(197, 48, 48, 1);
 }
-
 
 @media (max-width: 992px){
   .container-fluid{ padding-left: 12px; padding-right: 12px; }
@@ -154,43 +185,41 @@ overflow-x: auto;
   .tabulator{ font-size: 12px; }
 }
 
-
 .wec-tooltip ul{
   margin: 6px 0 0 18px;
 }
+
 .wec-tooltip li{
   margin: 2px 0;
 }
 
-
 .wec-tooltip .tt-scroll{
   max-height: 90vh;
   overflow: auto;
-  padding-right: 6px; 
+  padding-right: 6px;
 }
-
 
 .wec-tooltip li.female-name{
   color: rgba(197, 48, 48, 1);
-  font-weight: 600;
+  font-weight: 700;
 }
-
-
-
 
 .wec-tooltip .tt-scroll-bodies{
   max-height: 90vh;
 }
 
+/* Keep dashboard aligned like your other pages */
 #wec-dashboard.container-fluid{
-max-width: var(--page-max);
-margin-left: auto;
-margin-right: auto;
-
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.wec-tooltip .tt-scroll-appointed{ max-height: 75vh; }
+.wec-tooltip .tt-scroll-appointed{
+  max-height: 75vh;
+}
 
 .wec-barchart .y-axis .tick text{
   font-size: 14px;
 }
+
