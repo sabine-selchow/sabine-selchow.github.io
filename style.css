@@ -1,16 +1,10 @@
 html {
   scroll-behavior: smooth;
 }
-
-/* ===== GLOBAL FONT (Urbanist everywhere) ===== */
-:root{
-  --font-sans: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
 /* === BASE === */
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: 'Urbanist', 'Segoe UI', sans-serif;
   color: #000;
   background-color: #fff;
   min-height: 100vh;
@@ -18,7 +12,6 @@ body {
   flex-direction: column;
   box-sizing: border-box;
 }
-
 /* === CONTAINER für Header + Main === */
 .content-container {
   width: 100%;
@@ -27,7 +20,6 @@ body {
   padding: 0 40px;
   box-sizing: border-box;
 }
-
 /* === HEADER === */
 header {
   background-color: #fff;
@@ -38,19 +30,16 @@ header {
   top: 0;
   z-index: 100;
 }
-
 .header-content {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
-
 .site-name {
   font-size: 20px;
-  font-weight: 600; /* <-- Urbanist 600 */
+  font-weight: 600;
 }
-
 /* === NAVIGATION === */
 .nav-menu {
   list-style: none;
@@ -60,21 +49,17 @@ header {
   margin: 0;
   padding: 0;
 }
-
 .nav-menu li a {
   text-decoration: none;
   color: #000;
   font-size: 15px;
-  font-weight: 400; /* <-- Urbanist 400 */
+  font-weight: 400;
   transition: color 0.2s ease;
 }
-
 .nav-menu li a:hover,
 .nav-menu li a.active {
   color: #d90c1a;
-  font-weight: 600; /* optional: active/hover stronger */
 }
-
 /* === MAIN === */
 main {
   flex: 1;
@@ -82,12 +67,16 @@ main {
   text-align: left;
   box-sizing: border-box;
 }
-
 /* === HEADINGS === */
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
   color: #000;
+}
+.intro {
+  font-size: 16px;
+  margin-bottom: 32px;
+  color: #222;
 }
 /* === TILE GRID === */
 .tile-grid {
@@ -96,7 +85,6 @@ h1 {
   justify-content: flex-start;
   gap: 24px;
 }
-
 /* === TILE === */
 .tile-wrapper {
   display: flex;
@@ -109,12 +97,10 @@ h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
-
 .tile-wrapper:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
 }
-
 .tile-image-top {
   height: 200px;
   background-color: #ffffff;
@@ -122,14 +108,12 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-
 .tile-image-top img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 .tile-image1 {
   background-color: #84ee12;
   padding: 16px;
@@ -142,20 +126,17 @@ h1 {
   flex-grow: 1;
   min-height: 140px;
 }
-
 .tile-image1 h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0 0 8px 0;
 }
-
 .tile-image1 p {
   font-size: 14px;
   margin: 0 0 6px 0;
   color: #2A3132;
   line-height: 1.3;
 }
-
 .tile-image2 {
   background-image: url('image2.jpg');
   background-size: cover;
@@ -163,7 +144,6 @@ h1 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
               0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 /* === FOOTER === */
 footer {
   background-color: #fff;
@@ -174,65 +154,53 @@ footer {
   border-top: 1px solid #eee;
   margin-top: auto;
 }
-
 footer a {
   color: #3a3aff;
   text-decoration: none;
 }
-
 footer a:hover {
   text-decoration: underline;
 }
-
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .content-container {
     padding: 0 20px;
   }
-
   main {
     padding-left: 0;
     padding-right: 0;
   }
-
   h1 {
     font-size: 20px;
     text-align: center;
   }
-
   .nav-menu {
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
     margin-top: 10px;
   }
-
   .tile-grid {
     flex-direction: column;
     align-items: center;
     gap: 32px;
   }
-
   .tile-wrapper {
     width: 100%;
     max-width: 90%;
   }
-
   .tile-image1 h2 {
     font-size: 15px;
   }
-
   .tile-image1 p {
     font-size: 13px;
   }
-
   .pub-nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
 }
-
 /* === ABOUT SITE CARD === */
 .about-card {
   display: flex;
@@ -245,7 +213,6 @@ footer a:hover {
   box-shadow: 0 20px 24px rgba(0,0,0,0.1);
   margin-bottom: 60px;
 }
-
 .about-photo img {
   width: 180px;
   height: 180px;
@@ -255,40 +222,33 @@ footer a:hover {
   border: 4px solid #eee;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 .about-text {
   flex: 1;
   min-width: 240px;
 }
-
 .about-text h1 {
   font-size: 24px;
   margin-bottom: 16px;
   color: #000;
 }
-
 .about-text p {
   font-size: 16px;
   line-height: 1.6;
   color: #222;
   margin-bottom: 16px;
 }
-
 /* ===  EMAIL UND LINKS === */
 .scholar-link {
   color: #d90c1a;
   text-decoration: none;
   font-weight: 500;
 }
-
 .scholar-link:hover {
   text-decoration: underline;
 }
-
 .contact-links {
   font-size: 15px;
 }
-
 .scholar-link,
 .scholar-link:visited,
 .scholar-link:hover,
@@ -297,59 +257,48 @@ footer a:hover {
   text-decoration: none;
   font-weight: 500;
 }
-
 .scholar-link {
   color: #d90c1a;
   text-decoration: none;
   font-weight: 500;
 }
-
-
 /* === PUBLICATIONS === */
 .publication-section {
   margin-top: 80px;
   padding-top: 40px;
   border-top: 1px solid #ddd;
 }
-
 .publication-section h2 {
   font-size: 24px;
   margin-bottom: 24px;
   color: #000;
 }
-
 .pub-category {
   margin-bottom: 40px;
 }
-
 .pub-category h3 {
   font-size: 20px;
   margin-bottom: 12px;
   color: #333;
 }
-
 .pub-category ul {
   list-style: none;
   padding-left: 0;
 }
-
 .pub-category li {
   margin-bottom: 16px;
   font-size: 15px;
   line-height: 1.5;
   color: #222;
 }
-
 .pub-category a {
   color: #d90c1a;
   text-decoration: none;
   font-weight: 500;
 }
-
 .pub-category a:hover {
   text-decoration: underline;
 }
-
 /* === PUB NAVIGATION === */
 .pub-nav {
   background-color: #f9f9f9;
@@ -365,12 +314,10 @@ footer a:hover {
   top: 80px;
   z-index: 50;
 }
-
 .pub-nav strong {
   margin-right: 10px;
   color: #000;
 }
-
 .pub-nav a {
   color: #d90c1a;
   text-decoration: none;
@@ -380,18 +327,15 @@ footer a:hover {
   border-radius: 6px;
   transition: background 0.2s ease;
 }
-
 .pub-nav a:hover {
   background-color: #d90c1a10;
   text-decoration: underline;
 }
-
 .pub-filter {
   margin-bottom: 20px;
   display: flex;
   gap: 12px;
 }
-
 .pub-filter button {
   padding: 6px 14px;
   border: 1px solid #d90c1a33;
@@ -402,33 +346,27 @@ footer a:hover {
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
 .pub-filter button:hover {
   background-color: #d90c1a10;
 }
-
 .pub-filter button.active {
   background-color: #d90c1a10;
   border-color: #d90c1a66;
   color: #d90c1a;
 }
-
 #publications-container {
   margin-top: 20px;
 }
-
 .pub-group {
   margin-top: 32px;
   font-size: 20px;
   color: #333;
 }
-
 .pub-item {
   margin-bottom: 16px;
   font-size: 15px;
   line-height: 1.5;
 }
-
 .pub-link {
   margin-left: 8px;
   font-weight: 500;
@@ -437,9 +375,7 @@ footer a:hover {
   border-bottom: 1px solid transparent;
   transition: color 0.2s ease, border-bottom 0.2s ease;
 }
-
 .pub-link:hover {
   color: #a60a0a;
   border-bottom: 1px solid #a60a0a;
 }
-
