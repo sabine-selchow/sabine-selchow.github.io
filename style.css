@@ -2,10 +2,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===== GLOBAL FONT (Urbanist everywhere) ===== */
+:root{
+  --font-sans: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 /* === BASE === */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   color: #000;
   background-color: #fff;
   min-height: 100vh;
@@ -43,7 +48,7 @@ header {
 
 .site-name {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600; /* <-- Urbanist 600 */
 }
 
 /* === NAVIGATION === */
@@ -60,13 +65,14 @@ header {
   text-decoration: none;
   color: #000;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400; /* <-- Urbanist 400 */
   transition: color 0.2s ease;
 }
 
 .nav-menu li a:hover,
 .nav-menu li a.active {
   color: #d90c1a;
+  font-weight: 600; /* optional: active/hover stronger */
 }
 
 /* === MAIN === */
@@ -83,13 +89,6 @@ h1 {
   margin-bottom: 10px;
   color: #000;
 }
-
-.intro {
-  font-size: 16px;
-  margin-bottom: 32px;
-  color: #222;
-}
-
 /* === TILE GRID === */
 .tile-grid {
   display: flex;
