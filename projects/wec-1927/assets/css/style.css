@@ -1,41 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap");
 
 :root{
   --page-max: 1400px;
   --card-radius: 16px;
-  --bs-body-font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --bs-font-sans-serif:  "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-html, body{
-  background: transparent;
-  font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-button, input, select, textarea{
-  font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-}
-
-#wec-dashboard,
-#wec-dashboard *{
-  font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-}
-
-.tabulator,
-.tabulator *{
-  font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-}
-
-.wec-barchart svg text{
-  font-family: "Urbanist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-}
 
 #wec-dashboard{
   background: #f6f7f9;
   border-radius: var(--card-radius);
 }
+
+
+#wec-dashboard,
+#wec-dashboard *{
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 #wec-dashboard.container-fluid{
   max-width: var(--page-max);
@@ -43,43 +26,74 @@ button, input, select, textarea{
   margin-right: auto;
 }
 
-.card{
+
+#wec-dashboard .card{
   border-radius: var(--card-radius);
 }
 
-.metric{
-  background: white;
+#wec-dashboard .metric{
+  background: #fff;
   border: 1px solid rgba(0,0,0,.08);
   border-radius: 14px;
   padding: 10px 14px;
   min-width: 150px;
 }
 
-.metric-label{
+#wec-dashboard .metric-label{
   font-size: 12px;
   color: rgba(0,0,0,.55);
 }
 
-.metric-value{
+#wec-dashboard .metric-value{
   font-size: 26px;
-  font-weight: 650;
+  font-weight: 600; /* Urbanist 600 */
   line-height: 1.1;
 }
 
-.chart{
+
+#wec-dashboard .chart{
   width: 100%;
   overflow-x: auto;
 }
 
-.tabulator{
+#wec-dashboard .plot svg{
+  max-width: 100%;
+  height: auto;
+}
+
+/* D3 bar chart */
+#wec-dashboard .wec-barchart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#wec-dashboard .wec-barchart text{
+  font-size: 12px;
+}
+
+#wec-dashboard .wec-barchart rect{
+  fill: rgb(3, 63, 128);
+}
+
+#wec-dashboard .wec-barchart text.value{
+  fill: rgba(0,0,0,.75);
+}
+
+#wec-dashboard .wec-barchart tspan.female-part{
+  fill: rgba(197, 48, 48, 1);
+}
+
+#wec-dashboard .wec-barchart .y-axis .tick text{
+  font-size: 14px;
+}
+
+
+#wec-dashboard .tabulator{
   border-radius: 14px;
   overflow: hidden;
 }
 
-.plot svg{
-  max-width: 100%;
-  height: auto;
-}
 
 .wec-tooltip{
   position: fixed;
@@ -95,16 +109,46 @@ button, input, select, textarea{
   overflow: hidden;
   font-size: 13px;
   line-height: 1.25;
+  font-family: var(--font-sans);
 }
 
 .wec-tooltip .tt-title{
-  font-weight: 650;
+  font-weight: 600;
   margin-bottom: 4px;
 }
 
 .wec-tooltip .tt-sub{
   color: rgba(0,0,0,.65);
 }
+
+.wec-tooltip ul{
+  margin: 6px 0 0 18px;
+}
+
+.wec-tooltip li{
+  margin: 2px 0;
+}
+
+.wec-tooltip li.female-name{
+  color: rgba(197, 48, 48, 1);
+  font-weight: 600;
+}
+
+/* scroll helpers used by your JS tooltip HTML */
+.wec-tooltip .tt-scroll{
+  max-height: 90vh;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.wec-tooltip .tt-scroll-bodies{
+  max-height: 90vh;
+}
+
+.wec-tooltip .tt-scroll-appointed{
+  max-height: 75vh;
+}
+
 
 .wec-squares{
   display: flex;
@@ -119,6 +163,7 @@ button, input, select, textarea{
   border-radius: 3px;
   border: 1px solid rgba(0,0,0,.18);
 }
+
 
 .wec-row{
   display: grid;
@@ -144,67 +189,29 @@ button, input, select, textarea{
   color: rgba(0,0,0,.55);
 }
 
-.wec-barchart svg{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.wec-barchart text{
-  font-size: 12px;
-}
-
-.wec-barchart rect{
-  fill: rgb(3, 63, 128);
-}
-
-.wec-barchart text.value{
-  fill: rgba(0,0,0,.75);
-}
-
-.wec-barchart tspan.female-part{
-  fill: rgba(197, 48, 48, 1);
-}
 
 @media (max-width: 992px){
-  .container-fluid{ padding-left: 12px; padding-right: 12px; }
-  .metric{ min-width: 130px; padding: 8px 10px; }
-  .metric-value{ font-size: 22px; }
-  .wec-row{ grid-template-columns: 1fr; }
+  #wec-dashboard.container-fluid{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  #wec-dashboard .metric{
+    min-width: 130px;
+    padding: 8px 10px;
+  }
+  #wec-dashboard .metric-value{
+    font-size: 22px;
+  }
+  .wec-row{
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 576px){
-  .metric{ min-width: 120px; }
-  .tabulator{ font-size: 12px; }
-}
-
-.wec-tooltip ul{
-  margin: 6px 0 0 18px;
-}
-
-.wec-tooltip li{
-  margin: 2px 0;
-}
-
-.wec-tooltip .tt-scroll{
-  max-height: 90vh;
-  overflow: auto;
-  padding-right: 6px;
-}
-
-.wec-tooltip li.female-name{
-  color: rgba(197, 48, 48, 1);
-  font-weight: 600;
-}
-
-.wec-tooltip .tt-scroll-bodies{
-  max-height: 90vh;
-}
-
-.wec-tooltip .tt-scroll-appointed{
-  max-height: 75vh;
-}
-
-.wec-barchart .y-axis .tick text{
-  font-size: 14px;
+  #wec-dashboard .metric{
+    min-width: 120px;
+  }
+  #wec-dashboard .tabulator{
+    font-size: 12px;
+  }
 }
