@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Great Britain's Exports in the 1920s — Sabine Selchow</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="./gb-exports-1920s.css" />
+</head>
+<body>
+
+  <header>
+    <div class="content-container header-content">
+      <div class="site-name">Sabine Selchow</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../../index.html">Home & Visualisations</a></li>
+          <li><a href="../../about/">About & Publications</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-container gb-page">
+      <h1>Great Britain's Exports in the 1920s</h1>
+
+      <div class="gb-figure">
+        <button class="gb-figure-btn" id="openPdf" type="button" aria-label="Open PDF">
+          <img src="./gb-exports-1920s.png" alt="Great Britain's Exports in the 1920s (preview)">
+        </button>
+
+        <div class="gb-links">
+          <a href="./gb-exports-1920s.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Sabine Selchow</p>
+  </footer>
+
+  <div class="gb-modal" id="gbModal" aria-hidden="true">
+    <div class="gb-modal__backdrop" id="closePdf"></div>
+
+    <div class="gb-modal__panel" role="dialog" aria-modal="true" aria-label="PDF preview">
+      <button class="gb-modal__close" id="xClose" type="button" aria-label="Close">×</button>
+
+      <div class="gb-modal__framewrap">
+        <iframe class="gb-modal__iframe" src="./gb-exports-1920s.pdf" title="Great Britain's Exports in the 1920s (PDF)"></iframe>
+      </div>
+
+      <div class="gb-modal__footer">
+        <a href="./gb-exports-1920s.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./gb-exports-1920s.js" defer></script>
+</body>
+</html>

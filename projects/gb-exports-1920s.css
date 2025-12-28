@@ -1,0 +1,108 @@
+.gb-page h1{
+  margin-bottom: 18px;
+}
+
+.gb-figure{
+  margin-top: 10px;
+}
+
+.gb-figure-btn{
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.gb-figure-btn img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.gb-links{
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.gb-links a{
+  color: #d90c1a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.gb-links a:hover{
+  text-decoration: underline;
+}
+
+.gb-modal{
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.gb-modal.is-open{
+  display: block;
+}
+
+.gb-modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.70);
+}
+
+.gb-modal__panel{
+  position: relative;
+  width: min(1100px, 94vw);
+  height: min(92vh, 900px);
+  margin: 4vh auto;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.gb-modal__close{
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.gb-modal__framewrap{
+  flex: 1;
+  padding-top: 44px;
+}
+
+.gb-modal__iframe{
+  width: 100%;
+  height: calc(100% - 44px);
+  border: 0;
+}
+
+.gb-modal__footer{
+  padding: 10px 14px 14px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.gb-modal__footer a{
+  color: #d90c1a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.gb-modal__footer a:hover{
+  text-decoration: underline;
+}
