@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Puzzle Generator</title>
+  <link rel="stylesheet" href="puzzle.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Word Puzzle</h1>
+
+    <p class="subtitle">
+      Choose your setting. Enter your search words. Press 'Generate the Puzzle'. Press 'Print the Puzzle'. 
+      <br><br>
+      When you have generated your puzzle you can hover over the search words to see where the words are hidden in the puzzle. 
+    <br><br>
+      Your entries will reset when you leave the page (or when you press 'Clear All'). <br><br>
+      PS: I cannot see if anybody is generating a puzzle! But let me know if you find a bug. 
+      <br><br><br>
+    </p>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="gridSize">Grid Size:</label>
+        <select id="gridSize">
+          <option value="14" selected>14 x 14</option>
+          <option value="25">25 x 25</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="wordCount">Number of Words:</label>
+        <select id="wordCount">
+          <option value="5">5 Words</option>
+          <option value="8" selected>8 Words</option>
+          <option value="10">10 Words</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-group word-inputs" id="wordInputsContainer">
+      <label>Enter Your Words:</label>
+    </div>
+
+    <div class="error-message" id="errorMessage"></div>
+
+    <div class="buttons">
+      <button class="btn-generate" id="generateBtn">Generate the puzzle</button>
+      <button class="btn-clear" id="clearBtn">Clear All</button>
+      <button class="btn-print" id="printBtn" style="display: none;">Print the puzzle</button>
+    </div>
+
+    <div class="puzzle-container" id="puzzleContainer">
+      <div class="puzzle-wrapper">
+        <div class="grid-container">
+          <div class="grid" id="grid"></div>
+        </div>
+
+        <div class="word-list">
+          <h3>Find these words:</h3>
+          <div id="wordListContainer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="puzzle.js"></script>
+</body>
+</html>
